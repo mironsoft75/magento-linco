@@ -1,0 +1,60 @@
+
+
+<div class="mobile_bottom sticky-toolbar-mobile">
+	<div class="main-toolbar-mobile">
+		<div class="container">
+			<div class="toolbar-mobile-primary">
+				<div class="home-page item-mobile"><a href="<?php echo $this->getBaseUrl() ?>"><span class="symbolic"></span><span class="text"><?= __('Home')?></span></a></div>
+				<div class="menu-active item-mobile"><a href="javascript:void(0)"><span class="symbolic"></span><span class="text"><?= __('Menu')?></span></a></div>
+				<div class="search-product item-mobile"><a href="javascript:void(0)"><span class="symbolic"></span><span class="text"><?= __('Search') ?></span></a></div>
+				<div class="checkout-cart item-mobile"><a href="<?php echo $this->getBaseUrl().'checkout/cart/'; ?>"><span class="symbolic"><span id="counter-number-cart"></span></span><span class="text"><?= __('Cart') ?></span></a>
+				</div>
+				<div class="web-account item-mobile"><a href="<?php echo $this->getBaseUrl().'customer/account/login/'; ?>"><span class="symbolic"></span><span class="text"><?= __('Account')?></span></a></div>		
+			</div>	
+		</div>
+		
+	</div>
+</div>
+
+<div class="childnode-search">
+	<div class="search-inner-wrap">
+		<div class="btn-close"><span><?php echo __('Close') ?></span></div>
+		<div class="node-search-append" id="appendSelector">
+			
+		</div>
+	</div>
+	
+</div>
+<div class="search-overlay"></div>
+<script type="text/javascript">
+	require(['jquery', 'Magento_Customer/js/customer-data', 'jquery-ui-modules/widget'], function($, customerData) {
+		'use strict';
+		customerData.get('cart').subscribe(function (cartInfo) {
+			$('#counter-number-cart').html(cartInfo['summary_count']);
+		}, this);
+
+		$(window).resize(function() {
+			if (window.innerWidth >= 1200) {
+				$(document).find('html').removeClass('open-popup-search');
+				$(document).find('#appendSelector .block-content').appendTo('.block-search');
+			}
+		});
+		$('body').addClass('toolbar-mobile-true');
+		$(document).on('click', '.search-product', function() {
+			$(this).parents().find('.block-search .block-content').appendTo('#appendSelector');
+			$(document).find('html').addClass('open-popup-search');
+			$(this).parent().siblings('.childnode-search').addClass('_show');
+			
+		});
+
+		$(document).on('click', '.childnode-search .btn-close', function() {
+			$(this).siblings('#appendSelector').find('.block-content').appendTo('.block-search');
+			$(this).parent().parent().removeClass('_show');
+			$(document).find('html').removeClass('open-popup-search');
+		});
+		$('.menu-active').on('click', function() {
+			$('body').find('.action.nav-toggle').trigger('click');
+		});
+	});
+</script>
+

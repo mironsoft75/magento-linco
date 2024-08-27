@@ -1,0 +1,50 @@
+& when (@media-common = true) {
+    .grid-mode .active {
+        text-decoration: underline;
+    }
+    /* responsive */
+    @media screen and (max-width: (@screen__xs)) {
+        .grid-view-mode .grid-mode.grid-8,
+        .grid-view-mode .grid-mode.grid-7,
+        .grid-view-mode .grid-mode.grid-6, 
+        .grid-view-mode .grid-mode.grid-5, 
+        .grid-view-mode .grid-mode.grid-4, 
+        .grid-view-mode .grid-mode.grid-3
+        {
+            display: none;
+        }
+        .grid-view-mode .grid-mode.grid-1 {
+            display: inline-block;
+        }
+        .grid-view-mode .grid-mode.grid-1:last-child {
+            margin-right: 10px;
+        }
+     }
+
+     @media screen and (max-width: (@screen__s)) {
+        .grid-view-mode .grid-mode.grid-8,
+        .grid-view-mode .grid-mode.grid-7,
+        .grid-view-mode .grid-mode.grid-6,
+        .grid-view-mode .grid-mode.grid-5,
+        .grid-view-mode .grid-mode.grid-4
+        {
+            display: none;
+        }
+        .grid-view-mode .grid-mode.grid-1 {
+            display: inline-block;
+        }
+        .grid-view-mode .grid-mode.grid-1:last-child{
+            margin-right: 10px;
+        }
+    }
+
+    @media screen and (max-width: (@screen__m)) {
+        .grid-view-mode .grid-mode.grid-8,
+        .grid-view-mode .grid-mode.grid-7,
+        .grid-view-mode .grid-mode.grid-6,
+        .grid-view-mode .grid-mode.grid-5
+        {
+            display: none;
+        }
+    }
+}

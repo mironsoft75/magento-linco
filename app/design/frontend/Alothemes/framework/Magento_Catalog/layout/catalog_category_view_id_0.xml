@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<attribute name="class" value="category-full-width"/>
+    	<move element="catalog.leftnav" destination="content" before="-"/>
+        <referenceContainer name="content">
+        	<block class="Magento\Theme\Block\Html\Title" name="page.main.title" template="html/title.phtml"/>
+    	    <block class="Magento\Catalog\Block\Category\View" name="category.image" template="Magento_Catalog::category/image.phtml"/>
+			<block class="Magento\Catalog\Block\Category\View" name="category.description" template="Magento_Catalog::category/description.phtml"/>
+		</referenceContainer>
+        <referenceBlock name="category.products.list">
+            <arguments>
+                <!-- If argument's position depends on image size changeable in VDE:
+                positions:list-secondary,grid-secondary,list-actions,grid-actions,list-primary,grid-primary
+            -->
+                <argument name="positioned" xsi:type="string">positions:list-secondary</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

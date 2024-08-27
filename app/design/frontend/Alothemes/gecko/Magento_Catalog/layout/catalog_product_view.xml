@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<move element="page.main.title" destination="product.shop.content" before="-"/>
+    	<move element="product.info.price" destination="product.shop.content" after="page.main.title"/>
+    	<move element="product.info.review" destination="product.info.price" before="-"/>
+    	<move element="product.price.final" destination="product.info.price" before="product.info.stock.sku"/>
+		<move element="product.info.extrahint" destination="product.shop.content" after="-"/>
+		<move element="product.info" destination="product.shop.content"/>
+		<move element="product.info.overview" destination="product.shop.content" after="product.info.price"/>
+		<move element="alo.product.timer" destination="product.shop.content" after="product.info.overview"/>
+		<container name="alo.product.timer" as="alo_product_timer" label="Alo Product Timer"  htmlTag="div" htmlClass="sections-content-timer wrap"/>
+		<referenceContainer name="alo.product.timer" htmlClass="additional-timer-block">
+			<block class="Magento\Catalog\Block\Product\View" name="product.timer" as="product_timer" template="product/view/timer.phtml">
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">Timer</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="product.info.extrahint">
+			<block class="Magento\Cms\Block\Block" name="block_brand_product_view" after="product.info.social">
+				<arguments>
+					<argument name="block_id" xsi:type="string">block_brand_product_view</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="Magento\Catalog\Block\Product\View"  name="size.guide" template="product/view/size_guide.phtml" group="detailed_info" before="-">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Size Guide</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+		<referenceBlock name="product.info.details">
+			<!-- <block class="Magento\Catalog\Block\Product\View" name="customtab" template="product/view/custom_tab.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">Custom Tab</argument>
+				</arguments>
+			</block> -->
+		</referenceBlock>
+    </body>
+</page>

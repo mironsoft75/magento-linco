@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php
+$_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
+$_product   = $block->getProduct();
+$product_label = $_aloHelper->getLabels($_product); 
+echo $product_label ? '<div class="product-label">' . $product_label . '</div>' : ''; 
+?>
+<?php
+    $gallery  = json_decode( $block->getGalleryImagesJson(), true );
+    $blankImage    = $this->getViewFileUrl('images/blank.png');
+?>
+<div class="gallery-placeholder" data-gallery-role="gallery-placeholder">
+    <div class="gallery-items"
+        data-autoplay="true" 
+        data-arrows="false" 
+        data-autoplay-speed="6000" 
+        data-dots="false" 
+        data-infinite="true" 
+        data-padding="15" 
+        data-vertical="false" 
+        data-vertical-swiping="false" 
+        data-responsive='[{"breakpoint": 1921, "settings": {"slidesToShow": 2}}, {"breakpoint": 1920, "settings": {"slidesToShow": 2}}, {"breakpoint": 1200, "settings": {"slidesToShow": 2}}, {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 768, "settings": {"slidesToShow": 2}}, {"breakpoint": 640, "settings": {"slidesToShow": 1}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}, {"breakpoint": 361, "settings": {"slidesToShow": 1}}, {"breakpoint": 1, "settings": {"slidesToShow": 1}}]'
+        data-rows="2" 
+        data-slides-to-show="2" 
+        data-swipe-to-slide="false" 
+        data-lazy-load="ondemand"
+    >
+        <?php foreach ($gallery as $shot) : ?>
+            <div class="fotorama__stage">
+                <div class="fotorama__active">
+                    <img src="<?= /* @escapeNotVerified */ $blankImage ?>" data-src="<?php echo $shot['full'] ?>" alt="<?php echo $shot['caption'] ?>" data-lazy="<?php echo $shot['img'] ?>">
+                </div>                
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'alothemes',
+        'magiccart/sticky',
+        'mage/mage',
+        'domReady!'
+        ], function($, slick){
+            $( document ).ready(function($) {
+                var slider = $('.gallery-items');
+                if(slider.length) $('head').append(magicproduct(slider, '.item'));
+            });            
+    });
+</script>
+<style type="text/css">
+    .gallery-items {display: none;}
+    .gallery-items.slick-initialized {display: block;}
+</style>
