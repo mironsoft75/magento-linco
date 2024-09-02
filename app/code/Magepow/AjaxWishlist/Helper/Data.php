@@ -15,7 +15,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-           \Magento\Store\Model\StoreManagerInterface $storeManager
+        \Magento\Store\Model\StoreManagerInterface $storeManager
     )
     {
         parent::__construct($context);

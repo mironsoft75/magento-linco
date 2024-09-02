@@ -39,7 +39,7 @@ class Toolbar extends \Magento\Framework\View\Element\Template
     /**
      * Page GET parameter name
      */
-    const PAGE_PARM_NAME = 'page';
+    public const PAGE_PARM_NAME = 'page';
 
     /**
      * Products collection

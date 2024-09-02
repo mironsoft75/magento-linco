@@ -16,8 +16,8 @@ class ColorPicker extends \Magento\Config\Block\System\Config\Form\Field
      * @param array $data
      */
     public function __construct(
-    \Magento\Backend\Block\Template\Context $context,
-    array $data = []
+        \Magento\Backend\Block\Template\Context $context,
+        array $data = []
     ) 
     {
         parent::__construct($context, $data);

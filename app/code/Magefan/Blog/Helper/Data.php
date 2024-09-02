@@ -16,7 +16,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const XML_PATH_MFLAZYLOAD_ENABLED = 'mflazyzoad/general/enabled';
+    public const XML_PATH_MFLAZYLOAD_ENABLED = 'mflazyzoad/general/enabled';
 
     /**
      * Retrieve translated & formated date

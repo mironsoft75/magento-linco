@@ -13,7 +13,7 @@ namespace Magepow\Ajaxcart\Helper;
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
 
-    const PRICE_SHIPPING_BAR = 'carriers/freeshipping/free_shipping_subtotal';
+    public const PRICE_SHIPPING_BAR = 'carriers/freeshipping/free_shipping_subtotal';
 
     /**
      * @var array

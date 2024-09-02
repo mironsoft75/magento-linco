@@ -1,0 +1,15 @@
+{
+    "name": "zavidoro/module-catalogattributes",
+    "description": "",
+    "type": "magento2-module",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Zavidoro\\CatalogAttributes\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

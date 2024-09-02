@@ -1,0 +1,28 @@
+<?php
+/** $block \Lyracons\Bancard\Block\Redirect */
+$id = $block->getProcessId();
+?>
+<?php
+// @todo: revisar si esto lo tendría que incluir así o por layout y si debería usar requireJs
+;?>
+<script src="<?=$block->getJavascriptUrl();?>" src_type="url" ></script>
+<script type="application/javascript">
+    styles = {
+        "form-background-color": "#001b60",
+        "button-background-color": "#4faed1",
+        "button-text-color": "#fcfcfc",
+        "button-border-color": "#dddddd",
+        "input-background-color": "#fcfcfc",
+        "input-text-color": "#111111",
+        "input-placeholder-color": "#111111"
+    };
+    window.onload = function () {
+        Bancard.Checkout.createForm ('iframe-container', '<?=$id;?>',styles);
+    };
+</script>
+<div style="height: 300px; width: 500px; margin: auto" id="iframe-container"></div>
+<script type="text/x-magento-init">
+{
+    "*": {"bancardCheckpoint": {}}
+}
+</script>

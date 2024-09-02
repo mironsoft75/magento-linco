@@ -41,7 +41,7 @@ class ConfigInterface
      * @param $result
      * @return mixed|null
      */
-    public function afterIsEnabled($subject,$result) {
+    public function afterIsEnabled($subject, $result) {
         if (!$result) {
             return $result;
         }
@@ -63,7 +63,7 @@ class ConfigInterface
         $disablePageBuilder = in_array($wysiwygState, [
             \Magento\Cms\Model\Wysiwyg\Config::WYSIWYG_ENABLED,
             \Magento\Cms\Model\Wysiwyg\Config::WYSIWYG_DISABLED,
-            \Magento\Cms\Model\Wysiwyg\Config::WYSIWYG_HIDDEN
+            \Magento\Cms\Model\Wysiwyg\Config::WYSIWYG_HIDDEN,
          ]);
 
         if ($disablePageBuilder) {

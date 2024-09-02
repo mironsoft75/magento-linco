@@ -13,7 +13,7 @@
         $attributeModel = $filter->getData('attribute_model');
         $inputName = $filter->getRequestVar();
         $requestValue = $block->getRequest()->getParam($inputName);
-        $requestArray = $requestValue ? explode(',',(string) $requestValue) : [];
+        $requestArray = $requestValue ? explode(',', (string) $requestValue) : [];
         $url = in_array($filterItem->getValue(), $requestArray) ? $filterItem->getRemoveUrl() : $filterItem->getUrl();
         ?>
         <li class="item">
@@ -22,7 +22,7 @@
                 $min = $RangePrice['min'];
                 $max = $RangePrice['max'];
 
-                list($from, $to) = $requestValue ? explode('-',(string) $requestValue) : [$min, $max];
+                [$from, $to] = $requestValue ? explode('-', (string) $requestValue) : [$min, $max];
                 ?>
                 <div id="layered_ajax_price_attribute">
                     <div id="layered_ajax_price_text"></div>

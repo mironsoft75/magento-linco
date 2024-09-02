@@ -82,15 +82,15 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create(
-                [
+            [
                     'data' => [
                     'id' => 'edit_form',
                     'action' => $this->getData('action'),
                     'method' => 'post',
-                    'enctype' => 'multipart/form-data'
-                    ]
+                    'enctype' => 'multipart/form-data',
+                    ],
                 ]
-            );
+        );
 
         $fieldset       = $form->addFieldset('base_fieldset', ['legend' => __('Info Theme')]);
         if ($model->getId()) {
@@ -108,18 +108,22 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         $exampleName    = reset($themes) . ' Child';
         $examplePath    = key($themes)   . '_child';
         $themes         = array_merge([''=>__('Choose Parent Theme')], $themes);
-        $field = $fieldset->addField('parent_theme', 'select',
+        $field = $fieldset->addField(
+            'parent_theme',
+            'select',
             [
                 'name'      => 'parent_theme',
                 'label'     => __('Parent Theme'),
                 'title'     => __('Parent Theme'),
                 'value'     => $exampleParent,
                 // 'required'  => true,
-                'values'    => $themes
+                'values'    => $themes,
             ]
         );
 
-        $fieldset->addField('theme_title', 'text',
+        $fieldset->addField(
+            'theme_title',
+            'text',
             [
                 'name'      => 'theme_title',
                 'label'     => __('Theme Title'),
@@ -130,7 +134,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
 
-        $themePath = $fieldset->addField('theme_path', 'text',
+        $themePath = $fieldset->addField(
+            'theme_path',
+            'text',
             [
                 'name'      => 'theme_path',
                 'label'     => __('Theme Path'),
@@ -158,7 +164,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
         }
 
-        $fieldset->addField('theme_type', 'select',
+        $fieldset->addField(
+            'theme_type',
+            'select',
             [
                 'name'      => 'theme_type',
                 'label'     => __('Theme Type'),
@@ -170,7 +178,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
 
-        $fieldset->addField('overwrite', 'checkbox',
+        $fieldset->addField(
+            'overwrite',
+            'checkbox',
             [
                 'label' => __('Overwrite'),
                 'title' => __('Overwrite'),

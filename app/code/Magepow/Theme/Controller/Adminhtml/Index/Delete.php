@@ -40,7 +40,7 @@ class Delete extends \Magepow\Theme\Controller\Adminhtml\Action
                 __('Theme record delete successfully !')
             );
             $collection      = $this->_objectManager->create('Magento\Config\Model\ResourceModel\Config\Data\Collection');
-            $config     = $collection->addFieldToSelect('*')->addFieldToFilter('path', 'design/theme/theme_id')->addFieldToFilter('value',$id);
+            $config     = $collection->addFieldToSelect('*')->addFieldToFilter('path', 'design/theme/theme_id')->addFieldToFilter('value', $id);
             $ids   = [];
             foreach ($config as $cfg) {
                 $cfg->setValue(2); /* Luma theme */

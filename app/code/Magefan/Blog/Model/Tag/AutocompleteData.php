@@ -52,7 +52,7 @@ class AutocompleteData
         foreach ($collection as $item) {
             $result[] = [
                 'value' => $item->getTitle(),
-                'label' => $item->getTitle()
+                'label' => $item->getTitle(),
             ];
         }
 

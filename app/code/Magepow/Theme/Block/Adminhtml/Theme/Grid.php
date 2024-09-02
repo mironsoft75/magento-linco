@@ -41,7 +41,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Theme\Model\Theme $themeFactory,
         \Magepow\Theme\Model\System\Config\Status $status,
-    
         array $data = []
     ) {
 

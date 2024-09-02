@@ -99,7 +99,7 @@ class Help extends \Magento\Framework\View\Element\Template
                         }
                         $data[] = [
                             'title' => $item['title'],
-                            'links' => $links
+                            'links' => $links,
                         ];
                     }
                 }

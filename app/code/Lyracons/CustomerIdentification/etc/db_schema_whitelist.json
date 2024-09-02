@@ -1,0 +1,26 @@
+{
+  "quote_address": {
+    "column": {
+      "document_type": true,
+      "document_number": true
+    }
+  },
+  "order_address": {
+    "column": {
+      "document_type": true,
+      "document_number": true
+    }
+  },
+  "sales_order": {
+    "column": {
+      "customer_document_type": true,
+      "customer_document_number": true
+    }
+  },
+  "quote": {
+    "column": {
+      "customer_document_type": true,
+      "customer_document_number": true
+    }
+  }
+}

@@ -15,7 +15,8 @@ class Position extends \Magento\Config\Block\System\Config\Form\Field
     private $assetRepository;
 
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context, array $data = []
+        \Magento\Backend\Block\Template\Context $context,
+        array $data = []
     ) {
         $this->assetRepository = $context->getAssetRepository();
         parent::__construct($context, $data);

@@ -70,7 +70,7 @@ class SlashUrlRedirect
                     Url::CONTROLLER_POST,
                     Url::CONTROLLER_CATEGORY,
                     Url::CONTROLLER_AUTHOR,
-                    Url::CONTROLLER_TAG
+                    Url::CONTROLLER_TAG,
                 ] as $controllerName) {
 
                     $controllerSufix = $this->scopeConfig->getValue(

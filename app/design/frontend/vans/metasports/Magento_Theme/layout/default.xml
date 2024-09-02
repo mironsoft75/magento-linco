@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">129</argument>
+                <argument name="logo_img_height" xsi:type="number">53</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="navigation.sections" before="-" template="Magento_Theme::html/sections.phtml">
+                <arguments>
+                    <argument name="group_name" xsi:type="string">navigation-sections</argument>
+                    <argument name="group_css" xsi:type="string">nav-sections</argument>
+                </arguments>
+                <block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string">MENÚ</argument>
+                    </arguments>
+                    <block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::html/topmenu.phtml" ttl="3600" before="-"/>
+                </block>
+                <block class="Magento\Framework\View\Element\Text" name="store.links" group="navigation-sections">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string">Mi Cuenta</argument>
+                        <argument name="use_force" xsi:type="boolean">true</argument>
+                        <argument name="text" xsi:type="string"><![CDATA[<!-- Account links -->]]></argument>
+                    </arguments>
+                </block>
+            </block>
+            <container name="after.header" label="After Header Container" htmlClass="top-container" htmlTag="div"></container>
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="Magento_Store::switch/stores.phtml"/>
+            <container name="footer.col1" label="Footer Columna 1" htmlClass="footer-col-1" htmlTag="div"></container>
+            <container name="footer.col2" label="Footer Columna 2" htmlClass="footer-col-2" htmlTag="div"></container>
+            <container name="footer.col3" label="Footer Columna 3" htmlClass="footer-col-3" htmlTag="div"></container>
+            <container name="footer.col4" label="Footer Columna 4" htmlClass="footer-col-4" htmlTag="div"></container>
+            <container name="footer.col5" label="Footer Columna 5" htmlClass="footer-col-5" htmlTag="div"></container>
+            <referenceBlock name="form.subscribe" remove="true"/>
+        </referenceContainer>
+
+        <move element="navigation.sections" destination="header-wrapper" after="logo" />
+
+        <!-- Remove  Compare -->
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="view.addto.compare" remove="true" />
+        <referenceBlock name="category.product.addto.compare" remove="true"/>
+        <referenceBlock name="catalogsearch.product.addto.compare" remove="true"/>
+
+        <!-- Remove reviews -->
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.review.form" remove="true" />
+        <referenceBlock name="product.info.review" remove="true" />
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+        
+        <!-- Remove footer links -->
+        <referenceBlock name="footer_links" remove="true" />
+
+        <!-- Downloadable product link -->
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+        <!-- Wish list link -->
+        <referenceBlock name="customer-account-navigation-wish-list-link" remove="true"/>
+        <!-- Address link -->
+        <referenceBlock name="customer-account-navigation-address-link" remove="true"/>
+        <!-- Product review link -->
+        <referenceBlock name="customer-account-navigation-product-reviews-link" remove="true"/>
+
+    </body>
+</page>

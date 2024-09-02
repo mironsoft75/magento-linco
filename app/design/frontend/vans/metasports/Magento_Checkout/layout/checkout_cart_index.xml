@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="checkout.cart.amgiftcard" destination="checkout.cart.container" after="-" />
+        <move element="checkout.cart.form" destination="checkout.cart.container" before="cart.summary" />
+           <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Text" name="checkout_debug">
+                <arguments>
+                    <argument name="text" xsi:type="string">El layout de checkout se esta cargando!</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+</body>
+</page>

@@ -21,7 +21,8 @@ class ModelsPlugin
      */
     public function aroundCmsPageSaveBefore($subject, callable $proceed, $model)
     {
-        $isBlogModel = ($model instanceof \Magefan\Blog\Model\Post
+        $isBlogModel = (
+            $model instanceof \Magefan\Blog\Model\Post
             || $model instanceof \Magefan\Blog\Model\Category
         );
         if ($isBlogModel) {

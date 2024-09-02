@@ -19,100 +19,100 @@ class Config
     /**
      * Extension enabled config path
      */
-    const XML_PATH_EXTENSION_ENABLED = 'mfblog/general/enabled';
-    const GUEST_COMMENT = 'mfblog/post_view/comments/guest_comments';
-    const NUMBER_OF_COMMENTS = 'mfblog/post_view/comments/number_of_comments';
-    const NUMBER_OF_REPLIES = 'mfblog/post_view/comments/number_of_replies';
-    const COMMENT_STATUS = 'mfblog/post_view/comments/default_status';
+    public const XML_PATH_EXTENSION_ENABLED = 'mfblog/general/enabled';
+    public const GUEST_COMMENT = 'mfblog/post_view/comments/guest_comments';
+    public const NUMBER_OF_COMMENTS = 'mfblog/post_view/comments/number_of_comments';
+    public const NUMBER_OF_REPLIES = 'mfblog/post_view/comments/number_of_replies';
+    public const COMMENT_STATUS = 'mfblog/post_view/comments/default_status';
 
     /**
      * Show top menu item config path
      */
-    const XML_PATH_TOP_MENU_SHOW_ITEM = 'mfblog/top_menu/show_item';
+    public const XML_PATH_TOP_MENU_SHOW_ITEM = 'mfblog/top_menu/show_item';
 
-    const XML_PATH_DISPLAY_CANONICAL_TAG_FOR = 'mfblog/seo/use_canonical_meta_tag_for';
-    const CANONICAL_PAGE_TYPE_NONE = 'none';
-    const CANONICAL_PAGE_TYPE_ALL = 'all';
-    const CANONICAL_PAGE_TYPE_INDEX = 'index';
-    const CANONICAL_PAGE_TYPE_POST = 'post';
-    const CANONICAL_PAGE_TYPE_CATEGORY = 'category';
-    const CANONICAL_PAGE_TYPE_AUTHOR = 'author';
-    const CANONICAL_PAGE_TYPE_ARCHIVE = 'archive';
-    const CANONICAL_PAGE_TYPE_TAG = 'tag';
+    public const XML_PATH_DISPLAY_CANONICAL_TAG_FOR = 'mfblog/seo/use_canonical_meta_tag_for';
+    public const CANONICAL_PAGE_TYPE_NONE = 'none';
+    public const CANONICAL_PAGE_TYPE_ALL = 'all';
+    public const CANONICAL_PAGE_TYPE_INDEX = 'index';
+    public const CANONICAL_PAGE_TYPE_POST = 'post';
+    public const CANONICAL_PAGE_TYPE_CATEGORY = 'category';
+    public const CANONICAL_PAGE_TYPE_AUTHOR = 'author';
+    public const CANONICAL_PAGE_TYPE_ARCHIVE = 'archive';
+    public const CANONICAL_PAGE_TYPE_TAG = 'tag';
 
     /**
      * Blog homepage title
      */
-    const XML_PATH_HOMEPAGE_TITLE = 'mfblog/index_page/title';
+    public const XML_PATH_HOMEPAGE_TITLE = 'mfblog/index_page/title';
 
     /**
      * Blog homepage display mode
      */
-    const XML_PATH_HOMEPAGE_DISPLAY_MODE = 'mfblog/index_page/display_mode';
+    public const XML_PATH_HOMEPAGE_DISPLAY_MODE = 'mfblog/index_page/display_mode';
 
     /**
      * Blog homepage display mode
      */
-    const XML_PATH_HOMEPAGE_POSTS_SORT_BY = 'mfblog/index_page/posts_sort_by';
+    public const XML_PATH_HOMEPAGE_POSTS_SORT_BY = 'mfblog/index_page/posts_sort_by';
 
     /**
      * Blog homepage featured post ids
      */
-    const XML_PATH_HOMEPAGE_FEATURED_POST_IDS = 'mfblog/index_page/post_ids';
+    public const XML_PATH_HOMEPAGE_FEATURED_POST_IDS = 'mfblog/index_page/post_ids';
 
     /**
      * Top menu item text config path
      */
-    const XML_PATH_TOP_MENU_ITEM_TEXT = 'mfblog/top_menu/item_text';
+    public const XML_PATH_TOP_MENU_ITEM_TEXT = 'mfblog/top_menu/item_text';
 
     /**
      * Redirect to no slash config path
      */
-    const XML_PATH_REDIRECT_TO_NO_SLASH = 'mfblog/permalink/redirect_to_no_slash';
+    public const XML_PATH_REDIRECT_TO_NO_SLASH = 'mfblog/permalink/redirect_to_no_slash';
 
     /**
      * Page pagination type
      */
-    const XML_PATH_PAGE_PAGINATION_TYPE = 'mfblog/advanced_permalink/page_pagination_type';
+    public const XML_PATH_PAGE_PAGINATION_TYPE = 'mfblog/advanced_permalink/page_pagination_type';
 
     /**
      * Redirect to no slash config path (blog+)
      */
-    const XML_PATH_REDIRECT_TO_NO_SLASH_BLOG_PLUS = 'mfblog/advanced_permalink/redirect_to_no_slash';
+    public const XML_PATH_REDIRECT_TO_NO_SLASH_BLOG_PLUS = 'mfblog/advanced_permalink/redirect_to_no_slash';
 
     /**
      * Enabled advanced permalink
      */
-    const XML_PATH_ADVANCED_PERMALINK_ENABLED = 'mfblog/advanced_permalink/enabled';
+    public const XML_PATH_ADVANCED_PERMALINK_ENABLED = 'mfblog/advanced_permalink/enabled';
 
     /**
      * Top menu include categories config path
      */
-    const XML_PATH_TOP_MENU_INCLUDE_CATEGORIES = 'mfblog/top_menu/include_categories';
+    public const XML_PATH_TOP_MENU_INCLUDE_CATEGORIES = 'mfblog/top_menu/include_categories';
 
     /**
      * Top menu max depth config path
      */
-    const XML_PATH_TOP_MENU_MAX_DEPTH = 'mfblog/top_menu/max_depth';
+    public const XML_PATH_TOP_MENU_MAX_DEPTH = 'mfblog/top_menu/max_depth';
 
-    const XML_RELATED_POSTS_ENABLED = 'mfblog/post_view/related_posts/enabled';
-    const XML_RELATED_POSTS_NUMBER = 'mfblog/post_view/related_posts/number_of_posts';
+    public const XML_RELATED_POSTS_ENABLED = 'mfblog/post_view/related_posts/enabled';
+    public const XML_RELATED_POSTS_NUMBER = 'mfblog/post_view/related_posts/number_of_posts';
 
-    const XML_RELATED_PRODUCTS_ENABLED = 'mfblog/post_view/related_products/enabled';
-    const XML_RELATED_PRODUCTS_NUMBER = 'mfblog/post_view/related_products/number_of_products';
+    public const XML_RELATED_PRODUCTS_ENABLED = 'mfblog/post_view/related_products/enabled';
+    public const XML_RELATED_PRODUCTS_NUMBER = 'mfblog/post_view/related_products/number_of_products';
 
-    const XML_TAG_ROBOTS = 'mfblog/tag/robots';
-    const XML_SEARCH_ROBOTS = 'mfblog/search/robots';
-    const XML_AUTHOR_ROBOTS = 'mfblog/author/robots';
+    public const XML_TAG_ROBOTS = 'mfblog/tag/robots';
+    public const XML_SEARCH_ROBOTS = 'mfblog/search/robots';
+    public const XML_AUTHOR_ROBOTS = 'mfblog/author/robots';
 
     /**
      * Blog CSS include config path
      */
 
-    const XML_INCLUDE_BLOG_CSS_ALL_PAGES = 'mfblog/developer/css_settings/include_all_pages';
-    const XML_INCLUDE_BLOG_CSS_HOME_PAGE = 'mfblog/developer/css_settings/include_home_page';
-    const XML_INCLUDE_BLOG_CSS_PRODUCT_PAGES = 'mfblog/developer/css_settings/include_product_page';
-    const XML_BLOG_CUSTOM_CSS = 'mfblog/developer/css_settings/custom_css';
+    public const XML_INCLUDE_BLOG_CSS_ALL_PAGES = 'mfblog/developer/css_settings/include_all_pages';
+    public const XML_INCLUDE_BLOG_CSS_HOME_PAGE = 'mfblog/developer/css_settings/include_home_page';
+    public const XML_INCLUDE_BLOG_CSS_PRODUCT_PAGES = 'mfblog/developer/css_settings/include_product_page';
+    public const XML_BLOG_CUSTOM_CSS = 'mfblog/developer/css_settings/custom_css';
 
     /**
      * @var ScopeConfigInterface

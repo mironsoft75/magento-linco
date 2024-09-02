@@ -18,8 +18,8 @@ use Magento\Rule\Model\Condition\Sql\ExpressionFactory;
 
 class Builder extends \Magento\Rule\Model\Condition\Sql\Builder
 {
-    const UNDEFINED_OPERATOR = '<=>';
-    const IS_OPERATOR = '==';
+    public const UNDEFINED_OPERATOR = '<=>';
+    public const IS_OPERATOR = '==';
 
     /**
      * @var array

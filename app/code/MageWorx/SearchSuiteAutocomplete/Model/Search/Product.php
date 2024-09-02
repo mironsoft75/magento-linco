@@ -209,7 +209,7 @@ class Product implements SearchInterface
             ProductFields::SHORT_DESCRIPTION => $productAgregator->getShortDescription(),
             ProductFields::DESCRIPTION       => $productAgregator->getDescription(),
             ProductFields::PRICE             => $productAgregator->getPrice(),
-            ProductFields::URL               => $productAgregator->getUrl()
+            ProductFields::URL               => $productAgregator->getUrl(),
         ];
 
         if ($product->getData('is_salable')) {

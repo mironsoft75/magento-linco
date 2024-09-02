@@ -69,7 +69,6 @@ class Ajax extends \Magento\Framework\View\Element\Template
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Locale\CurrencyInterface $localeCurrency
-
     ) {
         $this->ajaxHelper = $ajaxHelper;
         $this->imageHelper = $imageHelper;

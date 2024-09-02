@@ -167,10 +167,10 @@ class Post
         foreach ($keys as $key) {
             if (null === $fields || array_key_exists($key, $fields)) {
                 $method = 'get' . str_replace(
-                        '_',
-                        '',
-                        ucwords($key, '_')
-                    );
+                    '_',
+                    '',
+                    ucwords($key, '_')
+                );
                 $data[$key] = $post->$method();
                 if ($key === 'post_url') {
                     $data[$key] = str_replace(
@@ -215,7 +215,7 @@ class Post
                 foreach ($postCollection as $relatedPost) {
                     $relatedPosts[] = $this->getDynamicData(
                         $relatedPost,
-                        isset($fields['related_posts']) ? $fields['related_posts'] : null
+                        $fields['related_posts'] ?? null
                     );
                 }
             }
@@ -252,7 +252,7 @@ class Post
             foreach ($post->getParentCategories() as $category) {
                 $categories[] = $this->categoryDataProvider->getDynamicData(
                     $category,
-                    isset($fields['categories']) ? $fields['categories'] : null
+                    $fields['categories'] ?? null
                 );
             }
             $data['categories'] = $categories;

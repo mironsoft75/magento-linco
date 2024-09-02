@@ -25,11 +25,11 @@ class PermalinkType implements \Magento\Framework\Option\ArrayInterface
         return [
             [
                 'value' => Url::PERMALINK_TYPE_DEFAULT,
-                'label' => __('Default: mystore.com/{blog_route}/{post_route}/post-title/')
+                'label' => __('Default: mystore.com/{blog_route}/{post_route}/post-title/'),
             ],
             [
                 'value' => Url::PERMALINK_TYPE_SHORT,
-                'label' => __('Short: mystore.com/{blog_route}/post-title/')
+                'label' => __('Short: mystore.com/{blog_route}/post-title/'),
             ],
         ];
     }

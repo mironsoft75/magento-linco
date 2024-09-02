@@ -33,22 +33,22 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                         $_block->setStoreId($storeId)->load($blockId);
                         $blockId  = $_block->getId();
                         $routeParams = [
-                            'block_id' => $blockId
+                            'block_id' => $blockId,
                         ];
                         $editUrl = $this->getAdminUrl('cms/block/edit', $routeParams);
                         $info = [
                             [
                                 'title' => __('Admin Panel > Content > Blocks > Id is: %1', $blockId),
-                                'url'   => $editUrl
+                                'url'   => $editUrl,
                             ],
                             [
                                 'title' => __('Admin Panel > Content > Blocks > Identifier is: %1', $_block->getIdentifier()),
-                                'url'   => $editUrl
+                                'url'   => $editUrl,
                             ],
                             [
                                 'title' => __('Edit'),
-                                'url'   => $editUrl
-                            ]
+                                'url'   => $editUrl,
+                            ],
                         ];
                         $quickedit = $quickedit ? array_merge($quickedit, $info) : $info;
                     }
@@ -58,22 +58,22 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     if ($page) {
                         $pagId  = $page->getId();
                         $routeParams = [
-                            'page_id' => $pagId
+                            'page_id' => $pagId,
                         ];
                         $editUrl = $this->getAdminUrl('cms/page/edit', $routeParams);
                         $info = [
                             [
                                 'title' => __('Admin Panel > Content > Pages > Id is: %1', $pagId),
-                                'url'   => $editUrl
+                                'url'   => $editUrl,
                             ],
                             [
                                 'title' => __('Admin Panel > Content >Pages > Identifier is: %1', $page->getIdentifier()),
-                                'url'   => $editUrl
+                                'url'   => $editUrl,
                             ],
                             [
                                 'title' => __('Edit'),
-                                'url'   => $editUrl
-                            ]
+                                'url'   => $editUrl,
+                            ],
                         ];
                         $quickedit = $quickedit ? array_merge($quickedit, $info) : $info;
                     }
@@ -81,19 +81,19 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                 case 'Magento\Catalog\Block\Category\View':
                     $category = $block->getCurrentCategory();
                     $routeParams = [
-                        'id' => $category->getId()
+                        'id' => $category->getId(),
                     ];
                     $urlEdit = $this->getAdminUrl('catalog/category/edit', $routeParams);
                     $quickedit[] = [
                         'title' => __('Edit Category'),
-                        'url'   => $urlEdit
+                        'url'   => $urlEdit,
                     ];
                 break;
                 case 'Magento\Catalog\Block\Product\ProductList\Toolbar':
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/catalog') . '#catalog_frontend-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -101,12 +101,12 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $data = $block->getSwatchData();
                     if(isset($data['attribute_id'])){
                         $routeParams = [
-                            'attribute_id' => $data['attribute_id']
+                            'attribute_id' => $data['attribute_id'],
                         ];
                         $urlEdit = $this->getAdminUrl('catalog/product_attribute/edit', $routeParams);
                         $quickedit[] = [
                             'title' => __('Edit Attribute'),
-                            'url'   => $urlEdit
+                            'url'   => $urlEdit,
 
                         ];
                     }
@@ -117,7 +117,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/newsletter');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -125,23 +125,23 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                 case 'Magento\ProductVideo\Block\Product\View\Gallery':
                     $product = $block->getProduct();
                     $routeParams = [
-                        'id' => $product->getId()
+                        'id' => $product->getId(),
                     ];
                     $urlEdit = $this->getAdminUrl('catalog/product/edit', $routeParams);
                     $quickedit[] = [
                         'title' => __('Edit Product'),
-                        'url'   => $urlEdit
+                        'url'   => $urlEdit,
                     ];
                 break;
 
                 case 'Magento\Catalog\Block\Product\Image':
                     $routeParams = [
-                        'id' => $block->getProductId()
+                        'id' => $block->getProductId(),
                     ];
                     $urlEdit = $this->getAdminUrl('catalog/product/edit', $routeParams);
                     $quickedit[] = [
                         'title' => __('Edit Product'),
-                        'url'   => $urlEdit
+                        'url'   => $urlEdit,
                     ];
                 break;
 
@@ -149,7 +149,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/checkout') . '#checkout_cart-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -158,7 +158,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/checkout') . '#checkout_options-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -167,7 +167,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/checkout') . '#checkout_sidebar-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -176,12 +176,12 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlEdit = $this->getAdminUrl('system_store/index');
                     $quickedit[] = [
                         'title' => __('Edit Store'),
-                        'url'   => $urlEdit
+                        'url'   => $urlEdit,
                     ];
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/general') . '#general_locale-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -190,7 +190,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/currency') . '#currency_options-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -202,7 +202,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/customer');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -211,7 +211,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/catalog') . '#catalog_downloadable-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -220,7 +220,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/wishlist');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -229,7 +229,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/sales');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -238,7 +238,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/shipping');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -247,7 +247,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('review/product/index');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -256,13 +256,13 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                 case 'Magento\Theme\Block\Html\Footer':
                     $store = $this->getStore();
                     $routeParams = [
-                        'scope_id' => $store->getId()
+                        'scope_id' => $store->getId(),
                     ];
                     $class      = (new \ReflectionClass($class))->getShortName();
                     $urlEdit = $this->getAdminUrl('theme/design_config/edit/scope/stores', $routeParams);
                     $quickedit[] = [
                         'title' => __('Edit %1', $class),
-                        'url'   => $urlEdit
+                        'url'   => $urlEdit,
                     ];
                 break;
 
@@ -278,18 +278,18 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/alothemes') . '#alothemes_' . strtolower($name) . '-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                     $product = $block->getProduct();
                     if($product){
                         $routeParams = [
-                            'id' => $product->getId()
+                            'id' => $product->getId(),
                         ];
                         $urlEdit = $this->getAdminUrl('catalog/product/edit', $routeParams);
                         $quickedit[] = [
                             'title' => __('Edit Product'),
-                            'url'   => $urlEdit
+                            'url'   => $urlEdit,
                         ];
                     }
                 break;
@@ -298,7 +298,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/alosocial') . '#alosocial_social-link';
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -307,7 +307,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/magicmenu');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -335,7 +335,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                         if($magicproduct){
                             $id = $magicproduct->getId();
                             $routeParams = [
-                                'magicproduct_id' => $id
+                                'magicproduct_id' => $id,
                             ];
                             $adminPath  = 'magicproduct/' . strtolower($class) . '/edit';
                             $editUrl    = $this->getAdminUrl($adminPath, $routeParams);
@@ -344,16 +344,16 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                             $quickedit  = [
                                 [
                                     'title' => __('Admin Panel > %1 > %2 Id is: %3', $moduleName, $class, $id),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Admin Panel > %1 > %2 Identifier is: %3', $moduleName, $class, $magicproduct->getIdentifier()),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Edit'),
-                                    'url'   => $editUrl
-                                ]
+                                    'url'   => $editUrl,
+                                ],
                             ];
                         }
                     }
@@ -371,7 +371,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                         if($magicslider){
                             $id = $magicslider->getId();
                             $routeParams = [
-                                'magicslider_id' => $id
+                                'magicslider_id' => $id,
                             ];
                             $class      = (new \ReflectionClass($class))->getShortName();
                             $adminPath  = 'magicslider/index/edit';
@@ -381,16 +381,16 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                             $quickedit  = [
                                 [
                                     'title' => __('Admin Panel > %1 > %2 Id is: %3', $moduleName, $class, $id),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Admin Panel > %1 > %2 Identifier is: %3', $moduleName, $class, $magicslider->getIdentifier()),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Edit'),
-                                    'url'   => $editUrl
-                                ]
+                                    'url'   => $editUrl,
+                                ],
                             ];
                         }
                     }
@@ -413,16 +413,16 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                             $quickedit  = [
                                 [
                                     'title' => __('Admin Panel > %1 > %2 :', $moduleName, $class),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Admin Panel > System > Stores > Configuration > Magiccart > Lookbook'),
-                                    'url'   => $configUrl
+                                    'url'   => $configUrl,
                                 ],
                                 [
                                     'title' => __('Edit'),
-                                    'url'   => $editUrl
-                                ]
+                                    'url'   => $editUrl,
+                                ],
                             ];
                         }
                     }
@@ -445,16 +445,16 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                             $quickedit  = [
                                 [
                                     'title' => __('Admin Panel > %1 > %2 :', $moduleName, $class),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Admin Panel > System > Stores > Configuration > Magiccart > Shop Brand'),
-                                    'url'   => $configUrl
+                                    'url'   => $configUrl,
                                 ],
                                 [
                                     'title' => __('Edit'),
-                                    'url'   => $editUrl
-                                ]
+                                    'url'   => $editUrl,
+                                ],
                             ];
                         }
                     }
@@ -477,16 +477,16 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                             $quickedit  = [
                                 [
                                     'title' => __('Admin Panel > %1 > %2 :', $moduleName, $class),
-                                    'url'   => $editUrl
+                                    'url'   => $editUrl,
                                 ],
                                 [
                                     'title' => __('Admin Panel > System > Stores > Configuration > Magiccart > Testimonial'),
-                                    'url'   => $configUrl
+                                    'url'   => $configUrl,
                                 ],
                                 [
                                     'title' => __('Edit'),
-                                    'url'   => $editUrl
-                                ]
+                                    'url'   => $editUrl,
+                                ],
                             ];
                         }
                     }
@@ -498,7 +498,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/gdpr');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -507,7 +507,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/layered_ajax');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;
@@ -516,7 +516,7 @@ class AbstractBlock extends DevHelper implements ObserverInterface
                     $urlConfig = $this->getAdminUrl('adminhtml/system_config/edit/section/magepow_ajaxcart');
                     $quickedit[] = [
                         'title' => __('Config'),
-                        'url'   => $urlConfig
+                        'url'   => $urlConfig,
 
                     ];
                 break;

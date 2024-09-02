@@ -13,27 +13,27 @@ class Data extends AbstractHelper
     /**
      * XML config path search delay
      */
-    const XML_PATH_SEARCH_DELAY = 'mageworx_searchsuite/searchsuiteautocomplete_main/search_delay';
+    public const XML_PATH_SEARCH_DELAY = 'mageworx_searchsuite/searchsuiteautocomplete_main/search_delay';
 
     /**
      * XML config path autocomplete fields
      */
-    const XML_PATH_AUTOCOMPLETE_FIELDS = 'mageworx_searchsuite/searchsuiteautocomplete_main/autocomplete_fields';
+    public const XML_PATH_AUTOCOMPLETE_FIELDS = 'mageworx_searchsuite/searchsuiteautocomplete_main/autocomplete_fields';
 
     /**
      * XML config path suggest results number
      */
-    const XML_PATH_SUGGESTED_RESULT_NUMBER = 'mageworx_searchsuite/searchsuiteautocomplete_main/suggested_result_number';
+    public const XML_PATH_SUGGESTED_RESULT_NUMBER = 'mageworx_searchsuite/searchsuiteautocomplete_main/suggested_result_number';
 
     /**
      * XML config path product results number
      */
-    const XML_PATH_PRODUCT_RESULT_NUMBER = 'mageworx_searchsuite/searchsuiteautocomplete_main/product_result_number';
+    public const XML_PATH_PRODUCT_RESULT_NUMBER = 'mageworx_searchsuite/searchsuiteautocomplete_main/product_result_number';
 
     /**
      * XML config path product result fields
      */
-    const XML_PATH_PRODUCT_RESULT_FIELDS = 'mageworx_searchsuite/searchsuiteautocomplete_main/product_result_fields';
+    public const XML_PATH_PRODUCT_RESULT_FIELDS = 'mageworx_searchsuite/searchsuiteautocomplete_main/product_result_fields';
 
     /**
      * Retrieve search delay

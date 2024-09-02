@@ -1,0 +1,14 @@
+#menu-lyracons-core-general  > a:before{
+    content:'';
+    background:url(img/lyracons-logo.png) no-repeat center center;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    background-size: 41px 21px;
+}
+#menu-lyracons-core-general._active > a:before,
+#menu-lyracons-core-general:hover > a:before{
+    content:'';
+    background:url(img/lyracons-logo.png) no-repeat center center;
+    background-size: 41px 21px;
+    filter: grayscale(0%);
+}

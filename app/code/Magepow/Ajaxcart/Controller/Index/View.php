@@ -72,7 +72,6 @@ class View extends \Magento\Catalog\Controller\Product\View
         \Magento\Catalog\Model\Design $catalogDesign,
         \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory,
         PageFactory $resultPageFactory
-
     ) {
 
         $this->_catalogSession = $catalogSession;
@@ -177,9 +176,9 @@ class View extends \Magento\Catalog\Controller\Product\View
                 // $page->getLayout()->removeOutputElement('root');
 
                 $product = $page->getLayout()->getOutput();
-                $product = str_replace("swatch-options","swatch-options-".$productId, $product);
-                $product = str_replace('data-gallery-role="gallery-placeholder"','data-gallery-role="gallery-placeholder-'.$productId.'"',$product);
-                $product = str_replace('data-gallery-role=gallery-placeholder','data-gallery-role=gallery-placeholder-'.$productId,$product);
+                $product = str_replace("swatch-options", "swatch-options-".$productId, $product);
+                $product = str_replace('data-gallery-role="gallery-placeholder"', 'data-gallery-role="gallery-placeholder-'.$productId.'"', $product);
+                $product = str_replace('data-gallery-role=gallery-placeholder', 'data-gallery-role=gallery-placeholder-'.$productId, $product);
                 // $product = str_replace('gallery-placeholder','gallery-placeholder-'.$productId, $product);
                 $this->getResponse()->setBody( $product );
 

@@ -15,8 +15,8 @@ use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
  */
 class BlogIndexTypeResolver implements TypeResolverInterface
 {
-    const MF_BLOG_INDEX = 'MF_BLOG_INDEX';
-    const TYPE_RESOLVER = 'blogPostsOutput';
+    public const MF_BLOG_INDEX = 'MF_BLOG_INDEX';
+    public const TYPE_RESOLVER = 'blogPostsOutput';
 
     /**
      * @inheritdoc

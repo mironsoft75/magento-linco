@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Lyracons_Core::general" title="Lyracons"
+             translate="title" module="Lyracons_Core"
+             sortOrder="20" dependsOnModule="Lyracons_Core" resource="Lyracons_Core::general"/>
+        <add id="Codazon_MegaMenu::slideshow_title" title="Slideshow" module="Codazon_Slideshow" sortOrder="1" resource="Codazon_MegaMenu::index" parent="Lyracons_Core::general" />
+        <add id="Codazon_slideshow::slideshow" title="Manage Slideshows" module="Codazon_Slideshow" sortOrder="0" parent="Codazon_MegaMenu::slideshow_title" action="slideshow/slideshow/" resource="Codazon_Slideshow::slideshow"/>
+
+        <add id="Codazon_MegaMenu::megamenu" title="Megamenu" module="Codazon_MegaMenu" sortOrder="2" resource="Codazon_MegaMenu::index" parent="Lyracons_Core::general" />
+        <add id="Codazon_MegaMenu::manage_menus" title="Manage Megamenu" module="Codazon_MegaMenu" sortOrder="0" parent="Codazon_MegaMenu::megamenu" action="megamenu/index" resource="Codazon_MegaMenu::index" />
+        <add id="Codazon_MegaMenu::new_menu" title="Create New Megamenu" module="Codazon_MegaMenu" sortOrder="0" parent="Codazon_MegaMenu::megamenu" action="megamenu/index/new" resource="Codazon_MegaMenu::save" />
+    </menu>
+</config>

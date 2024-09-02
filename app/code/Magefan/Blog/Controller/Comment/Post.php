@@ -170,7 +170,7 @@ class Post extends \Magefan\Blog\App\Action\Action
             'success' => true,
             'message' => ($comment->getStatus() == \Magefan\Blog\Model\Config\Source\CommentStatus::PENDING)
                 ? __('You submitted your comment for moderation.')
-                : __('Thank you for your comment.')
+                : __('Thank you for your comment.'),
         ]));
     }
 

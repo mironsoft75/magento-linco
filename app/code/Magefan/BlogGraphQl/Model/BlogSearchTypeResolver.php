@@ -15,8 +15,8 @@ use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
  */
 class BlogSearchTypeResolver implements TypeResolverInterface
 {
-    const MF_BLOG_SEARCH = 'MF_BLOG_SEARCH';
-    const TYPE_RESOLVER = 'blogPostsOutput';
+    public const MF_BLOG_SEARCH = 'MF_BLOG_SEARCH';
+    public const TYPE_RESOLVER = 'blogPostsOutput';
 
     /**
      * @inheritdoc

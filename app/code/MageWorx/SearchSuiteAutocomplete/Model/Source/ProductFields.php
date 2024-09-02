@@ -4,23 +4,23 @@ namespace MageWorx\SearchSuiteAutocomplete\Model\Source;
 
 class ProductFields
 {
-    const NAME = 'name';
+    public const NAME = 'name';
 
-    const SKU = 'sku';
+    public const SKU = 'sku';
 
-    const IMAGE = 'image';
+    public const IMAGE = 'image';
 
-    const REVIEWS_RATING = 'reviews_rating';
+    public const REVIEWS_RATING = 'reviews_rating';
 
-    const SHORT_DESCRIPTION = 'short_description';
+    public const SHORT_DESCRIPTION = 'short_description';
 
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
 
-    const PRICE = 'price';
+    public const PRICE = 'price';
 
-    const ADD_TO_CART = 'add_to_cart';
+    public const ADD_TO_CART = 'add_to_cart';
 
-    const URL = 'url';
+    public const URL = 'url';
 
     /**
      * @var array|array[]

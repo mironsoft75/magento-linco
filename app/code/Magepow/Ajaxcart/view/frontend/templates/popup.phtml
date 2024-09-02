@@ -51,23 +51,23 @@ $countDown = ($helper->getCountDownTime() > 0) ? $helper->getCountDownTime() : 0
             <?php if ($helper->isShowProductImage()) :?>
                 <div class="product-image">
                     <img src="<?php echo $block->escapeUrl(
-                    $imageHelper->init(
-                    $product,
-                    'mini_cart_product_thumbnail',
-                    ['height' => $helper->getImageHeight() , 'width'=> $helper->getImageWidth()]
+                $imageHelper->init(
+                        $product,
+                        'mini_cart_product_thumbnail',
+                        ['height' => $helper->getImageHeight(), 'width'=> $helper->getImageWidth()]
                     )->getUrl()
-                    ); ?>">
+            ); ?>">
                     <?php if ($helper->isShowProductPrice() && $product->getTypeId() != \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) :?>
                         <div>
                             <span>
                                 <?php
                                 echo $block->escapeHtml(
-                                    $block->getPricingHelper()->currency(
+                        $block->getPricingHelper()->currency(
                                         $resultPrice,
                                         true,
                                         false
                                     )
-                                );
+                    );
                                 ?>
                             </span>
                         </div>
@@ -161,7 +161,7 @@ $countDown = ($helper->getCountDownTime() > 0) ? $helper->getCountDownTime() : 0
                 );
 
                 if($total < $freeShipping) {
-                    $currency = isset($currencySymbols) ? $currencySymbols : $currencyCode;
+                    $currency = $currencySymbols ?? $currencyCode;
                     $needMore = $currency . ($freeShipping - $total);
                 ?>
                     <div class="freeShipping_message">

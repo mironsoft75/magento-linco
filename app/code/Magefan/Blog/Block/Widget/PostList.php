@@ -163,7 +163,7 @@ class PostList extends \Magefan\Blog\Block\Post\PostList\AbstractList implements
         if (!$this->_sliderData) {
             $this->_sliderData = [
                 'nav'  => (bool)$this->getData('slider_nav'),
-                'dots' => (bool)$this->getData('slider_dots')
+                'dots' => (bool)$this->getData('slider_dots'),
             ];
             $adapts = ['1900', '1600', '1420', '1280','980','768','480','320','0'];
             foreach ($adapts as $adapt) {

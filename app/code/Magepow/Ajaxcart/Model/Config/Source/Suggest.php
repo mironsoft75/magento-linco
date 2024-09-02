@@ -12,9 +12,9 @@ namespace Magepow\Ajaxcart\Model\Config\Source;
 
 class Suggest implements \Magento\Framework\Option\ArrayInterface
 {
-    const SUGGEST_SOURCE_RELATED = 0;
-    const SUGGEST_SOURCE_UPSELL = 1;
-    const SUGGEST_SOURCE_XSELL = 2;
+    public const SUGGEST_SOURCE_RELATED = 0;
+    public const SUGGEST_SOURCE_UPSELL = 1;
+    public const SUGGEST_SOURCE_XSELL = 2;
 
     /**
      * Options getter
@@ -26,7 +26,7 @@ class Suggest implements \Magento\Framework\Option\ArrayInterface
         return  [
             ['value' => self::SUGGEST_SOURCE_RELATED, 'label' => __('Related Products')],
             ['value' => self::SUGGEST_SOURCE_UPSELL, 'label' => __('Up-Sell Products')],
-            ['value' => self::SUGGEST_SOURCE_XSELL, 'label' => __('Cross-Sell Products')]
+            ['value' => self::SUGGEST_SOURCE_XSELL, 'label' => __('Cross-Sell Products')],
         ];
     }
 
@@ -40,7 +40,7 @@ class Suggest implements \Magento\Framework\Option\ArrayInterface
         return [
             self::SUGGEST_SOURCE_RELATED => __('Related Products'),
             self::SUGGEST_SOURCE_UPSELL => __('Up-Sell Products'),
-            self::SUGGEST_SOURCE_XSELL => __('Cross-Sell Products')
+            self::SUGGEST_SOURCE_XSELL => __('Cross-Sell Products'),
         ];
     }
 }

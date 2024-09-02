@@ -90,8 +90,8 @@ class BuilderPlugin
                     'id' => 'Magefan_Community::elements',
                     'title' => 'Magefan',
                     'module' => 'Magefan_Community',
-                    'resource' => 'Magefan_Community::elements'
-                ]
+                    'resource' => 'Magefan_Community::elements',
+                ],
             ]);
             $menu->add($item, null, 61);
             $subItems = $this->getSubItem($menu->toArray());
@@ -102,8 +102,8 @@ class BuilderPlugin
                     'id' => 'Magefan_Community::extension_and_notification',
                     'title' => 'Extensions &amp; Notifications',
                     'module' => 'Magefan_Community',
-                    'resource' => 'Magefan_Community::elements'
-                ]
+                    'resource' => 'Magefan_Community::elements',
+                ],
             ]);
             $menu->add($item, 'Magefan_Community::elements', 1000);
 
@@ -114,7 +114,7 @@ class BuilderPlugin
                     'module' => 'Magefan_Community',
                     'resource' => 'Magefan_Community::elements',
                     'action' => 'adminhtml/system_config/edit/section/mfextension',
-                ]
+                ],
             ]);
             $menu->add($item, 'Magefan_Community::extension_and_notification', 1000);
 
@@ -129,8 +129,8 @@ class BuilderPlugin
                             'id' => $section['resource'] . '_custom',
                             'title' => $section['label'],
                             'module' => $moduleName,
-                            'resource' => $section['resource']
-                        ]
+                            'resource' => $section['resource'],
+                        ],
                     ]);
                     $menu->add($item, 'Magefan_Community::elements');
 
@@ -140,8 +140,8 @@ class BuilderPlugin
                             'title' => 'Configuration',
                             'resource' => $section['resource'],
                             'action' => 'adminhtml/system_config/edit/section/' . $section['key'],
-                            'module' => $moduleName
-                        ]
+                            'module' => $moduleName,
+                        ],
                     ]);
                     $menu->add($item, $section['resource'] . '_custom', 1000);
                 }
@@ -184,7 +184,7 @@ class BuilderPlugin
             }
         }
 
-        return isset($this->configSections[$moduleName]) ? $this->configSections[$moduleName] : null;
+        return $this->configSections[$moduleName] ?? null;
     }
 
     /**
@@ -207,7 +207,7 @@ class BuilderPlugin
     private function createMenuItem($menu, $items, $parentId)
     {
         foreach ($items as $item) {
-            $moduleName = isset($item['module']) ? $item['module'] : null;
+            $moduleName = $item['module'] ?? null;
             $title = preg_replace('/(?<!\ )[A-Z]/', ' $0', $moduleName);
             $title = trim(str_replace('Magefan_', '', $title));
             $needCreateMenuItem = ('Magefan_Community::elements' == $parentId && !empty($item['action']));
@@ -217,8 +217,8 @@ class BuilderPlugin
                         'id' => $item['id'] . '3',
                         'title' => $title,
                         'resource' => $item['resource'],
-                        'module' => isset($item['module']) ? $item['module'] : null,
-                    ]
+                        'module' => $item['module'] ?? null,
+                    ],
                 ]);
                 $menu->add($subItem, $parentId);
             }
@@ -229,8 +229,8 @@ class BuilderPlugin
                     'title' => $item['title'],
                     'resource' => $item['resource'],
                     'action' => $item['action'],
-                    'module' => isset($item['module']) ? $item['module'] : null,
-                ]
+                    'module' => $item['module'] ?? null,
+                ],
             ]);
             if ($needCreateMenuItem) {
                 $menu->add($subItem, $item['id'] . '3');
@@ -262,8 +262,8 @@ class BuilderPlugin
                                 'title' => 'Configuration',
                                 'resource' => $section['resource'],
                                 'action' => 'adminhtml/system_config/edit/section/' . $section['key'],
-                                'module' => $moduleName
-                            ]
+                                'module' => $moduleName,
+                            ],
                         ]);
                         if ($needCreateMenuItem) {
                             $menu->add($subItem, $item['id'] . '3');

@@ -18,7 +18,7 @@ class Save extends \Magepow\Theme\Controller\Adminhtml\Action
         'Magento/blank',
         'Magento/luma',
         'Magento/backend',
-        'Alothemes/framework'
+        'Alothemes/framework',
     ];
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -37,7 +37,7 @@ class Save extends \Magepow\Theme\Controller\Adminhtml\Action
 
             $parentTheme    = $data['parent_theme'];
             $themeTitle     = $data['theme_title'];
-            $themePath      = isset($data['theme_path']) ? $data['theme_path'] : $model->getThemePath();
+            $themePath      = $data['theme_path'] ?? $model->getThemePath();
             $themePath      = trim($themePath);
             $themePath      = str_replace(' ', '_', $themePath);;
             $isRePath       = false;

@@ -125,7 +125,7 @@ $countDown = ($helper->getCountDownTime() > 0) ? $helper->getCountDownTime() : 0
                 );
 
                 if($total < $freeShipping) {
-                    $currency = isset($currencySymbols) ? $currencySymbols : $currencyCode;
+                    $currency = $currencySymbols ?? $currencyCode;
                     $needMore = $currency . ($freeShipping - $total);
                 ?>
                     <div class="freeShipping_message">

@@ -15,8 +15,8 @@ use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
  */
 class BlogAuthorTypeResolver implements TypeResolverInterface
 {
-    const MF_BLOG_AUTHOR = 'MF_BLOG_AUTHOR';
-    const TYPE_RESOLVER = 'BlogAuthor';
+    public const MF_BLOG_AUTHOR = 'MF_BLOG_AUTHOR';
+    public const TYPE_RESOLVER = 'BlogAuthor';
 
     /**
      * @inheritdoc

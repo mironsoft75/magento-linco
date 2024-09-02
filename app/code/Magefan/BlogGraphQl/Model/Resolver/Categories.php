@@ -111,13 +111,13 @@ class Categories implements ResolverInterface
         foreach ($items as $k => $data) {
             $items[$k] = $this->categoryDataProvider->getData(
                 $data['category_id'],
-                isset($fields['items']) ? $fields['items'] : null
+                $fields['items'] ?? null
             );
         }
 
         return [
             'total_count' => $searchResult->getTotalCount(),
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

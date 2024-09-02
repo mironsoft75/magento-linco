@@ -1,0 +1,495 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .minicart-wrapper {
+        margin-top: 18px;
+
+        .block-minicart {
+            @media (max-width: 768px){
+                color: @mainDarkColor;
+            }
+        }
+
+        .action.primary {
+            background: @cardinal;
+            color: @mainDarkColor;
+
+            &:hover {
+                background: @mainDarkColor;
+                color: @cardinal;
+            }
+        }
+
+        .action.showcart, .active.action.showcart {
+            &:hover {
+                text-decoration: underline;
+
+                &:before {
+                    color: @cardinal;
+                }
+            }
+            &:before {
+                font-size: 21px;
+                position: absolute;
+                left: 50%;
+                margin-left: -13px;
+                top: -25px;
+                content: "\e819";
+                font-family: "vans";
+                color: @primary;
+            }
+            .counter.qty {
+                background: transparent;
+                box-shadow: none;
+                position: absolute;
+                top: -20px;
+                right: -5px;
+                font-weight: bold;
+                font-size: 13px;
+                color: @primary;
+            }
+            .counter-number {
+                text-shadow: none;
+                color: @cardinal;
+            }
+        }
+        .action.close {
+            &:before, &:active:before {
+                color: inherit;
+                font-size: 30px;
+                color: black;
+                right: 8px;
+                position: relative;
+                top: 2px;
+            }
+            &:hover {
+                color: @cardinal;
+            }
+        }
+        .text-mycart {
+            font-size: 12px;
+            letter-spacing: -0.28px;
+            line-height: 12px;
+            position: relative;
+            top: 5px;
+            color: @primary;
+        }
+        .block-minicart {
+            right: 5px;
+            background: @gallery;
+            &:before {
+                border-color: transparent transparent @gallery transparent;
+            }
+            .subtitle.empty {
+                padding: 0;
+            }
+            .actions {
+                .primary button {
+                    font-weight: 700;
+                    background: @cardinal;
+                    color: @mainDarkColor;
+
+                    &:hover {
+                        background: @mainDarkColor;
+                        color: @cardinal;
+                    }
+                }
+                .secondary {
+                    .action {
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .product-item-details {
+                position: relative;
+                cursor: default;
+                .details-qty.qty {
+                    cursor: default;
+                    margin-top: 0;
+                    .update-cart-item {
+                        vertical-align: top;
+                        background: @cardinal;
+                        color: white;
+                        font-weight: 700;
+                        max-height: 37px;
+                        border: 0;
+                        margin-top: 5px;
+                        width: 100%;
+                        position: relative;
+                        z-index: 1;
+                        &:focus {
+                            border: 0;
+                        }
+                    }
+                    .label {
+                        display: none;
+                    }
+                    .item-qty {
+                        width: 35px;
+                        border: 2px solid black;
+                        padding: 0;
+                    }
+                }
+                .product-item-name {
+                    max-width: 160px;
+                    font-family: @font-family-name__second;
+                }
+                .details-qty.qty {
+                    .decreasing-qty,
+                    .increasing-qty {
+                        margin-right: -4px;
+                        padding: 8px 10px;
+                        box-shadow: none;
+                        font-size: 22px;
+                        font-family: Arial;
+                        background: black;
+                        color: white;
+                        width: 34px;
+                        vertical-align: top;
+                        &:hover {
+                            border: 1px solid black;
+                        }
+                    }
+                    .decreasing-qty {
+                        border-top-left-radius: 3px;
+                        border-bottom-left-radius: 3px;
+                    }
+                    .increasing-qty {
+                        margin-left: -5px;
+                        border-top-right-radius: 3px;
+                        border-bottom-right-radius: 3px;
+                    }
+                    .item-qty.cart-item-qty {
+                        border: 1px solid black;
+                        font-weight: 700;
+                        font-size: 14px;
+                        margin: 0;
+                    }
+                }
+                .product-item-pricing {
+                    .price-container {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        .price-wrapper {
+                            span {
+                                margin: 0;
+                                color: @mainDarkColor;
+                                font-weight: 700;
+                            }
+                        }
+                    }
+                }
+                .actions {
+                    .edit {
+                        &:before {
+                            font-size: 16px;
+                            font-family: 'vans';
+                            content: "\e81C";
+                            color: @mineShaft;
+                        }
+                    }
+                    .delete {
+                        &:before {
+                            font-size: 16px;
+                            color: @mineShaft;
+                            content: "\e803";
+                            font-family: 'vans';
+                        }
+                    }
+                    .action {
+                        opacity: .7;
+                        transition: all .3s ease;
+                        color: @mineShaft;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+                .product.options {
+                    .toggle {
+                        padding: 0 40px 0 0;
+                        margin-bottom: 5px;
+                        margin-top: -10px;
+                        &:after {
+                            font-size: 30px;
+                            color: @outerSpace;
+                            margin-left: -5px;
+                        }
+                        span {
+                            font-size: 11px;
+                        }
+                    }
+                    &.active {
+                        .toggle {
+                            margin-bottom: 0px;
+                        }
+                        .product.options.list {
+                            margin-top: 3px;
+                            margin-bottom: 0;
+                            .label,
+                            .values {
+                                font-size: 11px;
+                                margin: 0 5px 5px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.active {
+            .block-minicart {
+                padding: 25px 10px;
+                margin-top: 10px;
+                .items-total span,
+                .subtotal .label {
+                    font-family: @font-family-name__second;
+                }
+            }
+        }
+        .minicart-items-wrapper {
+            margin: 0;
+            max-height: 300px;
+        }
+    }
+    .my-account {
+        float: right;
+        position: relative;
+        margin-top: 18px;
+        margin-left: 40px;
+        margin-right: 10px;
+        .my-acc {
+            &:before {
+                font-size: 21px;
+                position: absolute;
+                left: 50%;
+                margin-left: -10px;
+                top: -25px;
+                line-height: 28px;
+                color: @primary;
+                content: '\e804';
+                font-family: 'vans';
+                vertical-align: top;
+                display: inline-block;
+                font-weight: normal;
+                overflow: hidden;
+                speak: none;
+                text-align: center;
+            }
+            .text-mycart {
+                font-size: 12px;
+                letter-spacing: -0.28px;
+                line-height: 12px;
+                position: relative;
+                top: 5px;
+                color: @primary;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .minicart-wrapper {
+        .action.showcart, .active.action.showcart {
+            &:before {
+                padding: 0;
+                margin: 5px 20px 0 15px;
+                font-size: 24px;
+                color: @primary;
+                content: "\e819";
+                font-family: "vans";
+                width: 30px;
+                font-weight: 700;
+            }
+            .counter.qty {
+                background: transparent;
+                box-shadow: none;
+                position: absolute;
+                top: -3px;
+                right: 0px;
+                font-weight: bold;
+                font-size: 13px;
+            }
+            .counter-number {
+                text-shadow: none;
+                color: @cardinal;
+            }
+        }
+        .action.close {
+            &:before, &:active:before {
+                color: inherit;
+                font-size: 30px;
+                color: black;
+                right: 8px;
+                position: relative;
+                top: 2px;
+            }
+            &:hover {
+                color: @cardinal;
+            }
+        }
+        .block-minicart {
+            right: 5px;
+            background: @gallery;
+            &:before {
+                border-color: transparent transparent @gallery transparent;
+            }
+            .subtitle.empty {
+                padding: 0;
+                color: @textMainColor;
+            }
+            .actions {
+                .primary button {
+                    font-weight: 700;
+                    background: @cardinal;
+                    color: @mainDarkColor;
+
+                    &:hover {
+                        background: @mainDarkColor;
+                        color: @cardinal;
+                    }
+                }
+                .secondary {
+                    .action {
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        color: @danube;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .product-item-details {
+                position: relative;
+                cursor: default;
+                .details-qty.qty {
+                    cursor: default;
+                    margin-top: 5px;
+                    .update-cart-item {
+                        vertical-align: top;
+                        background: @cardinal;
+                        color: white;
+                        font-weight: 700;
+                        max-height: 37px;
+                        border: 0;
+                        margin-top: 5px;
+                        width: 100%;
+                        &:focus {
+                            border: 0;
+                        }
+                    }
+                    .label {
+                        display: none;
+                    }
+                    .item-qty {
+                        width: 35px;
+                        border: 2px solid black;
+                        padding: 0;
+                    }
+                }
+                .product-item-name {
+                    max-width: 160px;
+                    font-family: @font-family-name__second;
+                    margin-bottom: 0px;
+                }
+                .details-qty.qty {
+                    .decreasing-qty,
+                    .increasing-qty {
+                        margin-right: -4px;
+                        padding: 8px 10px;
+                        box-shadow: none;
+                        font-size: 22px;
+                        font-family: Arial;
+                        background: black;
+                        color: white;
+                        width: 34px;
+                        vertical-align: top;
+                        &:hover {
+                            border: 1px solid black;
+                        }
+                    }
+                    .increasing-qty {
+                        margin-left: -5px;
+                    }
+                    .item-qty.cart-item-qty {
+                        border: 1px solid black;
+                        font-weight: 700;
+                        font-size: 14px;
+                        margin: 0;
+                    }
+                }
+                .product-item-pricing {
+                    .price-container {
+                        //position: absolute;
+                        top: 0;
+                        right: 0;
+                        .price-wrapper {
+                            span {
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+                .actions {
+                    .primary {
+                        margin-right: 8px;
+                    }
+                    .edit {
+                        &:before {
+                            font-size: 16px;
+                            font-family: 'vans';
+                            content: "\e81C";
+                            color: @mineShaft;
+                        }
+                    }
+                    .delete {
+                        &:before {
+                            font-size: 16px;
+                            color: @mineShaft;
+                            content: "\e803";
+                            font-family: 'vans';
+                        }
+                    }
+                }
+                .product.options {
+                    .toggle {
+                        padding: 0 40px 0 0;
+                        margin-bottom: 0px;
+                        &:after {
+                            font-size: 30px;
+                            margin-left: -5px;
+                        }
+                        span {
+                            font-size: 12px;
+                            color: @outerSpace;
+                        }
+                    }
+                    &.active {
+                        .toggle {
+                            margin-bottom: 5px;
+                        }
+                        .product.options.list {
+                            margin-bottom: 0;
+                            .label,
+                            .values {
+                                font-size: 11px;
+                                margin: 0 5px 5px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.active {
+            .block-minicart {
+                padding: 25px 10px 15px 10px;
+            }
+        }
+    }
+    .minicart-items-wrapper {
+        margin: 0;
+        max-height: 300px;
+    }
+    
+}

@@ -47,7 +47,7 @@ class LayoutGenerateBlocksAfter implements ObserverInterface
             'blog_author_view',
             'blog_category_view',
             'blog_index_index',
-            'blog_tag_view'
+            'blog_tag_view',
         ];
         $fan = $observer->getEvent()->getFullActionName();
         if (!in_array($fan, $availableActions)) {

@@ -1,0 +1,104 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+?>
+
+<div data-block="minicart" class="minicart-wrapper">
+    <a class="action showcart" href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>"
+       data-bind="scope: 'minicart_content'">
+        <span class="text"><?php /* @escapeNotVerified */ echo __('carrito'); ?></span>
+        <span class="counter qty empty"
+              data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+            <span class="counter-number"><!-- ko text: getCartParam('summary_count') --><!-- /ko --></span>
+            <span class="counter-label">
+            <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+            <!-- /ko -->
+            </span>
+        </span>
+    </a>
+    <?php if ($block->getIsNeedToDisplaySideBar()): ?>
+        <div class="block block-minicart empty"
+             data-role="dropdownDialog"
+             data-mage-init='{"dropdownDialog":{
+                "appendTo":"[data-block=minicart]",
+                "triggerTarget":".showcart",
+                "timeout": "2000",
+                "closeOnMouseLeave": false,
+                "closeOnEscape": true,
+                "triggerClass":"active",
+                "parentClass":"active",
+                "buttons":[]}}'>
+            <div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+            <?php echo $block->getChildHtml('minicart.addons'); ?>
+        </div>
+    <?php endif ?>
+    <script>
+        window.checkout = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getConfig()); ?>;
+    </script>
+    <script type="text/x-magento-init">
+    {
+        "[data-block='minicart']": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+        }
+    }
+    </script>
+    </div>
+    <script>
+
+cantidad=0;
+(function() {
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+        this.addEventListener("load", function() {
+
+
+            var botonCarrito = document.getElementById("product-addtocart-button");
+             botonCarrito.disabled = false;
+
+            if(cantidad==0){
+                selecAtt();
+            }
+
+        }, false);
+        origOpen.apply(this, arguments);
+    };
+})();
+
+function selecAtt(){
+
+            console.log('iniciando verificacion de atributos');
+            let attributeElements = document.querySelectorAll('.swatch-attribute-options');
+
+
+                    attributeElements.forEach(attributeElement => {
+                    let optionElements = attributeElement.querySelectorAll('.swatch-option');
+
+                        if (optionElements.length === 1) {
+                            cantidad++;
+                            console.log('se encontro uno se hace click' );
+                            optionElements[0].click();
+                            setTimeout(function() {
+                            console.log('se oculta' );
+                             optionElements[0].style.display = 'none';
+                                    }, 300);
+                            }
+                    });
+                    console.log('finalizando verificacion de atributos');
+
+}
+
+    </script>
+

@@ -131,10 +131,10 @@ class Category
 
         foreach ($keys as $key) {
             $method = 'get' . str_replace(
-                    '_',
-                    '',
-                    ucwords($key, '_')
-                );
+                '_',
+                '',
+                ucwords($key, '_')
+            );
             $data[$key] = $category->$method();
             if ($key === 'category_url') {
                 $data[$key] = str_replace(

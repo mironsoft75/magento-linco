@@ -62,12 +62,12 @@ final class Info
                     '',
                     'm' . 'ag' . 'ef' . 'an.c' . 'om',
                     'mpk',
-                    'info'
+                    'info',
                 ]), $d = [
                     'version' => $this->metadata->getVersion(),
                     'edition' => $this->metadata->getEdition(),
                     'url' => $this->storeManager->getStore()->getBaseUrl(),
-                    'sections' => $this->getSectionsParam($sections)
+                    'sections' => $this->getSectionsParam($sections),
                 ]);
             $body = $this->curl->getBody();
             return json_decode($body, true);
@@ -86,7 +86,7 @@ final class Info
         foreach ($sections as $section) {
             $result[$section->getModule()] = [
                 'key' => $section->getKey(),
-                'section' => $section->getName()
+                'section' => $section->getName(),
             ];
         }
         return $result;

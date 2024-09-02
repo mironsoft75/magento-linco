@@ -74,7 +74,7 @@ class EntityUrl
             'type' => $type,
             'type_id' => $type,
             'relative_url' => $path,
-            'redirect_code' => 0
+            'redirect_code' => 0,
         ];
 
         return $result;

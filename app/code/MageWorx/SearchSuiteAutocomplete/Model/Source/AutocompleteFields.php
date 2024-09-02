@@ -4,9 +4,9 @@ namespace MageWorx\SearchSuiteAutocomplete\Model\Source;
 
 class AutocompleteFields
 {
-    const SUGGEST = 'suggest';
+    public const SUGGEST = 'suggest';
 
-    const PRODUCT = 'product';
+    public const PRODUCT = 'product';
 
     /**
      * @var array|array[]

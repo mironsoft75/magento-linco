@@ -1,0 +1,43 @@
+.lc-slideshow {
+	width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    position: relative;
+	margin-right: -50vw;
+	margin-bottom: 70px;
+	.owl-controls {
+		width: 100vw;
+		.owl-nav {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			.owl-prev, .owl-next {
+				position: absolute;
+				background: transparent;
+				font-size: 32px;
+			}
+			.owl-prev {
+				left: 0;
+			}
+			.owl-next {
+				right: 0;
+			}
+		}
+		.owl-dots{
+			.owl-dot{
+				span{
+					width:10px;
+					height:10px;
+					background-color:white;
+					border:1px solid black;
+				}
+				&.active,&:hover{
+					span{
+						background-color: black;
+					}
+				}
+			}
+		}
+	}
+}

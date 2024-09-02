@@ -68,7 +68,7 @@ class Configure extends \Magento\Framework\View\Element\Template
             'successMessageText' => $this->ajaxWishlistHelper->getConfigModule('general/message'),
             'customerLoginUrl' => $this->_urlBuilder->getUrl(Url::ROUTE_ACCOUNT_LOGIN),
             'popupTtl' => $this->ajaxWishlistHelper->getConfigModule('general/popupttl'),
-            'enabled' => $this->ajaxWishlistHelper->getConfigModule('general/enabled')
+            'enabled' => $this->ajaxWishlistHelper->getConfigModule('general/enabled'),
         ];
     }
 }

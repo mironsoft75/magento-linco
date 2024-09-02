@@ -86,7 +86,7 @@ class View extends AbstractPost implements \Magento\Framework\DataObject\Identit
                 [
                     'label' => __('Home'),
                     'title' => __('Go to Home Page'),
-                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                    'link' => $this->_storeManager->getStore()->getBaseUrl(),
                 ]
             );
 
@@ -99,7 +99,7 @@ class View extends AbstractPost implements \Magento\Framework\DataObject\Identit
                 [
                     'label' => __($blogTitle),
                     'title' => __($blogTitle),
-                    'link' => $this->_url->getBaseUrl()
+                    'link' => $this->_url->getBaseUrl(),
                 ]
             );
 
@@ -119,13 +119,13 @@ class View extends AbstractPost implements \Magento\Framework\DataObject\Identit
                 $breadcrumbsBlock->addCrumb('blog_parent_category_' . $parentCategory->getId(), [
                     'label' => $parentCategory->getTitle(),
                     'title' => $parentCategory->getTitle(),
-                    'link'  => $parentCategory->getCategoryUrl()
+                    'link'  => $parentCategory->getCategoryUrl(),
                 ]);
             }
 
             $breadcrumbsBlock->addCrumb($key, [
-                'label' => $title ,
-                'title' => $title
+                'label' => $title,
+                'title' => $title,
             ]);
         }
     }

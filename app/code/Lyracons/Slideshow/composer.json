@@ -1,0 +1,29 @@
+{
+  "name": "lyracons/module-slideshow",
+  "description": "Lyracons Slideshow Magento 2 Module",
+  "type": "magento2-module",
+  "license": [
+    "OSL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Lyracons Dev Team",
+      "email": "devteam@lyracons.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0|^7.2",
+    "lyracons/module-core": "1.*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Lyracons\\Slideshow\\": ""
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

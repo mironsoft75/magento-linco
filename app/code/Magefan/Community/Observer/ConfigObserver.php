@@ -66,13 +66,12 @@ class ConfigObserver implements ObserverInterface
             return;
         }
 
-        $key = isset($groups['general']['fields']['key']['value'])
-            ? $groups['general']['fields']['key']['value']
-            : null;
+        $key = $groups['general']['fields']['key']['value']
+            ?? null;
 
         $section = $this->sectionFactory->create([
             'name' => $request->getParam('section'),
-            'key' => $key
+            'key' => $key,
         ]);
 
         if (!$section->getModule()) {
@@ -93,7 +92,7 @@ class ConfigObserver implements ObserverInterface
                         'o','t','u','a',' ','n','e','e','b',' ','s','a','h',' ','n','o','i','s','n',
                         'e','t','x','e',' ','e','h','T',' ','.','d','i','l','a','v','n','i',' ','r',
                         'o',' ','y','t','p','m','e',' ','s','i',' ','y','e','K',' ','t','c','u','d',
-                        'o','r','P'
+                        'o','r','P',
                     ]
                 ))
             );

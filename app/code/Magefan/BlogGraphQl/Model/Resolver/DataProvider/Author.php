@@ -131,17 +131,17 @@ class Author
             'identifier',
             'featured_image',
             'filtered_content',
-            'short_filtered_content'
+            'short_filtered_content',
         ];
 
         $data['author_id'] = $author->getId();
 
         foreach ($keys as $key) {
             $method = 'get' . str_replace(
-                    '_',
-                    '',
-                    ucwords($key, '_')
-                );
+                '_',
+                '',
+                ucwords($key, '_')
+            );
             $data[$key] = $author->$method();
             if ($key === 'author_url') {
                 $data[$key] = str_replace(

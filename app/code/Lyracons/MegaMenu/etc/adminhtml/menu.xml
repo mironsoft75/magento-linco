@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Lyracons_MegaMenu::megamenu" title="Megamenu" module="Lyracons_MegaMenu" sortOrder="2" resource="Lyracons_MegaMenu::index" parent="Lyracons_Core::general" />
+        <add id="Lyracons_MegaMenu::manage_menus" title="Manage Megamenu" module="Lyracons_MegaMenu" sortOrder="0" parent="Lyracons_MegaMenu::megamenu" action="megamenu/index" resource="Lyracons_MegaMenu::index" />
+        <add id="Lyracons_MegaMenu::new_menu" title="Create New Megamenu" module="Lyracons_MegaMenu" sortOrder="0" parent="Lyracons_MegaMenu::megamenu" action="megamenu/index/new" resource="Lyracons_MegaMenu::save" />
+    </menu>
+</config>

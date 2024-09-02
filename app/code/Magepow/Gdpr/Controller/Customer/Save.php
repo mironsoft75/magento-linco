@@ -62,11 +62,10 @@ class Save extends CustomerController
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-		\Magento\Quote\Model\ResourceModel\Quote\CollectionFactory $quoteFactory,
-		\Magepow\Gdpr\Model\ResourceModel\Contact\CollectionFactory $contactFactory,
-		\Magento\Framework\Registry $registry,
+        \Magento\Quote\Model\ResourceModel\Quote\CollectionFactory $quoteFactory,
+        \Magepow\Gdpr\Model\ResourceModel\Contact\CollectionFactory $contactFactory,
+        \Magento\Framework\Registry $registry,
         CustomerRepository $customerRepository
-        
     ) {
         $this->storeManager = $storeManager;
         $this->formKeyValidator = $formKeyValidator;
@@ -122,7 +121,7 @@ class Save extends CustomerController
             $this->messageManager->addError(__('Something went wrong while saving your subscription.'));
         } else {
             try {
-                if ((boolean)$this->getRequest()->getParam('remove_account', false)) {
+                if ((bool)$this->getRequest()->getParam('remove_account', false)) {
 					$this->registry->register('isSecureArea', true);
 					$this->customerRepository->deleteById($customerId);
 					

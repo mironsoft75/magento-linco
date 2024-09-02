@@ -16,7 +16,7 @@ class Type implements \Magento\Framework\Option\ArrayInterface
         return [
             0 => 'Physical',
             1 => 'Virtual',
-            2 => 'Staging'
+            2 => 'Staging',
         ];
     }
 }

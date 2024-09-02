@@ -87,7 +87,7 @@ class Menu extends \Magento\Framework\App\Helper\AbstractHelper
             ),
             'id'        => 'magefan-blog',
             'url'       => $this->url->getBaseUrl(),
-            'is_active' => ($this->_request->getModuleName() == 'blog')
+            'is_active' => ($this->_request->getModuleName() == 'blog'),
         ];
 
         $addedNodes[0] = new Node($data, 'id', $tree, $menu);
@@ -123,7 +123,7 @@ class Menu extends \Magento\Framework\App\Helper\AbstractHelper
                     'name'      => $item->getTitle(),
                     'id'        => 'magefan-blog-category-' . $item->getId(),
                     'url'       => $item->getCategoryUrl(),
-                    'is_active' => $currentCategoryId == $item->getId()
+                    'is_active' => $currentCategoryId == $item->getId(),
                 ];
 
                 $addedNodes[$item->getId()] = new Node($data, 'id', $tree, $menu);

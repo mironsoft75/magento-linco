@@ -20,7 +20,7 @@ class Recent extends AbstractList implements \Magento\Widget\Block\BlockInterfac
     /**
      * @var array
      */
-    static $processedIds = [];
+    public static $processedIds = [];
 
     /**
      * @var \Magefan\Blog\Model\CategoryFactory

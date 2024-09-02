@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+    <scope id="global">
+        <fieldset id="customer_account">
+            <field name="document_number">
+                <aspect name="to_order" targetField="customer_document_number"/>
+                <aspect name="to_quote" targetField="customer_document_number"/>
+                <aspect name="to_quote_address"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_order" targetField="customer_document_type"/>
+                <aspect name="to_quote" targetField="customer_document_type"/>
+                <aspect name="to_quote_address"/>
+            </field>
+        </fieldset>
+        <fieldset id="checkout_onepage_billing">
+            <field name="document_number">
+                <aspect name="to_customer"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_customer"/>
+            </field>
+        </fieldset>
+        <fieldset id="customer_address">
+            <field name="document_number">
+                <aspect name="to_quote_address"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_quote_address"/>
+            </field>
+        </fieldset>
+        <fieldset id="sales_convert_order_address">
+            <field name="document_number">
+                <aspect name="to_quote_address"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_quote_address"/>
+            </field>
+        </fieldset>
+        <fieldset id="sales_convert_quote_address">
+            <field name="document_number">
+                <aspect name="to_order_address"/>
+                <aspect name="to_customer_address"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_order_address"/>
+                <aspect name="to_customer_address"/>
+            </field>
+        </fieldset>
+        <fieldset id="sales_copy_order_billing_address">
+            <field name="document_number">
+                <aspect name="to_order" targetField="customer_document_number"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_order" targetField="customer_document_number"/>
+            </field>
+        </fieldset>
+        <fieldset id="order_address">
+            <field name="document_number">
+                <aspect name="to_customer_address"/>
+            </field>
+            <field name="document_type">
+                <aspect name="to_customer_address"/>
+            </field>
+        </fieldset>
+    </scope>
+</config>

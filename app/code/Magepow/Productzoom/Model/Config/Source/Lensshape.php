@@ -15,7 +15,7 @@ class Lensshape implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             'square' 	=> 'Square',
-            'round' 	=> 'Round'
+            'round' 	=> 'Round',
         ];
     }
 }

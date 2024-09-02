@@ -14,16 +14,16 @@ class Config
     /**
      * Receive Notifications
      */
-    const XML_PATH_RECEIVE_PRODUCT_UPDATES = 'mfextension/notification/update';
-    const XML_PATH_RECEIVE_SPECIAL_OFFERS = 'mfextension/notification/offer';
-    const XML_PATH_RECEIVE_NEWS = 'mfextension/notification/news';
-    const XML_PATH_RECEIVE_TIPS_AND_TRICKS = 'mfextension/notification/tip_trick';
-    const XML_PATH_RECEIVE_GENERAL_INFORMATION = 'mfextension/notification/general';
+    public const XML_PATH_RECEIVE_PRODUCT_UPDATES = 'mfextension/notification/update';
+    public const XML_PATH_RECEIVE_SPECIAL_OFFERS = 'mfextension/notification/offer';
+    public const XML_PATH_RECEIVE_NEWS = 'mfextension/notification/news';
+    public const XML_PATH_RECEIVE_TIPS_AND_TRICKS = 'mfextension/notification/tip_trick';
+    public const XML_PATH_RECEIVE_GENERAL_INFORMATION = 'mfextension/notification/general';
 
     /**
      * Display Menu
      */
-    const XML_PATH_MENU_ENABLED = 'mfextension/menu/display';
+    public const XML_PATH_MENU_ENABLED = 'mfextension/menu/display';
 
     /**
      * @var ScopeConfigInterface
@@ -123,7 +123,7 @@ class Config
             'offer' => $this->receiveSpecialOffers(),
             'news' => $this->receiveNews(),
             'tip_trick' => $this->receiveTipsAndTricks(),
-            'general' => $this->receiveGeneralInformation()
+            'general' => $this->receiveGeneralInformation(),
         ];
     }
 

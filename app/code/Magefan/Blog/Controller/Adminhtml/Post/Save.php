@@ -36,14 +36,14 @@ class Save extends \Magefan\Blog\Controller\Adminhtml\Post
 
         /* Prepare relative links */
         $data = $request->getPost('data');
-        $links = isset($data['links']) ? $data['links'] : ['post' => [], 'product' => []];
+        $links = $data['links'] ?? ['post' => [], 'product' => []];
         if (is_array($links)) {
             foreach (['post', 'product'] as $linkType) {
                 if (isset($links[$linkType]) && is_array($links[$linkType])) {
                     $linksData = [];
                     foreach ($links[$linkType] as $item) {
                         $linksData[$item['id']] = [
-                            'position' => isset($item['position']) ? $item['position'] : 0
+                            'position' => $item['position'] ?? 0,
                         ];
                     }
                     $links[$linkType] = $linksData;

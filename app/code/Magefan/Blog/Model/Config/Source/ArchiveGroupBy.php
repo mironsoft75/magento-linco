@@ -19,12 +19,12 @@ class ArchiveGroupBy implements \Magento\Framework\Option\ArrayInterface
     /**
      * @const string
      */
-    const MONTH_AND_YEAR = 'month_year';
+    public const MONTH_AND_YEAR = 'month_year';
 
     /**
      * @const string
      */
-    const YEAR = 'year';
+    public const YEAR = 'year';
 
     /**
      * Options getter

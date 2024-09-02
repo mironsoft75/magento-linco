@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+<policies>
+        <policy id="script-src">
+            <values>
+	        <value id="script-adobedtm" type="host">assets.adobedtm.com</value>
+                <value id="script-google" type="host">https://google.com</value>
+                <value id="script-datatrics" type="host">https://api.datatrics.com</value>
+                <value id="script-clarity" type="host">https://c.clarity.ms</value>
+                <value id="script-facebook" type="host">https://www.facebook.com</value>
+                <value id="script-gstatic" type="host">www.gstatic.com</value>
+                <value id="script-google-analytics" type="host">https://www.google.com</value>
+                <value id="script-doubleclick" type="host">googleads.g.doubleclick.net</value>
+                <value id="script-clarity-ms" type="host">https://www.clarity.ms</value>
+                <value id="script-tr-datatrics" type="host">https://tr.datatrics.com</value>
+                <value id="script-facebook-connect" type="host">https://connect.facebook.net</value>
+                <value id="script-doubleclick-stats" type="host">https://stats.g.doubleclick.net</value>
+                <value id="script-tagmanager" type="host">www.googletagmanager.com</value>
+                <value id="script-google-py" type="host">https://www.google.com.py</value>
+                <value id="script-analytics" type="host">analytics.google.com</value>
+                <value id="script-clarity-z" type="host">https://z.clarity.ms</value>
+                <value id="script-vpos" type="host">https://vpos.infonet.com.py</value>
+                <value id="script-infonet" type="host">https://*.infonet.com.py</value>
+                <value id="script-cloudflare" type="host">https://cdnjs.cloudflare.com</value>
+                <value id="script-tracking" type="host">https://tracking.midway.la</value>
+                <value id="script-fontawesome" type="host">https://cdn.jsdelivr.net</value>
+                <value id="script-newrelic" type="host">https://*.newrelic.com</value>
+                <value id="script-nr-data" type="host">https://*.nr-data.net</value>
+                <value id="script-youtube" type="host">https://*.youtube.com</value>
+                <value id="script-vimeo" type="host">https://*.vimeo.com</value>
+                <value id="script-vimeocdn" type="host">https://*.vimeocdn.com</value>
+                <value id="script-paypal" type="host">https://*.paypal.com</value>
+                <value id="script-adobe" type="host">https://*.adobe.com</value>
+                <value id="script-ganalytics" type="host">www.googleadservices.com</value>
+                <value id="script-ganalytics2" type="host">www.google-analytics.com</value>
+                <value id="script-braintree" type="host">js.braintreegateway.com</value>
+                <value id="script-braintree-assets" type="host">assets.braintreegateway.com</value>
+                <value id="script-googleapis" type="host">*.googleapis.com</value>
+                <value id="script-gstatic" type="host">*.gstatic.com</value>
+                <value id="script-xtento" type="host">cdn.xtento.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="style-google" type="host">https://google.com</value>
+                <value id="style-google-py" type="host">https://www.google.com.py</value>
+                <value id="style-clarity" type="host">https://z.clarity.ms</value>
+                <value id="style-facebook" type="host">https://www.facebook.com</value>
+		<value id="style-tracking" type="host">https://tracking.midway.la</value>
+                <value id="style-gstatic" type="host">https://www.gstatic.com</value>
+                <value id="style-tagmanager" type="host">www.googletagmanager.com</value>
+                <value id="style-cloudflare" type="host">https://cdnjs.cloudflare.com</value>
+                <value id="style-fontawesome-jsdelivr" type="host">https://cdn.jsdelivr.net</value>
+                <value id="style-fontawesome-jsdelivr-fint" type="host">*.jsdelivr.net</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="img-google" type="host">https://google.com</value>
+                <value id="img-google-py" type="host">https://www.google.com.py</value>
+                <value id="img-clarity" type="host">https://z.clarity.ms</value>
+                <value id="img-facebook" type="host">https://www.facebook.com</value>
+                <value id="img-gstatic" type="host">https://www.gstatic.com</value>
+                <value id="img-tagmanager" type="host">www.googletagmanager.com</value>
+                <value id="img-cloudflare" type="host">https://cdnjs.cloudflare.com</value>
+                <value id="img-vpos" type="host">https://vpos.infonet.com.py</value>
+                <value id="img-infonet" type="host">https://*.infonet.com.py</value>
+                <value id="img-micro" type="host">https://metasportscspvmsdiag.blob.core.windows.net</value>
+		<value id="img-tracking" type="host">https://tracking.midway.la</value>
+		<value id="img-dongee" type="host">https://clientes.dongee.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="connect-google" type="host">https://google.com</value>
+		<value id="connect-google-py" type="host">https://www.google.com.py</value>
+                <value id="connect-datatrics" type="host">https://api.datatrics.com</value>
+                <value id="connect-clarity" type="host">https://z.clarity.ms</value>
+                <value id="connect-facebook" type="host">https://www.facebook.com</value>
+                <value id="connect-clarity-ms" type="host">https://www.clarity.ms</value>
+                <value id="connect-tr-datatrics" type="host">https://tr.datatrics.com</value>
+                <value id="connect-facebook-connect" type="host">https://connect.facebook.net</value>
+                <value id="connect-vpos" type="host">https://vpos.infonet.com.py</value>
+                <value id="connect-infonet" type="host">https://*.infonet.com.py</value>
+                <value id="connect-newrelic" type="host">https://*.newrelic.com</value>
+                <value id="connect-nr-data" type="host">https://*.nr-data.net</value>
+                <value id="connect-youtube" type="host">https://*.youtube.com</value>
+                <value id="connect-vimeo" type="host">https://*.vimeo.com</value>
+                <value id="connect-vimeocdn" type="host">https://*.vimeocdn.com</value>
+                <value id="connect-paypal" type="host">https://*.paypal.com</value>
+                <value id="connect-adobe" type="host">https://*.adobe.com</value>
+		 <value id="connect-tracking" type="host">https://tracking.midway.la</value>
+            </values>
+	  </policy>  
+	  <policy id="frame-src">
+             <values> 
+                <value id="frame-google" type="host">https://google.com</value>
+		<value id="frame-infonet" type="host">https://*.infonet.com.py</value>
+		<value id="frame-doubleclick" type="host">https://td.doubleclick.net</value>
+	    </values>
+        </policy>
+	<!--	 <policy id="script-src-elem">
+            <values>
+            </values>
+	</policy>-->
+    </policies>
+</csp_whitelist>
+
+
+
+
+
+  
+       

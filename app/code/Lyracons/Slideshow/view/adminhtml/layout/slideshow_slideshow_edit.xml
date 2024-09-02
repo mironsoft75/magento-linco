@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   
+    <update handle="editor"/>
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>   
+        <css src="Lyracons_Slideshow::css/styles.css"/>        
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Lyracons\Slideshow\Block\Adminhtml\Slideshow\Edit" name="lyracons_slideshow_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Lyracons\Slideshow\Block\Adminhtml\Slideshow\Edit\Tabs" name="lyracons_slideshow_edit_tabs">
+                <block class="Lyracons\Slideshow\Block\Adminhtml\Slideshow\Edit\Tab\Main" name="lyracons_slideshow_edit_tab_main"/>
+                <block class="Lyracons\Slideshow\Block\Adminhtml\Slideshow\Edit\Tab\Content" name="lyracons_slideshow_edit_tab_content"/>
+                <block class="Lyracons\Slideshow\Block\Adminhtml\Slideshow\Edit\Tab\Parameters" name="lyracons_slideshow_edit_tab_parameters"/>               
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">lyracons_slideshow_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">lyracons_slideshow_edit_tab_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">design_section</argument>
+                    <argument name="block" xsi:type="string">lyracons_slideshow_edit_tab_parameters</argument>
+                </action>                
+            </block>
+        </referenceContainer>
+    </body>
+</page>

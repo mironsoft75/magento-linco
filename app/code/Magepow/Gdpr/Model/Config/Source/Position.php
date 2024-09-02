@@ -21,7 +21,7 @@ class Position implements \Magento\Framework\Option\ArrayInterface
     {
         return [
 			['value' => 'left', 'label' => __('Left')], 
-			['value' => 'right', 'label' => __('Right')]
+			['value' => 'right', 'label' => __('Right')],
 		];
     }
 }

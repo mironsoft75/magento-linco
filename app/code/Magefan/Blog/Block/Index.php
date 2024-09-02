@@ -170,7 +170,7 @@ class Index extends \Magefan\Blog\Block\Post\PostList
                 [
                     'label' => __('Home'),
                     'title' => __('Go to Home Page'),
-                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                    'link' => $this->_storeManager->getStore()->getBaseUrl(),
                 ]
             );
 

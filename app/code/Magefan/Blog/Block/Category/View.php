@@ -109,14 +109,14 @@ class View extends \Magefan\Blog\Block\Post\PostList
                 $breadcrumbsBlock->addCrumb('blog_parent_category_' . $category->getId(), [
                     'label' => $category->getTitle(),
                     'title' => $category->getTitle(),
-                    'link'  => $category->getCategoryUrl()
+                    'link'  => $category->getCategoryUrl(),
                 ]);
             }
 
             $category = $this->getCategory();
             $breadcrumbsBlock->addCrumb('blog_category', [
                 'label' => $category->getTitle(),
-                'title' => $category->getTitle()
+                'title' => $category->getTitle(),
             ]);
         }
     }

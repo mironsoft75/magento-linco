@@ -17,7 +17,7 @@ class Grid extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
+    public const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
 
     /**
      * @var PageFactory

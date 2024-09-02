@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Lyracons_MegaMenu::slideshow_title" title="Slideshow" module="Lyracons_Slideshow" sortOrder="1" parent="Lyracons_Core::general" resource="Lyracons_Slideshow::slideshow"/>
+        <add id="Lyracons_slideshow::slideshow" title="Manage Slideshows" module="Lyracons_Slideshow" sortOrder="0" parent="Lyracons_MegaMenu::slideshow_title" action="slideshow/slideshow/" resource="Lyracons_Slideshow::slideshow"/>
+    </menu>
+</config>

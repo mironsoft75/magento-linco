@@ -101,7 +101,7 @@ class Plugin
                 $this->jsonHelper->jsonEncode(
                     [
                         'success' => false,
-                        'error'   => 'not_logged_in'
+                        'error'   => 'not_logged_in',
                     ]
                 )
             );

@@ -10,7 +10,7 @@ use Magefan\Cli\Model\Config;
 
 class Cli extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Magefan_Cli::elements';
+    public const ADMIN_RESOURCE = 'Magefan_Cli::elements';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory

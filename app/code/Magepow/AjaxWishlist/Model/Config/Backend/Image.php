@@ -6,7 +6,7 @@ class Image extends \Magento\Config\Model\Config\Backend\Image
     /**
      * The tail part of directory path for uploading
      */
-    const UPLOAD_DIR = 'magepow/backendimage';
+    public const UPLOAD_DIR = 'magepow/backendimage';
 
     /**
      * Upload max file size in kilobytes

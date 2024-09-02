@@ -25,7 +25,7 @@ class ReplyButton extends GenericButton implements ButtonProviderInterface
             'label' => __('Reply'),
             'on_click' => sprintf("location.href = '%s';", $this->getBackUrl()),
             'class' => 'reply',
-            'sort_order' => 10
+            'sort_order' => 10,
         ];
     }
 
@@ -36,6 +36,6 @@ class ReplyButton extends GenericButton implements ButtonProviderInterface
      */
     public function getBackUrl()
     {
-        return $this->getUrl('*/*/addreply/',['id' => $this->getObjectId()]);
+        return $this->getUrl('*/*/addreply/', ['id' => $this->getObjectId()]);
     }
 }

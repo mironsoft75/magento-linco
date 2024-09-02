@@ -12,9 +12,9 @@ namespace Magepow\Ajaxcart\Model\Config\Source;
 
 class Countdown implements \Magento\Framework\Option\ArrayInterface
 {
-    const POPUP_COUNTDOWN_DISABLED = 0;
-    const POPUP_COUNTDOWN_CONTINUE_BTN = 1;
-    const POPUP_COUNTDOWN_VIEW_CART_BTN = 2;
+    public const POPUP_COUNTDOWN_DISABLED = 0;
+    public const POPUP_COUNTDOWN_CONTINUE_BTN = 1;
+    public const POPUP_COUNTDOWN_VIEW_CART_BTN = 2;
 
     /**
      * Options getter
@@ -26,7 +26,7 @@ class Countdown implements \Magento\Framework\Option\ArrayInterface
         return  [
             ['value' => self::POPUP_COUNTDOWN_DISABLED, 'label' => __('No')],
             ['value' => self::POPUP_COUNTDOWN_CONTINUE_BTN, 'label' => __('Continue button')],
-            ['value' => self::POPUP_COUNTDOWN_VIEW_CART_BTN, 'label' => __('View Cart button')]
+            ['value' => self::POPUP_COUNTDOWN_VIEW_CART_BTN, 'label' => __('View Cart button')],
         ];
     }
 
@@ -40,7 +40,7 @@ class Countdown implements \Magento\Framework\Option\ArrayInterface
         return [
             self::POPUP_COUNTDOWN_DISABLED => __('No'),
             self::POPUP_COUNTDOWN_CONTINUE_BTN => __('Continue button'),
-            self::POPUP_COUNTDOWN_VIEW_CART_BTN => __('View Cart button')
+            self::POPUP_COUNTDOWN_VIEW_CART_BTN => __('View Cart button'),
         ];
     }
 }

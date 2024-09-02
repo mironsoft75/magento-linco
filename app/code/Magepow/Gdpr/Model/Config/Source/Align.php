@@ -22,7 +22,7 @@ class Align implements \Magento\Framework\Option\ArrayInterface
         return [
 			['value' => 'left', 'label' => __('Left')], 
 			['value' => 'right', 'label' => __('Right')],
-			['value' => 'center', 'label' => __('Center')]
+			['value' => 'center', 'label' => __('Center')],
 		];
     }
 }

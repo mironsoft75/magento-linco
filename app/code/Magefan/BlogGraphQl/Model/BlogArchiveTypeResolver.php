@@ -15,8 +15,8 @@ use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
  */
 class BlogArchiveTypeResolver implements TypeResolverInterface
 {
-    const MF_BLOG_ARCHIVE = 'MF_BLOG_ARCHIVE';
-    const TYPE_RESOLVER = 'blogPostsOutput';
+    public const MF_BLOG_ARCHIVE = 'MF_BLOG_ARCHIVE';
+    public const TYPE_RESOLVER = 'blogPostsOutput';
 
     /**
      * @inheritdoc

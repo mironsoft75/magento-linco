@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <move element="after.header" destination="page.top" before="breadcrumbs"/>
+    <move element="product.info.overview" destination="product.info.main" after="product.info.price" />
+    <referenceBlock name="product.info.mailto" remove="true"/>
+    <referenceBlock name="product.info.form.options">
+        <block class="Magento\Framework\View\Element\Template" name="guia_tallas" template="Magento_Theme::html/guia-tallas.phtml" before="product.info.options.wrapper.bottom" />
+    </referenceBlock>
+    <move element="product.info.addto" destination="product.info.form.content" before="-"/>
+    <move element="view.addto.wishlist" destination="product.info.addto" after="-"/>
+
+
+    <block class="Magento\Swatches\Block\Product\Renderer\Listing\Configurable"
+                        name="category.product.type.details.renderers.configurable"
+                        template="Magento_Swatches::product/listing/renderer.phtml"
+                        ifconfig="catalog/frontend/show_swatches_in_product_list">
+                            <arguments>
+                                <argument name="configurable_view_model"
+                                    xsi:type="object">Magento\Swatches\ViewModel\Product\Renderer\Configurable</argument>
+                            </arguments>
+                    </block>
+    <!--<referenceBlock name="product.info.addtocart">
+        <block class="Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist" name="view.addto.wishlist" template="Magento_Catalog::product/view/addto/wishlist.phtml" />
+    </referenceBlock>
+    <referenceBlock name="product.info.addtocart.additional">
+        <block class="Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist" name="view.addto.wishlist.bottom" template="Magento_Catalog::product/view/addto/wishlist.phtml" />
+    </referenceBlock>-->
+</page>

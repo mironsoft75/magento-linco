@@ -59,9 +59,9 @@ abstract class AbstractList extends Template implements IdentityInterface
      */
     protected $templatePool;
 
-    const POSTS_SORT_FIELD_BY_PUBLISH_TIME = 'main_table.publish_time';
-    const POSTS_SORT_FIELD_BY_POSITION = 'position';
-    const POSTS_SORT_FIELD_BY_TITLE = 'main_table.title';
+    public const POSTS_SORT_FIELD_BY_PUBLISH_TIME = 'main_table.publish_time';
+    public const POSTS_SORT_FIELD_BY_POSITION = 'position';
+    public const POSTS_SORT_FIELD_BY_TITLE = 'main_table.title';
 
     /**
      * AbstractList constructor.

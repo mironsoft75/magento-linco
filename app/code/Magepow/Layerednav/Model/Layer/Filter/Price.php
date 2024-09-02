@@ -72,7 +72,7 @@ class Price extends AbstractFilter
             return $this;
         }
 
-        $filterParams = explode(',',(string) $filter);
+        $filterParams = explode(',', (string) $filter);
         $filter       = $this->dataProvider->validateFilter($filterParams[0]);
         if (!$filter) {
             $this->filterValue = false;
@@ -86,7 +86,7 @@ class Price extends AbstractFilter
             $this->dataProvider->setPriorIntervals($priorFilters);
         }
 
-        list($from, $to) = $filter;
+        [$from, $to] = $filter;
 
         $fromBase = (float) $from/$this->getCurrencyRate();
         $toBase = (float) $to/$this->getCurrencyRate();

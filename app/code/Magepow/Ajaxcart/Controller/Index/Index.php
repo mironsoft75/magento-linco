@@ -222,7 +222,7 @@ class Index extends \Magento\Framework\App\Action\Action
             $data = [
                 'status' => true,
                 'added' => false,
-                'messages' => []
+                'messages' => [],
             ];
 
             $result = $this->dataObjectFactory->create()->setData($data);
@@ -417,7 +417,7 @@ class Index extends \Magento\Framework\App\Action\Action
 
         if (!empty($related)) {
             $this->relatedAdded = true;
-            $this->cart->addProductsByIds(explode(',',(string) $related));
+            $this->cart->addProductsByIds(explode(',', (string) $related));
         }
     }
 }

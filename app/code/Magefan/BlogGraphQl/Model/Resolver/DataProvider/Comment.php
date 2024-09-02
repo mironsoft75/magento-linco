@@ -127,7 +127,7 @@ class Comment
             $replies = [];
             foreach ($comment->getRepliesCollection() as $reply) {
                 $replies[] = $reply->getDynamicData(
-                    isset($fields['replies']) ? $fields['replies'] : null
+                    $fields['replies'] ?? null
                 );
             }
             $data['replies'] = $replies;

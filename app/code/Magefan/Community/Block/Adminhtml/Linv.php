@@ -52,7 +52,7 @@ class Linv extends Template
         $select = $connection->select()
             ->from([$table])
             ->where( 'path LIKE ?', '%' . $path )
-            ->where('value = ?',1);
+            ->where('value = ?', 1);
         $items = $connection->fetchAll($select);
         $result = [];
 
@@ -60,7 +60,7 @@ class Linv extends Template
             $configPath = explode('/', $config['path']);
             $moduleName = $configPath[0];
             $section = $this->sectionFactory->create([
-                'name' => $moduleName
+                'name' => $moduleName,
             ]);
             $module = $section->getModule(true);
             if ($module) {

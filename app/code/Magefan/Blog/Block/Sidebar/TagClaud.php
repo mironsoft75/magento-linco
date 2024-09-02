@@ -20,10 +20,10 @@ class TagClaud extends \Magento\Framework\View\Element\Template
     /**
      * Path to tag cloud 3D animation configuration
      */
-    const ANIMATED_ENABLED = 'mfblog/sidebar/tag_claud/animated';
-    const TEXT_HIGHLIGHT_COLOR = 'mfblog/sidebar/tag_claud/text_highlight_color';
-    const CLOUD_HEIGHT = 'mfblog/sidebar/tag_claud/cloud_height';
-    const TAG_COUNT = 'mfblog/sidebar/tag_claud/tag_count';
+    public const ANIMATED_ENABLED = 'mfblog/sidebar/tag_claud/animated';
+    public const TEXT_HIGHLIGHT_COLOR = 'mfblog/sidebar/tag_claud/text_highlight_color';
+    public const CLOUD_HEIGHT = 'mfblog/sidebar/tag_claud/cloud_height';
+    public const TAG_COUNT = 'mfblog/sidebar/tag_claud/tag_count';
 
     /**
      * @var string
@@ -179,7 +179,7 @@ class TagClaud extends \Magento\Framework\View\Element\Template
             'maxSpeed' => 0.03,
             'depth' => 0.75,
             'weight' => true,
-            'initial' => [0, 1]
+            'initial' => [0, 1],
         ];
 
         foreach ($this->getData() as $key => $value) {

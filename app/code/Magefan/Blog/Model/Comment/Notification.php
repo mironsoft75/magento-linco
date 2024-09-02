@@ -16,7 +16,7 @@ class Notification
      /**
      * Check every 10 min
      */
-    const TIMEOUT = 600;
+    public const TIMEOUT = 600;
 
     /**
      * @var \Magento\Framework\Message\ManagerInterface

@@ -22,7 +22,7 @@ class ViewsCount extends AbstractPost
     public function getCounterUrl()
     {
         return $this->getUrl('blog/post/viewscount', [
-            'id' => $this->getPost()->getId()
+            'id' => $this->getPost()->getId(),
         ]);
     }
 

@@ -22,7 +22,7 @@ class More implements \Magento\Framework\Option\ArrayInterface
         return [
 			['value' => 'not-show', 'label' => __('Not Show')], 
 			['value' => 'link', 'label' => __('Show as link')], 
-			['value' => 'popup', 'label' => __('Show as popup')]
+			['value' => 'popup', 'label' => __('Show as popup')],
 		];
     }
 }

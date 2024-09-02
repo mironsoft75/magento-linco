@@ -1,0 +1,42 @@
+
+<?php
+echo $this->getLayout()
+->createBlock('Magento\Cms\Block\Block')
+->setBlockId('metasports-modal-guia-tallas')
+->toHtml();
+?>
+
+<script type="text/javascript">// <![CDATA[
+    require(
+    [
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ],
+    function(
+        $,
+        modal
+    ) {
+            var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: 'Guía de tallas',
+            modalClass: 'custom-modal',
+            buttons: [{
+                text: $.mage.__('Cerrar'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                    $('#guia-tallas').html(" ");
+                }
+            }]
+        };
+    
+        var popup = modal(options, $('#guia-tallas'));
+    
+        $(".open-modal").click(function() {
+            $("#guia-tallas").modal('openModal');
+        });
+    }
+    );
+// ]]></script>

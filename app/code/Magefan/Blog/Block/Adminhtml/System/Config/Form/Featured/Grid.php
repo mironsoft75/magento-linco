@@ -247,7 +247,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'values' => $this->_getSelectedPosts(),
                 'index' => 'post_id',
                 'header_css_class' => 'col-select col-massaction',
-                'column_css_class' => 'col-select col-massaction'
+                'column_css_class' => 'col-select col-massaction',
             ]
         );
 
@@ -258,14 +258,14 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'sortable' => true,
                 'index' => 'post_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
         $this->addColumn(
             'title',
             [
                 'header' => __('Title'),
-                'index' => 'title'
+                'index' => 'title',
             ]
         );
 

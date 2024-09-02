@@ -16,22 +16,22 @@ class Config
     /**
      * @var string
      */
-    const XML_PATH_EXTENSION_ENABLED = 'mfcli/general/enabled';
+    public const XML_PATH_EXTENSION_ENABLED = 'mfcli/general/enabled';
 
     /**
      * @var string
      */
-    const XML_PATH_PHP_COMMAND = 'mfcli/general/php';
+    public const XML_PATH_PHP_COMMAND = 'mfcli/general/php';
 
     /**
      * @var string
      */
-    const XML_PATH_MOST_USED_COMMANDS = 'mfcli/general/commands';
+    public const XML_PATH_MOST_USED_COMMANDS = 'mfcli/general/commands';
 
     /**
      * @var string
      */
-    const XML_PATH_NON_ADMIN_COMMANDS = 'mfcli/general/non_admin_commands';
+    public const XML_PATH_NON_ADMIN_COMMANDS = 'mfcli/general/non_admin_commands';
 
     /**
      * @var ScopeConfigInterface

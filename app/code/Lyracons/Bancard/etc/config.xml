@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <lyracons_bancard>
+                <title>Bancard</title>
+                <model>Lyracons\Bancard\Model\Standard</model>
+                <active>1</active>
+                <can_use_checkout>1</can_use_checkout>
+                <public_key>KPUqjUVpARdR1unoAL3Z6d1T3Gd6gesZ</public_key>
+                <private_key backend_model="Magento\Config\Model\Config\Backend\Encrypted">lXZeevLJ6ppi4xLiFMA4jZV.7NiDFEJcw79Dzc1j</private_key>
+                <environment>staging</environment>
+            </lyracons_bancard>
+        </payment>
+    </default>
+</config>

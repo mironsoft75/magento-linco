@@ -22,8 +22,8 @@ class Product extends AbstractProduct
      */
     public function getProductPriceHtml(
         ProductModel $product,
-                     $priceType,
-                     $renderZone = Render::ZONE_ITEM_LIST,
+        $priceType,
+        $renderZone = Render::ZONE_ITEM_LIST,
         array        $arguments = []
     ): string {
         if (!isset($arguments['zone'])) {

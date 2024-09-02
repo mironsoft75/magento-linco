@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="Lyracons\MegaMenu\Block\Adminhtml\Index\View" name="menu_view" template="Lyracons_MegaMenu::megamenu/menu.phtml" /> 
+    </container>
+</layout>

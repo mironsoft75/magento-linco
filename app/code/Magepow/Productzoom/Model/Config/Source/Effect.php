@@ -14,11 +14,11 @@ class Effect implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            '' 	                        => 'Don\'t use Effect' ,
+            '' 	                        => 'Don\'t use Effect',
             'flyOutWindow'              => 'Fly Out Window',
             'flyOutImageToWindow'       => 'Fly Out Image To Window',
             'flySpinningWindow' 		=> 'Fly Spinning Window',
-            'flySpinningImageToWindow'  => 'Fly Spinning Image To Window'
+            'flySpinningImageToWindow'  => 'Fly Spinning Image To Window',
         ];
     }
 }

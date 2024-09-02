@@ -1,0 +1,231 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {}
+
+.page-wrapper footer {
+    background: @codGray;
+    .content {
+        .footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+            width: 20%;
+            float: left;
+            .block {
+                float: left;
+            }
+            .links {
+                li a {
+                    color: @danube;
+                    transition: all .3s ease;
+                    &:hover,
+                    &:hover b,
+                    &:hover strong {
+                        color: @cardinal;
+                        text-decoration: none;
+                    }
+                    b, strong {
+                        font-weight: 700;
+                        color: @danube;
+                        transition: all .3s ease;
+                    }
+                }
+                &.bold {
+                    li a {
+                        font-weight: 700;
+                        color: @danube;
+                        transition: all .3s ease;
+                        &:hover {
+                            color: @cardinal;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+            h2 {
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                margin: 0 0 20px;
+                text-transform: uppercase;
+                font-family: @font-family-name__second;
+            }
+            .rrss {
+                float: left;
+                width: 100%;
+                ul {
+                    margin-bottom: 20px;
+                    margin-left: 0px;
+                    padding: 0;
+                    li {
+                        display: inline-block;
+                        a {
+                            background: @mineShaft;
+                            width: 44px;
+                            height: 44px;
+                            line-height: 44px;
+                            color: @gray;
+                            text-align: center;
+                            font-weight: bold;
+                            margin-right: 10px;
+                            display: inline-block;
+                            transition: all .3s ease;
+                            font-family: "vans";
+                            font-size: 21px;
+                            &:hover {
+                                color: white;
+                                text-decoration: none;
+                            }
+                            &.icon-facebook {
+                                content: "\e81d";
+                            }
+                            &.icon-instagram {
+                                content: "\e81f";
+                            }
+                            &.icon-twitter {
+                                content: "\e816";
+                            }
+                        }
+                    }
+                }                    
+            }
+        }
+        .footer-col-4 {
+            width: 40%;
+            .block.newsletter {
+                width: 100%;
+                input {
+                    height: 43px;
+                    padding-left: 15px;
+                    letter-spacing: 0.42px;
+                    font-size: 14px;
+                    color: @outerSpace;
+                }
+                button.action.subscribe {
+                    background: @cardinal;
+                    height: 43px;
+                }
+                .control:before {
+                    display: none;
+                }
+                .action.subscribe {
+                    font-size: 15px;
+                    font-weight: 700;
+                    letter-spacing: 0.45px;
+                }
+            }
+        }
+        .footer-col-5 {
+            float: left;
+            width: 100%;
+            .block {
+                float: left;
+                margin-top: 0;
+            }
+            .logo-vans {
+                display: inline-block;
+            }
+            .statement {
+                display: inline-block;
+                a {
+                    margin-left: 30px;
+                    color: @danube;
+                    font-size: 11px;
+                    transition: all .3s ease;
+                    &:hover {
+                        color: @cardinal;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }        
+}
+
+.footer-checkout {
+    display: none;
+}
+
+.copyright {
+    background: white;
+    a img {
+        filter: grayscale(100%);
+        opacity: .5;
+    }
+}
+
+
+
+
+
+// Mobile 
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-wrapper footer {
+        background: @codGray;
+        .footer.content {
+            padding: 0;
+            .footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+                width: 100%;
+                .block {
+                    width: 100%;
+                    margin: 0;
+                    .allow.active {
+                        h2::after {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+                h2 {
+                    margin: 20px 0 20px 20px;
+                    position: relative;
+                }
+                .accordion-content {
+                    border-bottom: 1px solid @mineShaft;
+                    padding-bottom: 0px;
+                }
+                .rrss ul {
+                    padding-left: 20px;
+                    box-sizing: border-box;
+                }
+            }
+            .footer-col-1, .footer-col-2, .footer-col-3 {
+                h2 {
+                    &::after {
+                        width: 0;
+                        height: 0;
+                        border-left: 6px solid transparent;
+                        border-right: 6px solid transparent;
+                        border-top: 5px solid white;
+                        content: " ";
+                        position: absolute;
+                        right: 25px;
+                        top: 7px;
+                        pointer-events: none;
+                        transition: all .2s ease;
+                    }
+                }
+            }
+            .footer-col-4 .block.newsletter {
+                padding: 0 20px 0 20px;
+                box-sizing: border-box;
+            }
+            .footer-col-5 {
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .links {
+                margin-left: 20px;
+                margin-bottom: 10px;
+                &> li {
+                    background: transparent;
+                    border: 0;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+                li a {
+                    b, strong {
+                        font-weight: 700;
+                        color: @danube;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}

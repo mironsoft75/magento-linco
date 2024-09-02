@@ -15,8 +15,8 @@ use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
  */
 class BlogTagTypeResolver implements TypeResolverInterface
 {
-    const MF_BLOG_TAG = 'MF_BLOG_TAG';
-    const TYPE_RESOLVER = 'BlogTag';
+    public const MF_BLOG_TAG = 'MF_BLOG_TAG';
+    public const TYPE_RESOLVER = 'BlogTag';
 
     /**
      * @inheritdoc

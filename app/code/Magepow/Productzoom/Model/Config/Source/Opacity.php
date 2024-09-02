@@ -24,7 +24,7 @@ class Opacity implements \Magento\Framework\Option\ArrayInterface
             '0.7' 	=> 0.7,
             '0.8' 	=> 0.8,
             '0.9' 	=> 0.9,
-            '1' 	=> 1
+            '1' 	=> 1,
         ];
     }
 }

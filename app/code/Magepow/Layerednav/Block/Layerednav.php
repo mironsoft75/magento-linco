@@ -48,7 +48,7 @@ class Layerednav extends \Magento\Framework\View\Element\Template
                 ->addAttributeToSelect('*')
                 ->addCategoryFilter($current_category)
                 ->addAttributeToSort('price', 'desc');
-            $RangePrice = array();
+            $RangePrice = [];
 
             $product = $collection->getFirstItem();
             $max_price = $product->getFinalPrice();

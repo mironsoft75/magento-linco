@@ -85,7 +85,7 @@ class PostDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $map = [
                 'featured_img' => 'getFeaturedImage',
                 'featured_list_img' => 'getFeaturedListImage',
-                'og_img' => 'getOgImage'
+                'og_img' => 'getOgImage',
             ];
             foreach ($map as $key => $method) {
                 if (isset($data[$key])) {

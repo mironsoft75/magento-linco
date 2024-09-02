@@ -14,7 +14,7 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class UrlResolver implements UrlResolverInterface
 {
-    const PERMALINK_POST_USE_CATEGORIES = 'mfblog/permalink/post_use_categories';
+    public const PERMALINK_POST_USE_CATEGORIES = 'mfblog/permalink/post_use_categories';
 
     /**
      * @var array;
@@ -195,7 +195,7 @@ class UrlResolver implements UrlResolverInterface
                         $result = ['id' => $postId, 'type' => Url::CONTROLLER_POST];
                         if ($categoryId) {
                             $result['params'] = [
-                                'category_id' => $categoryId
+                                'category_id' => $categoryId,
                             ];
                         }
                         return $result;

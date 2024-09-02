@@ -21,7 +21,7 @@ class Width implements \Magento\Framework\Option\ArrayInterface
     {
         return [
 			['value' => 'full-width', 'label' => __('Full width')], 
-			['value' => 'custom', 'label' => __('Custom')]
+			['value' => 'custom', 'label' => __('Custom')],
 		];
     }
 }

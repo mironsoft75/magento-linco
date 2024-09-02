@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Lyracons\Core\Api\Setup\StoreBuilderServiceInterface" type="Lyracons\Core\Service\Setup\StoreBuilderService"/>
+    <type name="Lyracons\Core\Logger\Handler\Logger">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Lyracons\Core\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">LyraconsCoreLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Lyracons\Core\Logger\Handler\Logger</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -228,7 +228,7 @@ class ProductAgregator extends DataObject
             'productId'           => $productId,
             'paramNameUrlEncoded' => $paramNameUrlEncoded,
             'urlEncoded'          => $urlEncoded,
-            'formKey'             => $formKey
+            'formKey'             => $formKey,
         ];
     }
 }

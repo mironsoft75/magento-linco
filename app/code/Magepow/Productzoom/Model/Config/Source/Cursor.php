@@ -16,7 +16,7 @@ class Cursor implements \Magento\Framework\Option\ArrayInterface
         return [
             'default' 	=> 'Default',
             'cursor' 	=> 'Cursor',
-            'crosshair' => 'Crosshair'
+            'crosshair' => 'Crosshair',
         ];
     }
 }

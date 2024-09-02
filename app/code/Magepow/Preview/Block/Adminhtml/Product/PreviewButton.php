@@ -35,7 +35,7 @@ class PreviewButton extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Button
                 'class' => 'action-secondary preview',
                 // 'on_click' => "confirmSetLocation('Are you sure', '{$previewUrl}')",
                 'on_click' => 'window.open( \'' . $previewUrl . '\')',
-                'sort_order' => 10
+                'sort_order' => 10,
             ];
         }
     }

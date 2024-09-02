@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="lyracons_notifications" translate="label" sortOrder="1000">
+            <label>Notifications</label>
+        </tab>
+        <section id="notifications_configuration" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Configuration</label>
+            <tab>lyracons_notifications</tab>
+            <resource>Lyracons_Notifications::notification_config</resource>
+            <group id="success_messages" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Success Messages</label>
+        
+                <field id="success_border_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Border Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="success_background_color" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="success_text_color" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="success_notification_delay" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fade Out Delay</label>
+                    <validate>validate-digits</validate>
+                    <comment>The notification will close after this time (in miliseconds). If it's empty or zero, the message won't close.</comment>
+                </field>
+            </group>
+
+            <group id="warning_messages" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Warning Messages</label>
+        
+                <field id="warning_border_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Border Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="warning_background_color" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="warning_text_color" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="warning_notification_delay" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fade Out Delay</label>
+                    <validate>validate-digits</validate>
+                    <comment>The notification will close after this time (in miliseconds). If it's empty or zero, the message won't close.</comment>
+                </field>
+            </group>
+
+            <group id="error_messages" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Error Messages</label>
+        
+                <field id="error_border_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Border Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="error_background_color" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="error_text_color" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>Lyracons\Notifications\Block\Color</frontend_model>
+                </field>
+
+                <field id="error_notification_delay" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fade Out Delay</label>
+                    <validate>validate-digits</validate>
+                    <comment>The notification will close after this time (in miliseconds). If it's empty or zero, the message won't close.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -89,7 +89,7 @@ class Index implements ItemProviderInterface
         $items[] = $this->itemFactory->create([
             'url' => $url,
             'priority' => $this->sitemapConfig->getPriority(SitemapConfigInterface::HOME_PAGE, $storeId),
-            'changeFrequency' => $this->sitemapConfig->getFrequency(SitemapConfigInterface::POSTS_PAGE, $storeId)
+            'changeFrequency' => $this->sitemapConfig->getFrequency(SitemapConfigInterface::POSTS_PAGE, $storeId),
         ]);
 
         return $items;

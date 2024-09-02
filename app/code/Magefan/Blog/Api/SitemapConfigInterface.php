@@ -15,11 +15,11 @@ namespace Magefan\Blog\Api;
  */
 interface SitemapConfigInterface
 {
-    const HOME_PAGE = 'index';
-    const CATEGORIES_PAGE = 'category';
-    const POSTS_PAGE = 'post';
-    const TAGS_PAGE = 'tag';
-    const AUTHOR_PAGE = 'author';
+    public const HOME_PAGE = 'index';
+    public const CATEGORIES_PAGE = 'category';
+    public const POSTS_PAGE = 'post';
+    public const TAGS_PAGE = 'tag';
+    public const AUTHOR_PAGE = 'author';
 
     /**
      * @param $page

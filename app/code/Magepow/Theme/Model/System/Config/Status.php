@@ -11,8 +11,8 @@ namespace Magepow\Theme\Model\System\Config;
 
 class Status
 {
-    const STATUS_ENABLED = 1;
-    const STATUS_DISABLED = 0;
+    public const STATUS_ENABLED = 1;
+    public const STATUS_DISABLED = 0;
 
     /**
      * get available statuses.
@@ -22,8 +22,7 @@ class Status
     public static function getAvailableStatuses()
     {
         return [
-            self::STATUS_ENABLED => __('Enabled')
-            , self::STATUS_DISABLED => __('Disabled'),
+            self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled'),
         ];
     }
 

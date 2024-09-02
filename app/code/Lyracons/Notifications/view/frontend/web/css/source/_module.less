@@ -1,0 +1,59 @@
+.messages {
+    position: fixed;
+    top: 9%;
+    z-index: 100;
+    right: 3px;
+    text-transform: uppercase;
+    width: 300px;
+
+    .message {
+        font-size: 1.2rem;
+        color: #000;
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid #000;
+
+        a {
+            color: #000;
+            font-weight: bold;
+        }
+
+        &> *:first-child:before {
+            color: inherit;
+        }
+
+        &> *:first-child:after {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 12px;
+            line-height: 20px;
+            color: inherit;
+            content: '\e616';
+            font-family: 'luma-icons';
+            margin: -12px 0 0;
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            right: -8px;
+            top: 16px;
+            width: 45px;
+            position: absolute;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+
+    .message-error {
+        &> *:first-child:before {
+            content: '\e602';
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__s) {
+    .messages {
+        width: 99% !important;
+        top: 3px !important;
+    } 
+}

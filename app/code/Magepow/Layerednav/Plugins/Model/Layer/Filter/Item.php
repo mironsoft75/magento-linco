@@ -39,10 +39,10 @@ class Item
             return $proceed();
         }
 
-        $value = array();
+        $value = [];
         $requestVar = $item->getFilter()->getRequestVar();
         if($requestValue = $this->_request->getParam($requestVar)){
-            $value = explode(',',(string) $requestValue);
+            $value = explode(',', (string) $requestValue);
         }
         $value[] = $item->getValue();
 
@@ -68,7 +68,7 @@ class Item
 
         
         if(isset($query['cat'])){
-            $cat = explode( ',',(string) $query['cat'] );
+            $cat = explode( ',', (string) $query['cat'] );
             $number = count($cat) - 1;
             $query['cat'] = $cat[$number];
         }
@@ -82,14 +82,14 @@ class Item
             return $proceed();
         }
 
-        $value = array();
+        $value = [];
         $requestVar = $item->getFilter()->getRequestVar();
         if($requestValue = $this->_request->getParam($requestVar)){
-            $value = explode(',',(string) $requestValue);
+            $value = explode(',', (string) $requestValue);
         }
 
         if(in_array($item->getValue(), $value)){
-            $value = array_diff($value, array($item->getValue()));
+            $value = array_diff($value, [$item->getValue()]);
         }
 
         if($requestVar == 'price' && $this->_moduleHelper->isEnabledPriceRangeSliders()){

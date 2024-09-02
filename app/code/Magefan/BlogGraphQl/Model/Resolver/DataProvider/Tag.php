@@ -129,10 +129,10 @@ class Tag
 
         foreach ($keys as $key) {
             $method = 'get' . str_replace(
-                    '_',
-                    '',
-                    ucwords($key, '_')
-                );
+                '_',
+                '',
+                ucwords($key, '_')
+            );
             $data[$key] = $tag->$method();
             if ($key === 'tag_url') {
                 $data[$key] = str_replace(

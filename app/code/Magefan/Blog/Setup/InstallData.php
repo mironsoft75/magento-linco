@@ -113,7 +113,7 @@ class InstallData implements InstallDataInterface
                 : '<p>Welcome to Magento 2 Blog extension by Magefan.
                         This is your first post. Edit or delete it, then start blogging!
                 </p>',
-            'store_ids' => [0]
+            'store_ids' => [0],
         ];
 
         $this->_postFactory->create()->setData($data)->save();

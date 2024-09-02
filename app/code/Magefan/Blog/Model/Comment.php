@@ -73,7 +73,7 @@ class Comment extends AbstractModel implements \Magento\Framework\DataObject\Ide
     /**
      * blog cache comment
      */
-    const CACHE_TAG = 'mfb_co';
+    public const CACHE_TAG = 'mfb_co';
 
     /**
      * Initialize dependencies.
@@ -115,7 +115,7 @@ class Comment extends AbstractModel implements \Magento\Framework\DataObject\Ide
     {
         return [
             self::CACHE_TAG . '_' . $this->getId(),
-            \Magefan\Blog\Model\Post::CACHE_TAG . '_' . $this->getPostId()
+            \Magefan\Blog\Model\Post::CACHE_TAG . '_' . $this->getPostId(),
         ];
     }
 
@@ -323,7 +323,7 @@ class Comment extends AbstractModel implements \Magento\Framework\DataObject\Ide
             $replies = [];
             foreach ($this->getRepliesCollection() as $reply) {
                 $replies[] = $reply->getDynamicData(
-                    isset($fields['replies']) ? $fields['replies'] : null
+                    $fields['replies'] ?? null
                 );
             }
             $data['replies'] = $replies;

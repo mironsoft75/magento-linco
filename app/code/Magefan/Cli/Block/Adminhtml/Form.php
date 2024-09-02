@@ -76,7 +76,7 @@ class Form extends \Magento\Framework\View\Element\Template
     {
         $sortedCommands = [
             'most_used' => [],
-            'commands' => []
+            'commands' => [],
         ];
         $mostUsedCommands = $this->config->getMostUsedCommands();
         $commands = $this->commandList->getCommands();

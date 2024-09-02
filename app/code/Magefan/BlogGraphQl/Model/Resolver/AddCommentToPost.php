@@ -91,7 +91,7 @@ class AddCommentToPost implements ResolverInterface
         $comment = $this->commentRepository->getFactory()->create();
         $comment->setData([
             'post_id' => $postId,
-            'text' => $text
+            'text' => $text,
         ]);
 
         if ($context->getExtensionAttributes()->getIsCustomer()) {
@@ -120,7 +120,7 @@ class AddCommentToPost implements ResolverInterface
             $comment->setCustomerId(0)->setAuthorType(AuthorType::GUEST);
             $comment->addData([
                 'author_nickname' => $author,
-                'author_email' => $email
+                'author_email' => $email,
             ]);
         } else {
             throw new GraphQlAuthorizationException(__('Login to submit comment.'));
@@ -195,12 +195,12 @@ class AddCommentToPost implements ResolverInterface
 
         $comments = [];
         foreach ($commentsCollection as $item) {
-            $comments[] = $item->getDynamicData(isset($fields['comments']) ? $fields['comments'] : null);
+            $comments[] = $item->getDynamicData($fields['comments'] ?? null);
         }
 
         return [
             'total_pages' => $maxPages,
-            'comments' => $comments
+            'comments' => $comments,
         ];
     }
 }

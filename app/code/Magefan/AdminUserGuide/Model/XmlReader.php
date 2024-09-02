@@ -17,7 +17,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class XmlReader
 {
 
-    const DATA_FILE_NAME = 'magefan/aug-data/knowledge-base.xml';
+    public const DATA_FILE_NAME = 'magefan/aug-data/knowledge-base.xml';
 
     /**
      * @var CacheInterface
@@ -99,7 +99,7 @@ class XmlReader
                 $data[] = (array)$item;
             }
         }
-        $this->cache->save($this->json->serialize($data),'magefan_aug_data');
+        $this->cache->save($this->json->serialize($data), 'magefan_aug_data');
     }
 
     /**

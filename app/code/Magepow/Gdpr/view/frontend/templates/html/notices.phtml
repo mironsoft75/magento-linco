@@ -87,7 +87,7 @@ require(['jquery'], function($){
 </script>
 <?php if($showMoreView=='popup' && $moreViewText!=''): ?>
 	<div style="display:none" id="magepow-gdpr-popup-container">
-		<div class="magepow-gdpr-popup" id="magepow-gdpr-popup" data-url="<?php /* @escapeNotVerified */ echo $this->getUrl('gdpr', array('_secure'=>$this->getRequest()->isSecure()))?>" >></div>
+		<div class="magepow-gdpr-popup" id="magepow-gdpr-popup" data-url="<?php /* @escapeNotVerified */ echo $this->getUrl('gdpr', ['_secure'=>$this->getRequest()->isSecure()])?>" >></div>
 	</div>
 	<?php if($showMoreView=='popup'): ?>
 		<script type="text/javascript">require(['magepow/gdpr']);</script>

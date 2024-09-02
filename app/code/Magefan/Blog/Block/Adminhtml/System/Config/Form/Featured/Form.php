@@ -22,7 +22,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'action' => 'action',
                     'method' => 'post',
                     'enctype' => 'multipart/form-data',
-                ]
+                ],
             ]
         );
 
@@ -44,7 +44,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'name' => 'base_field_grid',
                 'label' => __('Please select post IDs'),
-                'title' => __('Please select post IDs')
+                'title' => __('Please select post IDs'),
             ]
         );
 

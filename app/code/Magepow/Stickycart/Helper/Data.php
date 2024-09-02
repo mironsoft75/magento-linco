@@ -84,7 +84,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $data = [
             "typeProduct"   => $product->getTypeId(),
             "scrollHeight"  => $this->getConfigModule('general/height_scroll'),
-            "hiddenBottom"  => $this->getConfigModule('general/hidden_bottom')
+            "hiddenBottom"  => $this->getConfigModule('general/hidden_bottom'),
         ];
         foreach ($data as $key => $value) {
             if(is_numeric($value)){

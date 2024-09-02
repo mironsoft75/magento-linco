@@ -335,7 +335,7 @@ class Router implements \Magento\Framework\App\RouterInterface
             [
                 'identifier' => $_identifier,
                 'request' => $request,
-                'continue' => true
+                'continue' => true,
             ]
         );
 

@@ -83,7 +83,7 @@ class PostRelatedProducts extends AbstractProduct implements IdentityInterface
 
         $this->_eventManager->dispatch('mfblog_relatedproducts_block_load_collection_before', [
             'block' => $this,
-            'collection' => $this->_itemCollection
+            'collection' => $this->_itemCollection,
         ]);
 
         $this->_itemCollection->load();

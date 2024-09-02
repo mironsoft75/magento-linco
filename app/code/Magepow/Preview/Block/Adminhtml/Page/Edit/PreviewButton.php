@@ -73,7 +73,7 @@ class PreviewButton extends GenericButton implements ButtonProviderInterface
             'class' => 'action-secondary preview',
             // 'on_click' => "confirmSetLocation('Are you sure', '{$previewUrl}')",
             'on_click' => 'window.open( \'' . $previewUrl . '\')',
-            'sort_order' => 10
+            'sort_order' => 10,
         ];
     }
 

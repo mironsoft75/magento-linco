@@ -25,12 +25,12 @@ class Tag extends \Magento\Framework\Model\AbstractModel implements \Magento\Fra
     /**
      * Tag Status
      */
-    const STATUS_ENABLED = 1;
+    public const STATUS_ENABLED = 1;
 
     /**
      * blog cache tag
      */
-    const CACHE_TAG = 'mfb_t';
+    public const CACHE_TAG = 'mfb_t';
 
     /**
      * Prefix of model events names

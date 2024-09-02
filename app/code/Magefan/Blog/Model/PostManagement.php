@@ -59,7 +59,7 @@ class PostManagement extends AbstractManagement
                         $year = (int) $term;
                         $month = 0;
                     } else {
-                        list($year, $month) = $term;
+                        [$year, $month] = $term;
                         $year = (int) $year;
                         $month = (int) $month;
                     }

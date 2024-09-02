@@ -121,7 +121,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 return parent::addFieldToFilter($field, $condition);
             } elseif (count($field) === 1) {
                 $field = $field[0];
-                $condition = isset($condition[0]) ? $condition[0] : $condition;
+                $condition = $condition[0] ?? $condition;
             }
         }
 
@@ -393,7 +393,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                     ['like' => '%' . $term . '%'],
                     ['like' => '%' . $term . '%'],
                     ['like' => '%' . $term . '%'],
-                    ['in' => $tagPostIds]
+                    ['in' => $tagPostIds],
                 ]
             );
 
@@ -416,7 +416,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 [
                     ['like' => '%' . $term . '%'],
                     ['like' => '%' . $term . '%'],
-                    ['like' => '%' . $term . '%']
+                    ['like' => '%' . $term . '%'],
                 ]
             );
 

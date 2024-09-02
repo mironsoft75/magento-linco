@@ -149,14 +149,14 @@ class Comments implements ResolverInterface
         foreach ($items as $k => $data) {
             $items[$k] = $this->commentDataProvider->getData(
                 $data['comment_id'],
-                isset($fields['items']) ? $fields['items'] : null
+                $fields['items'] ?? null
             );
         }
 
         return [
             'total_count' => $totalCount,
             'total_pages' => $maxPages,
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

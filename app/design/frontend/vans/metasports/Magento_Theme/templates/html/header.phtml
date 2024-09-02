@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+$welcomeMessage = $block->getWelcome();
+?>
+<?php switch ($block->getShowPart()):
+    case 'welcome': ?>
+        <li class="greet welcome" data-bind="scope: 'customer'">
+            <!-- ko if: customer().fullname  -->
+            <span data-bind="text: new String('<?= $block->escapeHtml(__('Welcome, %1!', '%1')) ?>').replace('%1', customer().fullname)">
+            </span>
+            <?php
+                $objectManagerlogin = \Magento\Framework\App\ObjectManager::getInstance();
+                $customerSession = $objectManagerlogin->get('Magento\Customer\Model\Session');
+                $baseurl = $objectManagerlogin->get('Magento\Store\Model\StoreManagerInterface')->getStore(0)->getBaseUrl();
+            ?>
+            <?php if($customerSession->isLoggedIn()) { ?>
+            <a class="link-logout" href="<?php echo $baseurl .'customer/account/logout'; ?>">Cerrar sesión</a>
+            <?php }?>
+            <!-- /ko -->
+            <!-- ko ifnot: customer().fullname  -->
+            <span data-bind='html:"<?= $block->escapeHtml($welcomeMessage) ?>"'></span>
+            <span><a href="<?php echo $block->getUrl('customer/account/login') ?>"><strong>Ingresá si ya tenés una cuenta</strong></a> o</span>
+            <?= $block->getBlockHtml('header.additional') ?>
+            <!-- /ko -->
+        </li>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+    <?php break; ?>
+
+    <?php case 'other': ?>
+        <?= $block->getChildHtml() ?>
+    <?php break; ?>
+
+<?php endswitch; ?>

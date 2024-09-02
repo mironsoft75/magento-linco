@@ -155,30 +155,44 @@ class SpeedOptimizer extends \Magento\Framework\View\Element\Template
         );  
     }
 
-    public function addLazyload( $content, $placeholder=false, $start=0 )
-    {
-        if($start && !is_numeric($start)) $start = strpos($content, $start);
-        $html = '';
-        if( $start ){
-            $page = str_split($content, $start);
-            $isFirst = true;
- 
-            foreach ($page as $key => $pg) {
-                if(!$key){
-                    $html .= $pg;
-                }else {
-                    if($placeholder) $pg = $this->addLazyloadPlaceholder($pg);
-                    $html .= $this->addLazyloadAll($pg);
-                }
-                
-            }
-        }else {
-            if($placeholder) $content = $this->addLazyloadPlaceholder($content);
-            $html .= $this->addLazyloadAll($content);           
-        }
 
-        return $html;
+    public function addLazyload($content, $placeholder = false, $start = 0)
+{
+    if ($start && !is_numeric($start) && is_string($content) && is_string($start)) {
+        $start = strpos($content, $start);
     }
+
+    $html = '';
+
+    if ($start) {
+
+	 if (is_string($content)) {
+        $page = str_split($content, $start);
+    } else {
+        $page = [];
+    }    
+        $isFirst = true;
+
+        foreach ($page as $key => $pg) {
+            if (!$key) {
+                $html .= $pg;
+            } else {
+                if ($placeholder) {
+                    $pg = $this->addLazyloadPlaceholder($pg);
+                }
+                $html .= $this->addLazyloadAll($pg);
+            }
+        }
+    } else {
+        if ($placeholder) {
+            $content = $this->addLazyloadPlaceholder($content);
+        }
+        $html .= $this->addLazyloadAll($content);
+    }
+
+       return $html;
+    }
+
 
     /* Placeholder so keep layout original while loading */
     public function addLazyloadPlaceholder( $content, $addJs=false ) 
@@ -194,7 +208,7 @@ class SpeedOptimizer extends \Magento\Framework\View\Element\Template
                 '/<img([^>]+?)height=[\'"]?([^\'"\s>]+)[\'"]([^>]+?)width=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>/' => function ($match) use ($placeholder) {
                     $holder = str_replace(['$width', '$height'], [$match[4], $match[2]], (string) $placeholder);
                     return $this->addLazyloadImage($match[0], $holder);
-                }
+                },
             ],
             $content
         );
@@ -314,15 +328,15 @@ class SpeedOptimizer extends \Magento\Framework\View\Element\Template
     public function minifyJs($script)
     {
         $regex   = '~//?\s*\*[\s\S]*?\*\s*//?~'; // RegEx to remove /** */ and // ** **// php comments
-        $search = array(
+        $search = [
             '/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\') \/\/.*))/',
             '/(\s)+/s',         // shorten multiple whitespace sequences
-        );
+        ];
 
-        $replace = array(
+        $replace = [
             '',
             '\\1',
-        );
+        ];
         $minScript = preg_replace($search, $replace, $script);
         /* Return $script when $minScript empty */
         return $minScript ? $minScript : $script;
@@ -340,21 +354,21 @@ class SpeedOptimizer extends \Magento\Framework\View\Element\Template
         $minHtml = str_replace($foundTxt[0], array_map(function($el){ return '<textarea>'.$el.'</textarea>'; }, array_keys($foundTxt[0])), (string) $minHtml);
         $minHtml = str_replace($foundPre[0], array_map(function($el){ return '<pre>'.$el.'</pre>'; }, array_keys($foundPre[0])), (string) $minHtml);
 
-        $search = array(
+        $search = [
             '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
             '/[^\S ]+\</s',     // strip whitespaces before tags, except space
             '/(\s)+/s',         // shorten multiple whitespace sequences
             // '/<!--((?! ko | \/ko )[\s\S])*?-->/' // remove comment exclude knockoutJS
             // '/<!--(.|\s)*?-->/' // Remove HTML comments this cause error knockoutJS
-        );
+        ];
 
-        $replace = array(
+        $replace = [
             '>',
             '<',
             '\\1',
             // '',
             // ''
-        );
+        ];
 
         $minHtml = preg_replace($search, $replace, $minHtml);
 
@@ -372,11 +386,11 @@ class SpeedOptimizer extends \Magento\Framework\View\Element\Template
         $preload   = '';
         $mediaUrl  = $this ->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
         $staticUrl =  $this->escapeUrl(
-                $this->getViewFileUrl('', [
+            $this->getViewFileUrl('', [
                     'area'  => 'frontend',
-                    'theme' => $this->getTheme()->getThemePath()
+                    'theme' => $this->getTheme()->getThemePath(),
                 ])
-            );
+        );
         $placeholder = $staticUrl . '/images/loader-1.gif';
 
         $jsTranslation =  $staticUrl . '/js-translation.json';
@@ -443,7 +457,9 @@ class SpeedOptimizer extends \Magento\Framework\View\Element\Template
 
     public function cleanHtml($html, $regex)
     {
-        $content = preg_replace_callback( $regex, function($match){
+        $content = preg_replace_callback(
+            $regex,
+            function($match){
                 $dom = new \DOMDocument;
                 $dom->preserveWhiteSpace = false;
                 libxml_use_internal_errors(true);

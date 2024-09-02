@@ -93,7 +93,6 @@ abstract class Action extends \Magento\Backend\App\Action
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Theme\Model\ThemeFactory $themeFactory,
         \Magento\Theme\Model\ResourceModel\Theme\CollectionFactory $themeCollectionFactory
-
     ) {
         parent::__construct($context);
         $this->_coreRegistry            = $coreRegistry;
@@ -111,8 +110,8 @@ abstract class Action extends \Magento\Backend\App\Action
     protected function _isAllowed()
     {
         $namespace = (new \ReflectionObject($this))->getNamespaceName();
-        $string = strtolower(str_replace(__NAMESPACE__ . '\\','', $namespace));
-        $action =  explode('\\',(string) $string);
+        $string = strtolower(str_replace(__NAMESPACE__ . '\\', '', $namespace));
+        $action =  explode('\\', (string) $string);
         $action =  array_shift($action);
         return $this->_authorization->isAllowed("Magepow_Theme::theme_$action");
     }

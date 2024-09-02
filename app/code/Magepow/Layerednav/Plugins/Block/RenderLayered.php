@@ -44,9 +44,9 @@ class RenderLayered
             return $proceed();
         }
 
-        $value = array();
+        $value = [];
         if($requestValue = $this->_request->getParam($attributeCode)){
-            $value = explode(',',(string) $requestValue);
+            $value = explode(',', (string) $requestValue);
         }
         if(!in_array($optionId, $value)) {
             $value[] = $optionId;

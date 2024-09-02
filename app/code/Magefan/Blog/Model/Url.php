@@ -16,20 +16,20 @@ class Url
     /**
      * Permalink Types
      */
-    const PERMALINK_TYPE_DEFAULT = 'default';
-    const PERMALINK_TYPE_SHORT = 'short';
+    public const PERMALINK_TYPE_DEFAULT = 'default';
+    public const PERMALINK_TYPE_SHORT = 'short';
 
     /**
      * Objects Types
      */
-    const CONTROLLER_INDEX = 'blog_index';
-    const CONTROLLER_POST = 'post';
-    const CONTROLLER_CATEGORY = 'category';
-    const CONTROLLER_ARCHIVE = 'archive';
-    const CONTROLLER_AUTHOR = 'author';
-    const CONTROLLER_SEARCH = 'search';
-    const CONTROLLER_RSS = 'rss';
-    const CONTROLLER_TAG = 'tag';
+    public const CONTROLLER_INDEX = 'blog_index';
+    public const CONTROLLER_POST = 'post';
+    public const CONTROLLER_CATEGORY = 'category';
+    public const CONTROLLER_ARCHIVE = 'archive';
+    public const CONTROLLER_AUTHOR = 'author';
+    public const CONTROLLER_SEARCH = 'search';
+    public const CONTROLLER_RSS = 'rss';
+    public const CONTROLLER_TAG = 'tag';
 
     /**
      * @var \Magento\Framework\Registry
@@ -126,7 +126,7 @@ class Url
             self::CONTROLLER_ARCHIVE,
             self::CONTROLLER_AUTHOR,
             self::CONTROLLER_TAG,
-            self::CONTROLLER_SEARCH
+            self::CONTROLLER_SEARCH,
         ] as $controllerName) {
             if ($this->getRoute($controllerName) == $route) {
                 return $controllerName;
@@ -144,7 +144,7 @@ class Url
     {
         $url = $this->_url->getUrl('', [
             '_direct' => $this->getBasePath(),
-            '_nosid' => $this->storeId ?: null
+            '_nosid' => $this->storeId ?: null,
         ]);
         $urlParts = explode('?', $url);
         if ($urlParts[0][strlen($urlParts[0]) - 1] != '/') {
@@ -166,7 +166,7 @@ class Url
     {
         $url = $this->_url->getUrl('', [
             '_direct' => $this->getUrlPath($identifier, $controllerName),
-            '_nosid' => $this->storeId ?: null
+            '_nosid' => $this->storeId ?: null,
         ]);
         return $url;
     }
@@ -312,7 +312,7 @@ class Url
             self::CONTROLLER_POST,
             self::CONTROLLER_CATEGORY,
             self::CONTROLLER_AUTHOR,
-            self::CONTROLLER_TAG
+            self::CONTROLLER_TAG,
         ])) {
             if ($sufix = $this->getUrlSufix($controllerName)) {
                 $char = false;

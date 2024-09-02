@@ -1,0 +1,370 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+?>
+<?php
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+?>
+<?php if (!$_productCollection->count()) :?>
+<div class="message info empty">
+    <div><?= $block->escapeHtml(__('We can\'t find products matching the selection.')) ?></div>
+</div>
+<?php else :?>
+<?= $block->getToolbarHtml() ?>
+<?= $block->getAdditionalHtml() ?>
+<?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $imageDisplayArea = 'category_page_grid';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $imageDisplayArea = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+<div class="products wrapper <?= /* @noEscape */ $viewMode ?> products-<?= /* @noEscape */ $viewMode ?>">
+    <ol class="products list items product-items">
+        <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+        <?php foreach ($_productCollection as $_product) :?>
+        <?php if ( $_product->isSaleable() && $_product->isAvailable() ) :?>
+        <li class="item product product-item">
+            <div data-role="add-to-links" class="actions-secondary"
+                <?= strpos($pos, $viewMode . '-secondary') ? $block->escapeHtmlAttr($position) : '' ?>>
+                <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow()): ?>
+                <a href="#" class="action towishlist" title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+                    aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+                    data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+                    data-action="add-to-wishlist" role="button">
+                    <span><?php /* @escapeNotVerified */ echo __('Add to Wish List') ?></span>
+                </a>
+                <?php endif; ?>
+            </div>
+            <div class="product-item-info" data-container="product-<?= /* @noEscape */ $viewMode ?>">
+                <?php
+                                $productImage = $block->getImage($_product, $imageDisplayArea);
+                                if ($pos != null) {
+                                    $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                        . 'top:' . $productImage->getHeight() . 'px;"';
+                                }
+                                ?>
+                <?php // Product Image ?>
+                <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>" class="product photo product-item-photo"
+                    tabindex="-1">
+                    <?= $productImage->toHtml(); ?>
+                </a>
+                <div class="product details product-item-details">
+                    <?php
+                                        $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                                        $_generoValue = $_product->getResource()->getAttribute('genero')->getFrontend()->getValue($_product);
+                                        $_tipoProdValue = $_product->getResource()->getAttribute('tipo_producto')->getFrontend()->getValue($_product);
+                                    ?>
+                    <!-- <div class="attr-type-gender"> -->
+                        <!-- <span><?php //echo $_tipoProdValue .' - '. $_generoValue; ?></span> -->
+                    <!-- </div> -->
+                    <strong class="product name product-item-name">
+                        <a class="product-item-link" href="<?= $block->escapeUrl($_product->getProductUrl()) ?>">
+                            <?= /* @noEscape */ $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                        </a>
+                    </strong>
+                    <div class="product-item-cant">
+                        <?php
+                            $totl_qty = 0;
+
+                            $configProduct = $objectManager->create('Magento\Catalog\Model\Product')->load($_product->getId());
+                            if ($_product->getTypeId() == 'configurable') {
+                                    $_children = $configProduct->getTypeInstance()->getUsedProducts($configProduct);
+                                    foreach ($_children as $child){
+                                        $StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+                                    $totl_qty += $StockState->getStockQty($child->getId(), $child->getStore()->getWebsiteId());
+
+                                    }
+                                }else{
+                                    $StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+                                    $totl_qty += $StockState->getStockQty($_product->getId(), $_product->getStore()->getWebsiteId());
+
+                                }
+                         if ($totl_qty < 10): ?>
+                        <span class="danger-cant"> <?php echo "Solo Quedan ".$totl_qty ?> </span>
+                        <?php else :?>
+                        <span class="success-cant"> <?php echo "Disponible" ?> </span>
+                        <?php endif;
+
+                           //   echo    $_product->getTypeId() ;
+
+
+                                         ?>
+
+
+                    </div>
+                    <?= $block->getReviewsSummaryHtml($_product, $templateType) ?>
+                    <?= /* @noEscape */ $block->getProductPrice($_product) ?>
+                    <div class="swatch-opt">
+                       <?= $block->getProductDetailsHtml($_product) ?>
+                    </div>
+
+                    <?php
+                                        $blocks = $this->getLayout()->getBlock('category.product.type.details.renderers.configurable');
+                                        // echo $blocks;
+                                            if(!empty($blocks)){
+
+                                        //    echo $blocks->setProduct($_product)->toHtml();
+                                            }
+                                    ?>
+
+
+
+
+                    <div class="product-item-inner">
+                        <div class="product actions product-item-actions"
+                            <?= strpos($pos, $viewMode . '-actions') ? $block->escapeHtmlAttr($position) : '' ?>>
+                            <div class="actions-primary"
+                                <?= strpos($pos, $viewMode . '-primary') ? $block->escapeHtmlAttr($position) : '' ?>>
+                                <?php if ($_product->isSaleable()) :?>
+                                <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                <form data-role="tocart-form"
+                                    data-product-sku="<?= $block->escapeHtml($_product->getSku()) ?>"
+                                    action="<?= $block->escapeUrl($postParams['action']) ?>" method="post">
+                                    <input type="hidden" name="product"
+                                        value="<?= /* @noEscape */ $postParams['data']['product'] ?>">
+                                    <input type="hidden" name="<?= /* @noEscape */ Action::PARAM_NAME_URL_ENCODED ?>"
+                                        value="<?= /* @noEscape */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                    <?= $block->getBlockHtml('formkey') ?>
+                                    <button type="submit" title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
+                                        class="action tocart primary">
+                                        <span>Agregar</span>
+                                    </button>
+                                </form>
+                                <?php else :?>
+                                <?php if ($_product->isAvailable()) :?>
+                                <div class="stock available"><span><?= $block->escapeHtml(__('In stock')) ?></span>
+                                </div>
+                                <?php else :?>
+                                <div class="stock unavailable">
+                                    <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+                                </div>
+                                <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php if ($showDescription) :?>
+                        <div class="product description product-item-description">
+                            <?= /* @noEscape */ $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                            <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
+                                title="<?= /* @noEscape */ $_productNameStripped ?>"
+                                class="action more"><?= $block->escapeHtml(__('Learn More')) ?></a>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <?php endif; ?>
+        <?php endforeach; ?>
+    </ol>
+</div>
+<?= $block->getToolbarHtml() ?>
+<?php if (!$block->isRedirectToCartEnabled()) :?>
+<script type="text/x-magento-init">
+    {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {
+                    "product_sku": "<?= $block->escapeJs($_product->getSku()) ?>"
+                }
+            }
+        }
+        </script>
+        <script>
+                 // Obtén una referencia al elemento strong y al menú
+                    let strongElements = document.querySelectorAll(".filter-subtitle");
+                    let menuElement = document.getElementById("narrow-by-list");
+
+                    let strongFiltered = document.querySelectorAll("strong.block-subtitle.filter-current-subtitle");
+                    let elementFiltered = document.querySelector(".block-content.filter-content .filter-current ol.items")
+
+
+                    // Inicializa una bandera para el estado del menú
+                    let menuVisible = false;
+                    let filtroVisible = false;
+
+                    // Agrega un controlador de eventos clic a cada elemento strong con la clase "toggle-menu"
+                    if (window.innerWidth < 768) {
+                    menuElement.style.display = "none";
+                    elementFiltered.style.display = "none";
+
+                    }else{
+                        menuElement.style.display = "block";
+                        elementFiltered.style.display = "block";
+                    }
+
+
+
+
+
+
+
+                    strongElements.forEach(function(strongElement) {
+                        strongElement.addEventListener("click", function() {
+                            // Cambia el estado de visibilidad del menú
+                            if (window.innerWidth < 768) {
+                            menuVisible = !menuVisible;
+
+                            // Actualiza el estilo de acuerdo al estado del menú
+                            if (menuVisible) {
+                            menuElement.style.display = "block";
+                            } else {
+                            menuElement.style.display = "none";
+                            }
+                            }
+                        });
+
+
+
+                          });
+
+
+                strongFiltered.forEach(function(strongElement) {
+                        strongElement.addEventListener("click", function() {
+                            // Cambia el estado de visibilidad del menú
+                            if (window.innerWidth < 768) {
+                                filtroVisible = !filtroVisible;
+
+                            // Actualiza el estilo de acuerdo al estado del menú
+                            if (filtroVisible) {
+                              elementFiltered.style.display = "block";
+                            } else {
+                                elementFiltered.style.display = "none";
+                            }
+                            }
+                        });
+
+
+
+                });
+
+
+
+
+                ///agregar boton para cerrar filtro en celulares
+
+                // Obtén una referencia al elemento con el ID "narrow-by-list"
+                let narrowByList = document.getElementById("narrow-by-list");
+
+                // Crea un elemento div
+                let divElement = document.createElement("div");
+
+                // Crea un elemento strong
+                let strongElement = document.createElement("strong");
+
+                // Establece el ID del strong en "cerrar"
+                strongElement.setAttribute("id", "cerrar");
+                divElement.classList.add("cerrar");
+
+                // Agrega texto o contenido al strong si es necesario
+                strongElement.textContent = "X";
+
+                // Agrega el strong al div
+                divElement.appendChild(strongElement);
+
+                // Agrega el div al elemento con ID "narrow-by-list"
+                narrowByList.appendChild(divElement);
+
+
+
+                let cerrarFiltro = document.getElementById("cerrar");
+                cerrarFiltro.addEventListener("click", function() {
+                      // Cambia el estado de visibilidad del menú
+                      if (window.innerWidth < 768) {
+                            menuVisible = !menuVisible;
+
+                            // Actualiza el estilo de acuerdo al estado del menú
+                            if (menuVisible) {
+                            menuElement.style.display = "block";
+                            } else {
+                            menuElement.style.display = "none";
+                            }
+                            }
+                        });
+
+       </script>
+
+
+
+<?php endif; ?>
+
+<?php endif; ?>
+
+
+<script>
+
+cantidad=0;
+(function() {
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+        this.addEventListener("load", function() {
+            // La llamada AJAX ha finalizado, puedes ejecutar una función aquí.
+            //console.log("Llamada AJAX finalizada");
+            // Llama a tu función personalizada aquí
+
+            if(cantidad==0){
+                selecAtt();
+            }
+
+
+        }, false);
+        origOpen.apply(this, arguments);
+    };
+})();
+
+function selecAtt(){
+            console.log('iniciando verificacion de atributos');
+            let attributeElements = document.querySelectorAll('.swatch-opt .swatch-attribute-options');
+
+
+                attributeElements.forEach((attributeElement, index) => {
+                    let optionElements = attributeElement.querySelectorAll('.swatch-option');
+
+                    if (optionElements.length === 1) {
+                        cantidad++;
+                        setTimeout(function () {
+                           // console.log('Se encontró uno, se hace click');
+                            optionElements[0].click();
+                            setTimeout(function () {
+                                console.log('Se oculta');
+                                optionElements[0].style.display = 'none';
+                            }, 500);
+                        }, index * 200); // Ajusta el intervalo de tiempo aquí
+                    }
+
+                    });
+                 //   console.log('finalizando verificacion de atributos');
+
+}
+
+
+
+        </script>
+
+
+

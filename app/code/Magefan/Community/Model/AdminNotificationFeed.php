@@ -17,7 +17,7 @@ class AdminNotificationFeed extends \Magento\AdminNotification\Model\Feed
     /**
      * @var string
      */
-    const MAGEFAN_CACHE_KEY = 'magefan_admin_notifications_lastcheck' ;
+    public const MAGEFAN_CACHE_KEY = 'magefan_admin_notifications_lastcheck' ;
 
     /**
      * @var \Magento\Backend\Model\Auth\Session
@@ -101,7 +101,7 @@ class AdminNotificationFeed extends \Magento\AdminNotification\Model\Feed
                 .'.c'.'om/community/notifications'.'/'.'feed/';
         }
         $urlInfo = parse_url($this->urlBuilder->getBaseUrl());
-        $domain = isset($urlInfo['host']) ? $urlInfo['host'] : '';
+        $domain = $urlInfo['host'] ?? '';
         $url = $this->_feedUrl . 'domain/' . urlencode($domain);
         $modulesParams = [];
         foreach ($this->getMagefanModules() as $moduleName => $module) {

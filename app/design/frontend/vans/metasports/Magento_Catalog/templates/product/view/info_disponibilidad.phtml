@@ -1,0 +1,68 @@
+Tiendas
+<table class="data table additional-attributes" id="product-attribute-specs-table">
+    <caption class="table-caption">Disponible en </caption>
+    <tbody>
+        <?php
+  $_product = $block->getProduct();
+ // echo $_product->getId();
+  $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+  $configProduct = $objectManager->create('Magento\Catalog\Model\Product')->load($_product->getId());
+
+  if ($_product->getTypeId() == 'configurable') {
+  $_children = $configProduct->getTypeInstance()->getUsedProducts($configProduct);
+
+  foreach ($_children as $child){
+    $StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+    $stockInfo = $objectManager->get('Magento\InventoryCatalogAdminUi\Model\GetSourceItemsDataBySku')->execute($child->getSku());
+    foreach ($stockInfo as $stockSource) {
+            foreach ($stockSource as $k=>$v) {
+                if ($k=='name'){
+                    $name=trim($v);
+                    $product[$name]['name']=$v;
+                        if(empty($product[$name]['quantity'])){
+                            $product[$name]['quantity']=0;
+                        }
+                    }
+                }
+                foreach ($stockSource as $key => $value) {
+                        if ($key=='quantity' ) {
+                            $product[$name]['quantity']+=(int)$value ;
+                        }
+                    }
+             }
+        }
+    }else{
+        $stockInfo = $objectManager->get('Magento\InventoryCatalogAdminUi\Model\GetSourceItemsDataBySku')->execute($_product->getSku());
+        foreach ($stockInfo as $stockSource) {
+                foreach ($stockSource as $k=>$v) {
+                    if ($k=='name'){
+                        $name=trim($v);
+                        $product[$name]['name']=$v;
+                            if(empty($product[$name]['quantity'])){
+                                $product[$name]['quantity']=0;
+                            }
+                        }
+                    }
+                    foreach ($stockSource as $key => $value) {
+                            if ($key=='quantity' ) {
+                                $product[$name]['quantity']+=(int)$value ;
+                            }
+                        }
+                 }
+
+    }
+  foreach ($product as $s) {
+  ?>
+        <?php if($s['quantity']> 0){?>
+        <tr>
+            <th class="col label" scope="row"><?php  echo $s['name'] ;?> </th>
+        </tr>
+
+        <?php }  ?>
+        <?php }  ?>
+    </tbody>
+</table>
+<?php
+
+
+?>

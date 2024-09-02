@@ -174,7 +174,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Post Meta Title',
-                    'after' => 'title'
+                    'after' => 'title',
                 ]
             );
 
@@ -188,7 +188,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'length' => 255,
                         'nullable' => true,
                         'comment' => 'Post OG ' . ucfirst($type),
-                        'after' => 'identifier'
+                        'after' => 'identifier',
                     ]
                 );
             }
@@ -202,7 +202,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Category Meta Title',
-                    'after' => 'title'
+                    'after' => 'title',
                 ]
             );
 
@@ -461,7 +461,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     null,
                     ['nullable' => false, 'default' => '0'],
                     'comment' => 'Category In Menu',
-                    'after' => 'position'
+                    'after' => 'position',
                 ]
             );
 
@@ -483,7 +483,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                     'default' => '0',
                     'comment' => 'Display Mode',
-                    'after' => 'is_active'
+                    'after' => 'is_active',
                 ]
             );
         }
@@ -499,7 +499,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                     'default' => '1',
                     'comment' => 'Include in Recent Posts',
-                    'after' => 'is_active'
+                    'after' => 'is_active',
                 ]
             );
         }
@@ -515,7 +515,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                     'default' => '0',
                     'comment' => 'Position',
-                    'after' => 'include_in_recent'
+                    'after' => 'include_in_recent',
                 ]
             );
 
@@ -528,7 +528,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                     'default' => '0',
                     'comment' => 'Post Sort By',
-                    'after' => 'position'
+                    'after' => 'position',
                 ]
             );
         }
@@ -554,7 +554,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 1,
                     'nullable' => false,
                     'default' => 1,
-                    'comment' => 'Is Tag Active'
+                    'comment' => 'Is Tag Active',
                 ]
             );
 
@@ -565,7 +565,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                     'length' => '2M',
                     [],
-                    'comment' =>'Tag Content'
+                    'comment' =>'Tag Content',
                 ]
             );
 
@@ -577,7 +577,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Tag Meta Title',
-                    'after' => 'title'
+                    'after' => 'title',
                 ]
             );
 
@@ -589,7 +589,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Tag Meta Keywords',
-                    'after' => 'title'
+                    'after' => 'title',
                 ]
             );
 
@@ -601,7 +601,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Tag Meta Description',
-                    'after' => 'title'
+                    'after' => 'title',
                 ]
             );
 
@@ -705,7 +705,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Tag Default Robots',
-                    'after' => 'title'
+                    'after' => 'title',
                 ]
             );
         }
@@ -720,7 +720,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 255,
                     'nullable' => true,
                     'comment' => 'Featured Image Alt',
-                    'after' => 'featured_img'
+                    'after' => 'featured_img',
                 ]
             );
 
@@ -731,7 +731,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'type' =>\Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                     'length' => null,
                     'nullable' => true,
-                    'comment' => 'Post Comment Counts'
+                    'comment' => 'Post Comment Counts',
 
                 ]
             );
@@ -801,7 +801,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             }
         }
 
-        if (version_compare($version,'2.11.1') < 0) {
+        if (version_compare($version, '2.11.1') < 0) {
             $connection->addColumn(
                 $setup->getTable('magefan_blog_post'),
                 'structure_data_type',
@@ -811,7 +811,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                     'default' => '0',
                     'comment' => 'Rich Snippet / Structured Data',
-                    'after' => 'meta_description'
+                    'after' => 'meta_description',
                 ]
             );
 
@@ -824,7 +824,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'length' => 20,
                     'nullable' => true,
                     'comment' => 'Post Reading Time',
-                    'after' => 'views_count'
+                    'after' => 'views_count',
                 ]
             );
         }

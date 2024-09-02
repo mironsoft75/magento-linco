@@ -37,23 +37,23 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Magento\Fr
     /**
      * Posts's Statuses
      */
-    const STATUS_ENABLED = 1;
-    const STATUS_DISABLED = 0;
+    public const STATUS_ENABLED = 1;
+    public const STATUS_DISABLED = 0;
 
     /**
      * blog cache post
      */
-    const CACHE_TAG = 'mfb_p';
+    public const CACHE_TAG = 'mfb_p';
 
     /**
      * Gallery images separator constant
      */
-    const GALLERY_IMAGES_SEPARATOR = ';';
+    public const GALLERY_IMAGES_SEPARATOR = ';';
 
     /**
      * Base media folder path
      */
-    const BASE_MEDIA_PATH = 'magefan_blog';
+    public const BASE_MEDIA_PATH = 'magefan_blog';
 
     /**
      * Prefix of model events names
@@ -1032,7 +1032,7 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Magento\Fr
             $relatedPosts = [];
             foreach ($this->getRelatedPosts() as $relatedPost) {
                 $relatedPosts[] = $relatedPost->getDynamicData(
-                    isset($fields['related_posts']) ? $fields['related_posts'] : null
+                    $fields['related_posts'] ?? null
                 );
             }
             $data['related_posts'] = $relatedPosts;
@@ -1051,7 +1051,7 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Magento\Fr
             $categories = [];
             foreach ($this->getParentCategories() as $category) {
                 $categories[] = $category->getDynamicData(
-                    isset($fields['categories']) ? $fields['categories'] : null
+                    $fields['categories'] ?? null
                 );
             }
             $data['categories'] = $categories;

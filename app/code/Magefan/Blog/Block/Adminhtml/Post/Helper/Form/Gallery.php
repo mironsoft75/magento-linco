@@ -125,8 +125,8 @@ class Gallery extends \Magento\Framework\View\Element\AbstractBlock
                 '',
                 [
                     'config' => [
-                        'parentComponent' => 'blog_post_form.blog_post_form.block_gallery.block_gallery'
-                    ]
+                        'parentComponent' => 'blog_post_form.blog_post_form.block_gallery.block_gallery',
+                    ],
                 ]
             );
         }

@@ -1,0 +1,36 @@
+@import 'sections/_variables.less'; // Colors / Fonts
+@import 'sections/_cart.less';
+//@import 'sections/_checkout.less';
+@import 'sections/_footer.less';
+@import 'sections/_grid.less';
+@import 'sections/_header.less';
+@import 'sections/_cms.less'; // Pages
+@import 'sections/_minicart.less';
+@import 'sections/_nav.less';
+@import 'sections/_product.less';
+@import 'sections/_icons.less';
+@import 'sections/_login_register.less';
+@import 'sections/_wishlist.less';
+@import 'sections/_forgot_password.less';
+
+//
+//  Extend - these files extend default Magento Blank Theme
+//  _____________________________________________
+
+@import 'extends/_forms_extend.less';
+@import 'extends/_typography_extend.less';
+@import 'extends/_utilities_extend.less';
+@import 'extends/_navigation_extend.less';
+@import 'extends/_buttons_extend.less';
+@import 'extends/_sections_extend.less';
+@import 'extends/_pages_extend.less';
+@import 'extends/_layout_extend.less';
+
+@copyright__background-color: @color-gray-middle4;
+body {
+    background-color: @cararra;
+    &.catalog-category-view .swatch-option-tooltip,
+    &.catalog-product-view .swatch-option-tooltip {
+        display: none!important;
+    }
+}

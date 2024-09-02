@@ -33,10 +33,10 @@ class Data extends AbstractHelper
 	
     public function __construct(
         Context $context,
-		\Magento\Framework\Url $url,
-		\Magento\Cms\Model\PageFactory $pageFactory,
-		\Magento\Cms\Model\Template\FilterProvider $filterProvider,
-		StoreManagerInterface $storeManager 
+        \Magento\Framework\Url $url,
+        \Magento\Cms\Model\PageFactory $pageFactory,
+        \Magento\Cms\Model\Template\FilterProvider $filterProvider,
+        StoreManagerInterface $storeManager
     )
     {
     	$this->storeManager = $storeManager;
@@ -57,7 +57,7 @@ class Data extends AbstractHelper
     {
         $values = $this->configModule;
         if( !$cfg ) return $values;
-        $config  = explode('/',(string) $cfg);
+        $config  = explode('/', (string) $cfg);
         $end     = count($config) - 1;
         foreach ($config as $key => $vl) {
             if( isset($values[$vl]) ){

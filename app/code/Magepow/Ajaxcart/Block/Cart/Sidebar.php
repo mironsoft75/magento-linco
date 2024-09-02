@@ -38,16 +38,13 @@ class Sidebar extends Template
     * @param array $data
     */
    public function __construct(
-     Template\Context $context,
-
-     \Magepow\Ajaxcart\Helper\Data $helper,
-
-     \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-     \Magento\Store\Model\StoreManagerInterface $storeManager,
-     \Magento\Framework\Locale\CurrencyInterface $localeCurrency,
-     \Magento\Framework\Serialize\Serializer\Json $serializer = null,
-
-     array $data = []
+       Template\Context $context,
+       \Magepow\Ajaxcart\Helper\Data $helper,
+       \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+       \Magento\Store\Model\StoreManagerInterface $storeManager,
+       \Magento\Framework\Locale\CurrencyInterface $localeCurrency,
+       \Magento\Framework\Serialize\Serializer\Json $serializer = null,
+       array $data = []
    ) {
      parent::__construct($context, $data);
      $this->scopeConfig = $scopeConfig;
@@ -62,11 +59,11 @@ class Sidebar extends Template
       //     $this->jsLayout = $jsLayoutDataProvider->getData();
       // }
     $this->jsLayout = isset($data['jsLayout']) && is_array($data['jsLayout']) ? $data['jsLayout'] : [];
-    $this->jsLayout['components']['minicart-addons']['config'] = array(
+    $this->jsLayout['components']['minicart-addons']['config'] = [
       'currency' => $this->getStoreCurrency(),
       'currencyCode' => $this->getCurrentCurrencyCode(),
       'shippingBar' => $this->getConfigForShippingBar(),
-    );
+    ];
     $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\Magento\Framework\Serialize\Serializer\Json::class);
 

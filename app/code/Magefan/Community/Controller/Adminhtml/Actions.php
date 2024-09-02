@@ -184,7 +184,7 @@ abstract class Actions extends \Magento\Backend\App\Action
             // restore data
             $values = $this->_getSession()->getData($this->_formSessionKey, true);
             if ($this->_paramsHolder) {
-                $values = isset($values[$this->_paramsHolder]) ? $values[$this->_paramsHolder] : null;
+                $values = $values[$this->_paramsHolder] ?? null;
             }
 
             if ($values) {

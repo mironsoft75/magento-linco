@@ -19,12 +19,12 @@ class DevHelper extends \Magepow\Quickedit\Helper\Data
     /**
      * XPath of configuration of the debug block names
      */
-    const XML_PATH_DEBUG_TEMPLATE_HINTS_BLOCKS = 'dev/debug/template_hints_blocks';
+    public const XML_PATH_DEBUG_TEMPLATE_HINTS_BLOCKS = 'dev/debug/template_hints_blocks';
 
     /**
      * Quickedit allow ips config path
      */
-    const XML_PATH_MAGEPOW_QUICKEDIT_ALLOW_IPS = 'magepow_quickedit/general/restrict_allow_ips';
+    public const XML_PATH_MAGEPOW_QUICKEDIT_ALLOW_IPS = 'magepow_quickedit/general/restrict_allow_ips';
 
     /**
      * XPath of configuration of the debug hints
@@ -254,45 +254,45 @@ class DevHelper extends \Magepow\Quickedit\Helper\Data
             'blue',
             'red',
             'violet',
-            'green'
+            'green',
         ];
         $i = 0;
         foreach ($infoHints as $key => $info) {
-            $title = isset($info['title']) ? $info['title'] : '';
-            $url   = isset($info['url']) ? $info['url']   : '#';
+            $title = $info['title'] ?? '';
+            $url   = $info['url']   ?? '#';
                 $hintsHtml .= <<<HTML
-<a class="debugging-hint-{$color[$i]}" style="position: absolute; padding: 2px 5px; font: normal 11px Arial; background: {$color[$i]}; color: white; white-space: nowrap;" onmouseover="this.style.zIndex = 999999999;" onmouseout="this.style.zIndex = 'auto';" href="{$url}" title="{$title}">{$title}</a>
-HTML;
+                    <a class="debugging-hint-{$color[$i]}" style="position: absolute; padding: 2px 5px; font: normal 11px Arial; background: {$color[$i]}; color: white; white-space: nowrap;" onmouseover="this.style.zIndex = 999999999;" onmouseout="this.style.zIndex = 'auto';" href="{$url}" title="{$title}">{$title}</a>
+                    HTML;
             $i++;
             if( $i%4 == 0 ) $i = 0;
         }
         $hintsHtml .=<<<HTML
-        <style type="text/css">
-            .debugging-hint-blue{
-                left: 0;
-                top: 0;
-            }
-            .debugging-hint-red{
-                right: 0;
-                top: 0;
-            }
-            .debugging-hint-violet{
-                right: 0;
-                bottom: 0;
-            }
-            .debugging-hint-green{
-                left: 0;
-                bottom: 0;
-            }
-        </style>
-HTML;
+                    <style type="text/css">
+                        .debugging-hint-blue{
+                            left: 0;
+                            top: 0;
+                        }
+                        .debugging-hint-red{
+                            right: 0;
+                            top: 0;
+                        }
+                        .debugging-hint-violet{
+                            right: 0;
+                            bottom: 0;
+                        }
+                        .debugging-hint-green{
+                            left: 0;
+                            bottom: 0;
+                        }
+                    </style>
+            HTML;
         // @codingStandardsIgnoreStart
         return <<<HTML
-<div class="debugging-hints-advanced" style="position: relative; z-index: 99; border: 1px dotted blue; margin: 6px 2px; padding: 18px 2px 2px 2px;">
-{$hintsHtml}
-{$blockHtml}
-</div>
-HTML;
+            <div class="debugging-hints-advanced" style="position: relative; z-index: 99; border: 1px dotted blue; margin: 6px 2px; padding: 18px 2px 2px 2px;">
+            {$hintsHtml}
+            {$blockHtml}
+            </div>
+            HTML;
         // @codingStandardsIgnoreEnd
     }
 }

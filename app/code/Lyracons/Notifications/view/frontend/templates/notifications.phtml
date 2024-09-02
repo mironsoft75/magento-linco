@@ -1,0 +1,25 @@
+<?php
+$configValues = $block->getConfigData();
+?>
+<script type="text/x-magento-init">
+{
+	"*":{
+		"Lyracons_Notifications/js/notificationsConfig":{
+			"successBorderColor": "#<?php echo $configValues['success_border_color']; ?>",
+			"successBackgroundColor": "#<?php echo $configValues['success_background_color']; ?>",
+            "successTextColor": "#<?php echo $configValues['success_text_color']; ?>",
+			"successNotificationDelay": "<?php echo $configValues['success_notification_delay']; ?>",
+
+			"warningBorderColor": "#<?php echo $configValues['warning_border_color']; ?>",
+			"warningBackgroundColor": "#<?php echo $configValues['warning_background_color']; ?>",
+            "warningTextColor": "#<?php echo $configValues['warning_text_color']; ?>",
+			"warningNotificationDelay": "<?php echo $configValues['warning_notification_delay']; ?>",
+
+			"errorBorderColor": "#<?php echo $configValues['error_border_color']; ?>",
+			"errorBackgroundColor": "#<?php echo $configValues['error_background_color']; ?>",
+			"errorTextColor": "#<?php echo $configValues['error_text_color']; ?>",
+			"errorNotificationDelay": "<?php echo $configValues['error_notification_delay']; ?>"
+		}
+	}
+}
+</script>

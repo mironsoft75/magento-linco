@@ -16,13 +16,13 @@ use Magento\Framework\App\ProductMetadataInterface;
  */
 final class Section
 {
-    const MODULE = 'mfmodule';
+    public const MODULE = 'mfmodule';
 
-    const ENABLED = 'enabled';
+    public const ENABLED = 'enabled';
 
-    const KEY = 'key';
+    public const KEY = 'key';
 
-    const TYPE = 'mftype';
+    public const TYPE = 'mftype';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -93,7 +93,8 @@ final class Section
 
         if (\Magefan\Community\Model\UrlChecker::showUrl($url)) {
             if ($module
-                && (!$this->getConfig(self::TYPE)
+                && (
+                    !$this->getConfig(self::TYPE)
                     || $this->getConfig(self::TYPE) && $this->metadata->getEdition() != 'C' . 'omm' . 'un' . 'ity'
                 )
             ) {

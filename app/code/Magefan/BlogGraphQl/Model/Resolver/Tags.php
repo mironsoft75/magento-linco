@@ -113,7 +113,7 @@ class Tags implements ResolverInterface
 
         return [
             'total_count' => $searchResult->getTotalCount(),
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

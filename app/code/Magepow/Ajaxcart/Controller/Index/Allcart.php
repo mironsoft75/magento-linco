@@ -29,7 +29,7 @@ class Allcart extends Index
         $productIds = $this->getRequest()->getParam('productIds');
         
         if ($productIds) {
-            $productIds = explode(',',(string) $productIds);
+            $productIds = explode(',', (string) $productIds);
             $this->cart->addProductsByIds($productIds);
             $this->cart->save();
             $result     =  $this->returnResult();

@@ -1,0 +1,5 @@
+@media (max-width: 780px) {
+	body.filter-active{
+		height: 100vh !important
+	}
+

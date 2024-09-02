@@ -259,7 +259,7 @@ class Wordpress extends AbstractImport
             $metaResult = $adapter->query($sql)->execute();
             foreach ($metaResult as $metaData) {
 
-                $metaValue = trim(isset($metaData['meta_value']) ? $metaData['meta_value'] : '');
+                $metaValue = trim($metaData['meta_value'] ?? '');
                 if (!$metaValue) {
                     continue;
                 }
@@ -301,13 +301,13 @@ class Wordpress extends AbstractImport
             $data = [
                 'store_ids' => [$this->getStoreId()],
                 'title' => $data['post_title'],
-                'meta_title' => isset($data['meta_title']) ? $data['meta_title'] : '',
-                'meta_description' => isset($data['meta_description']) ? $data['meta_description'] : '',
+                'meta_title' => $data['meta_title'] ?? '',
+                'meta_description' => $data['meta_description'] ?? '',
                 'meta_keywords' => '',
                 'identifier' => $data['post_name'],
                 'content_heading' => '',
                 'content' => $content,
-                'short_content' => isset($data['short_content']) ? $data['short_content'] : '',
+                'short_content' => $data['short_content'] ?? '',
                 'creation_time' => $creationTime,
                 'update_time' => strtotime((string)$data['post_modified_gmt']),
                 'publish_time' => $creationTime,

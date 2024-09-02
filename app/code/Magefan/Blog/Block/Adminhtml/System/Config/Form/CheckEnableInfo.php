@@ -20,12 +20,12 @@ class CheckEnableInfo extends \Magento\Backend\Block\Template
      * Magefan Blog Plus Module
      * @deprecated
      */
-    const MAGEFAN_BLOG_PLUS = 'Magefan_BlogPlus';
+    public const MAGEFAN_BLOG_PLUS = 'Magefan_BlogPlus';
 
     /**
      * Extension key config path
      */
-    const XML_PATH_KEY = 'mfblog/general/key';
+    public const XML_PATH_KEY = 'mfblog/general/key';
 
     /**
      * @var \Magefan\Blog\Model\Config
@@ -109,7 +109,7 @@ class CheckEnableInfo extends \Magento\Backend\Block\Template
                 continue;
             }
 
-            list($vendor, $name) = explode('_', $module);
+            [$vendor, $name] = explode('_', $module);
             if ('Magefan' == $vendor) {
                 continue;
             }

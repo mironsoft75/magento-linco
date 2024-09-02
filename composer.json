@@ -18,12 +18,18 @@
     },
     "version": "2.4.6",
     "require": {
+        "amasty/base": "^1.17",
+        "amasty/module-gift-card": "^2.13",
+        "amasty/module-store-locator": "^3.3",
+        "amasty/module-store-pickup-with-locator": "^2.8",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
         "magento/product-community-edition": "2.4.7",
         "mageplaza/magento-2-spanish-argentina-language-pack": "dev-master",
         "mageplaza/magento-2-spanish-language-pack": "dev-master",
         "mageplaza/module-smtp": "^4.7",
+        "msp/cmsimportexport": "^1.1",
+        "temando/module-shipping": "^2.0",
         "xtento/module-stockimport": "^2.12",
         "xtento/orderexport": "^2.16"
     },
@@ -52,7 +58,7 @@
         "allure-framework/allure-phpunit": "^2",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
         "dg/bypass-finals": "^1.4",
-        "friendsofphp/php-cs-fixer": "^3.8",
+        "friendsofphp/php-cs-fixer": "^3.63",
         "lusitanian/oauth": "^0.8",
         "magento/magento-coding-standard": "*",
         "magento/magento2-functional-testing-framework": "^4.2.1",
@@ -86,6 +92,10 @@
         "0": {
             "type": "composer",
             "url": "https://repo.magento.com/"
+         },
+	 "amasty": {
+            "type": "composer",
+            "url": "https://composer.amasty.com/community/"
         }
     },
     "extra": {

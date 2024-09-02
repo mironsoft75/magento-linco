@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="lyracons_slideshow" class="Lyracons\Slideshow\Block\Widget\Slideshow"
+            placeholder_image="Lyracons_Slideshow::images/placeholder.gif">
+        <label translate="true">Lyracons Slideshow</label>
+        <description translate="true">Create Slideshow slider</description>
+        <parameters>
+            <parameter name="slideshow_id" xsi:type="select" visible="true" sort_order="10" source_model="Lyracons\Slideshow\Model\Config\Source\Slideshow">
+                <label translate="true">Select Slideshow</label>                
+            </parameter>                       
+        </parameters>
+    </widget>   
+</widgets>

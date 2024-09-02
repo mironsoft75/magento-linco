@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Lyracons_Options::Lyracons_Options" title="Themes Options">
+                    <resource id="Lyracons_MegaMenu::megamenu" title=" Megamenu Drag &amp; Drop" sortOrder="10">
+                        <resource id="Lyracons_MegaMenu::index" title="Manage Megamenu" sortOrder="10" />
+                        <resource id="Lyracons_MegaMenu::edit" title="Edit Megamenu" sortOrder="20" />
+                        <resource id="Lyracons_MegaMenu::save" title="Save Megamenu" sortOrder="20" />
+                        <resource id="Lyracons_MegaMenu::delete" title="Delete Megamenu" sortOrder="30" />
+                        <resource id="Lyracons_MegaMenu::settings" title="Megamenu Settings" sortOrder="30" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

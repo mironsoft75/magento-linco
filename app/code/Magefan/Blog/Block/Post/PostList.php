@@ -153,7 +153,7 @@ class PostList extends \Magefan\Blog\Block\Post\PostList\AbstractList
                 [
                     'label' => __('Home'),
                     'title' => __('Go to Home Page'),
-                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                    'link' => $this->_storeManager->getStore()->getBaseUrl(),
                 ]
             );
 

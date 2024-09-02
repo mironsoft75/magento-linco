@@ -16,7 +16,7 @@ class Type implements \Magento\Framework\Option\ArrayInterface
         return [
             'window' 	=> 'Window',
             'inner' 	=> 'Inner',
-            'lens' 		=> 'Lens'
+            'lens' 		=> 'Lens',
         ];
     }
 }

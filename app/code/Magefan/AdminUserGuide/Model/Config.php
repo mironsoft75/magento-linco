@@ -22,7 +22,7 @@ class Config
     /**
      * Extension enabled config path
      */
-    const XML_PATH_EXTENSION_ENABLED = 'mfadminuserguide/general/enabled';
+    public const XML_PATH_EXTENSION_ENABLED = 'mfadminuserguide/general/enabled';
 
     /**
      * Config constructor.

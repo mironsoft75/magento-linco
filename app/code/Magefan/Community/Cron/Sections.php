@@ -79,7 +79,7 @@ class Sections
                 continue;
             }
             $section = $this->sectionFactory->create([
-                'name' => $matches[1]
+                'name' => $matches[1],
             ]);
 
             if ($section->getModule()) {
@@ -100,7 +100,7 @@ class Sections
                         $connection->update(
                             $table,
                             [
-                                'value' => 0
+                                'value' => 0,
                             ],
                             ['path = ? ' => $section->getName() . '/' . $path]
                         );
