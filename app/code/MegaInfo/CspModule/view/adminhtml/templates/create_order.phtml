@@ -1,0 +1,19 @@
+<?php
+/** @var \MegaInfo\CspModule\Helper\CspNonce $cspNonce */
+$nonce = $cspNonce->getNonce();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+</head>
+<body>
+    <!-- Tu contenido HTML -->
+
+    <!-- Script inline con Nonce -->
+    <script nonce="<?php echo $nonce; ?>">
+        console.log('CSP Nonce aplicado correctamente.');
+    </script>
+</body>
+</html>
+

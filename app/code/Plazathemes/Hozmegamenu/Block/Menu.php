@@ -397,7 +397,11 @@ class Menu	 extends \Magento\Framework\View\Element\Template
 		}
 		$thumb_nail = $this->getThumbUrl($category->getThumbNail());
 		$bg_img = $this->getConfig('image');
-		$bg_category = json_decode($bg_img);
+		$jsonString = $bg_img ?? '';
+	        $bg_category='';
+                  if (!empty($jsonString)) {
+		     $bg_category = json_decode($jsonString);
+                    }
         // --- Top Menu Item ---
 		$link =  $this->_catalogCategory->getCategoryUrl($category);
 		

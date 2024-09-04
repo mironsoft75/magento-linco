@@ -7,6 +7,8 @@
 // @codingStandardsIgnoreFile
 
 /** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+$jsonHelper = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Json\Helper\Data::class); 
+
 ?>
 
 <div data-block="minicart" class="minicart-wrapper">
@@ -43,7 +45,8 @@
         </div>
     <?php endif ?>
     <script>
-        window.checkout = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getConfig()); ?>;
+window.checkout = <?php echo $jsonHelper->jsonEncode($block->getConfig()); ?>;
+
     </script>
     <script type="text/x-magento-init">
     {

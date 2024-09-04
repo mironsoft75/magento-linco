@@ -25,6 +25,7 @@
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
         "magento/product-community-edition": "2.4.7",
+        "magento/theme-frontend-luma": "^100.4",
         "mageplaza/magento-2-spanish-argentina-language-pack": "dev-master",
         "mageplaza/magento-2-spanish-language-pack": "dev-master",
         "mageplaza/module-smtp": "^4.7",

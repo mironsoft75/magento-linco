@@ -12,7 +12,8 @@
 	$auto = $block->getConfig('auto');
 	$rows = $block->getConfig('row');
 	$title = $block->getTitle();
-	$identify = trim($block->getIdentify());
+	$identify = $block->getIdentify() !== null ? trim($block->getIdentify()) : '';
+
 	$categoryIds = $block->getCategoryIds();
 	$categoryIds = explode(',', $categoryIds);
 

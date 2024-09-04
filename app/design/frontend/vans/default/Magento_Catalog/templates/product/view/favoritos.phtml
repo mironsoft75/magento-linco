@@ -1,0 +1,19 @@
+
+<?php
+$pos = $block->getPositioned();
+$_product = $block->getProduct();
+$viewMode = 'list';
+?>
+<div data-role="add-to-links" class="actions-secondary"
+    <?= $pos !== null && strpos($pos, $viewMode . '-secondary') !== false ? $block->escapeHtmlAttr($position) : '' ?>>
+
+    <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow()): ?>
+
+    <a href="#" class="action towishlist" title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+        aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+        data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+        data-action="add-to-wishlist" role="button">
+        <span><?php /* @escapeNotVerified */ echo __('Add to Wish List') ?></span>
+    </a>
+    <?php endif; ?>
+</div>

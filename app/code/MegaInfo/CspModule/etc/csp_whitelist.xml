@@ -39,6 +39,18 @@
                 <value id="script-googleapis" type="host">*.googleapis.com</value>
                 <value id="script-gstatic" type="host">*.gstatic.com</value>
                 <value id="script-xtento" type="host">cdn.xtento.com</value>
+		<value id="script-checkout" type="hash" algorithm="sha256">sha256-lCrhrPxBEdhoMoxywJJMXe5ykmqFjGd384IAYGtQVMw=</value>
+<value id="script-checkout1" type="hash" algorithm="sha256">nkEZknO0IxNxY/CkTMBhjNhwPvglpYumjx31B4fjkY8=</value>
+<value id="script-checkout2" type="hash" algorithm="sha256">OXd3NzF4bjJnZmNnbnM4MzdxZW0zeW1jcHp3MHJhNGs=</value>
+<value id="script-checkout3" type="hash" algorithm="sha256">ZGpkOGg2dXdsdTNma2pqZ2FiYjVpZGFiMTdrMW5iem8=</value>
+<value id="script-checkout4" type="hash" algorithm="sha256">W5akSSK6LD5BjIlNICMcXaUObQSRAaj6bs7JHADURBA=</value>
+<value id="script-checkout5" type="hash" algorithm="sha256">qVqeAdyxxTdPkkRzqapjGkAUYLahxSrB7Mdup+GPQ0=</value>
+<value id="script-checkout6" type="hash" algorithm="sha256">2rvfFrggTCtyF5WOiTri1gDS8Boibj4Njn0e+VCBmDI=</value>
+<value id="script-checkout7" type="hash" algorithm="sha256">p8MCfMHqrovsjRYU9z0bU17dd0z81k/fVbGrtBBiM9g=</value>
+<value id="script-checkout8" type="hash" algorithm="sha256">0pk2s4oXwBELlC6IBVb3nNaM2PjfjwI2N6OGIX5lx8Y=</value>
+<value id="script-checkout9" type="hash" algorithm="sha256">758ceaa8c2c214bd76aa8e0a6459b75b03a7f5305676b0141982650aebf128c4</value>
+<value id="script-checkout10" type="hash" algorithm="sha256">713958bb23d3de0f9abffe19acbb3182568db18dac37cd253e1c40a80eb3a489</value>
+<value id="script-custom-hash" type="hash" algorithm="sha256">be4c326c597333354657504fd8fd2fcb2539068a047aff1c7af67c988eceaa21</value> 
             </values>
         </policy>
         <policy id="style-src">
