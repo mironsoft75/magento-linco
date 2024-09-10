@@ -19,11 +19,8 @@ class FacetResources {
     {
         foreach ($facetResources as $facetResource) {
             if (!($facetResource instanceof FacetResource)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($facetResource),
-                    FacetResource::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($facetResource), FacetResource::class));
             }
         }
         $this->facetResources = $facetResources;
@@ -34,7 +31,7 @@ class FacetResources {
      * @return bool|FacetResource
      */
     public function get($name) {
-        return $this->facetResources[$name] ?? false;
+        return isset($this->facetResources[$name]) ? $this->facetResources[$name] : false;
     }
 
     /**

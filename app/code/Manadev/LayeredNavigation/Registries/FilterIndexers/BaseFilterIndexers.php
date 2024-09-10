@@ -19,11 +19,8 @@ abstract class BaseFilterIndexers {
     {
         foreach ($indexers as $indexer) {
             if (!($indexer instanceof FilterIndexer)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($indexer),
-                    FilterIndexer::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($indexer), FilterIndexer::class));
             }
         }
         $this->indexers = $indexers;

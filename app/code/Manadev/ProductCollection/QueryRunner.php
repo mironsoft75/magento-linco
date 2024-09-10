@@ -13,7 +13,7 @@ use Manadev\ProductCollection\Contracts\ProductCollection;
 
 class QueryRunner
 {
-    public const DEFAULT_QUERY_ENGINE = 'mysql';
+    const DEFAULT_QUERY_ENGINE = 'elasticsearch7';
 
     /**
      * @var Configuration
@@ -49,11 +49,8 @@ class QueryRunner
         $supportedFilterTypes = array_keys($filterResourceRegistry->getList());
         $isQuerySupportedByEngine = true;
 
-        $query->eachFilter(function(Filter $filter) use (
-            $filterResourceRegistry,
-            $supportedFilterTypes,
-            &$isQuerySupportedByEngine
-        )
+        $query->eachFilter(function(Filter $filter) use ($filterResourceRegistry, $supportedFilterTypes,
+            &$isQuerySupportedByEngine)
         {
             if (!in_array($filter->getType(), $supportedFilterTypes)) {
                 $isQuerySupportedByEngine = false;

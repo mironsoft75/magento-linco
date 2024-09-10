@@ -37,7 +37,7 @@ class SystemConfigReader extends \Magento\Config\Model\Config\Structure\Reader {
             $fileList = $fileList->toArray();
         }
         foreach(array_keys($fileList) as $file) {
-            $parts = explode("/", $file);
+            $parts = explode("/",$file);
             $module = implode("_", [$parts[count($parts) - 5], $parts[count($parts) - 4]]);
             if(!$this->features->isEnabled($module, 0)) {
                 unset($fileList[$file]);

@@ -33,12 +33,8 @@ class TextSingleSelect extends FilterTemplate {
      */
     protected $storeManager;
 
-    public function __construct(
-        RequestParser $requestParser,
-        Factory $factory,
-        CategoryRepositoryInterface $categoryRepository,
-        StoreManagerInterface $storeManager
-    )
+    public function __construct(RequestParser $requestParser, Factory $factory,
+        CategoryRepositoryInterface $categoryRepository, StoreManagerInterface $storeManager)
     {
         $this->requestParser = $requestParser;
         $this->factory = $factory;
@@ -78,23 +74,16 @@ class TextSingleSelect extends FilterTemplate {
 
         if (($appliedCategoryId = $this->requestParser->readSingleValueInteger($name)) !== false) {
             $query->getFilterGroup('layered_nav')->addOperand($this->factory->createLayeredCategoryFilter(
-                $name,
-                [$appliedCategoryId]
-            ));
+                $name, [$appliedCategoryId]));
 
             /* @var $appliedCategory Category */
-            $appliedCategory = $this->categoryRepository->get(
-                $appliedCategoryId,
-                $this->storeManager->getStore()->getId()
-            );
+            $appliedCategory = $this->categoryRepository->get($appliedCategoryId,
+                $this->storeManager->getStore()->getId());
         }
 
 
-        $query->addFacet($this->factory->createChildCategoryFacet(
-            $name,
-            $appliedCategory,
-            $filter->getData('hide_filter_with_single_visible_item')
-        ));
+        $query->addFacet($this->factory->createChildCategoryFacet($name, $appliedCategory,
+            $filter->getData('hide_filter_with_single_visible_item')));
     }
 
     /**
@@ -116,10 +105,8 @@ class TextSingleSelect extends FilterTemplate {
 
         if (($appliedCategoryId = $this->requestParser->readSingleValueInteger($name)) !== false) {
             /* @var $appliedCategory Category */
-            $appliedCategory = $this->categoryRepository->get(
-                $appliedCategoryId,
-                $this->storeManager->getStore()->getId()
-            );
+            $appliedCategory = $this->categoryRepository->get($appliedCategoryId,
+                $this->storeManager->getStore()->getId());
 
             yield [
                 'label' => $appliedCategory->getName(),

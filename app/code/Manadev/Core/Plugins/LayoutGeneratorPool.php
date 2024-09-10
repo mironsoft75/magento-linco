@@ -46,7 +46,7 @@ class LayoutGeneratorPool
             }
 
             foreach ($data['actions'] as $action) {
-                [$actionName, $actionParame] = $action;
+                list($actionName, $actionParame) = $action;
                 switch ($actionName) {
                     case 'remove':
                         $this->remove($structure, $actionParame);

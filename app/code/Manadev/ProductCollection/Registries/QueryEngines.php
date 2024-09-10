@@ -18,11 +18,8 @@ class QueryEngines {
     {
         foreach ($queryEngines as $queryEngine) {
             if (!($queryEngine instanceof QueryEngine)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($queryEngine),
-                    QueryEngine::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($queryEngine), QueryEngine::class));
             }
         }
         $this->queryEngines = array_filter($queryEngines, function(QueryEngine $queryEngine) {
@@ -35,6 +32,6 @@ class QueryEngines {
      * @return bool|QueryEngine
      */
     public function get($name) {
-        return $this->queryEngines[$name] ?? false;
+        return isset($this->queryEngines[$name]) ? $this->queryEngines[$name] : false;
     }
 }

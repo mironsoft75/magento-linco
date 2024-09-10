@@ -49,11 +49,8 @@ class Query
      */
     protected $categoryRepository;
 
-    public function __construct(
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        CategoryRepositoryInterface $categoryRepository
-    )
+    public function __construct(Factory $factory, StoreManagerInterface $storeManager,
+        CategoryRepositoryInterface $categoryRepository)
     {
         $this->factory = $factory;
         $this->filters = $this->factory->createLogicalFilter('root');
@@ -122,7 +119,7 @@ class Query
      * @return bool|Facet
      */
     public function getFacet($name) {
-        return $this->facets[$name] ?? false;
+        return isset($this->facets[$name]) ? $this->facets[$name] : false;
     }
 
     /**

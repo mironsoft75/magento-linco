@@ -20,11 +20,8 @@ class PostInstallScripts
     {
         foreach ($postInstallScripts as $module => $postInstallScript) {
             if (!($postInstallScript instanceof PostInstallScript)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($postInstallScript),
-                    PostInstallScript::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($postInstallScript), PostInstallScript::class));
             }
 
             $this->postInstallScripts[$module] = $postInstallScript;

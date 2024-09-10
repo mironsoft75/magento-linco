@@ -29,8 +29,7 @@ class QueryLogger {
 
     protected function getFileName($file) {
         if (!isset($this->fileNames[$file])) {
-            $this->fileNames[$file] = sprintf(
-                "%s/%s-%s",
+            $this->fileNames[$file] = sprintf("%s/%s-%s",
                 $file,
                 PHP_SAPI !== 'cli' ? $_SERVER['REMOTE_ADDR'] : 'cli',
                 date("Y-m-d-H-i-s")
@@ -87,8 +86,7 @@ class QueryLogger {
         $this->logHeader($file);
 
         if ($this->configuration->includeQueryStackTrace()) {
-            $this->logger->debug(sprintf(
-                "%d rows affected\n    %s\n\n%s\n\n%s",
+            $this->logger->debug(sprintf("%d rows affected\n    %s\n\n%s\n\n%s",
                 $this->getAffectedRows($type, $result),
                 $time,
                 $this->formatSql($sql, $bind),
@@ -99,22 +97,23 @@ class QueryLogger {
         }
 
         if ($trace = $this->findTrace()) {
-            $this->logger->debug(sprintf(
-                "%s::%s(): %s (%d rows affected)\n\n    at %s (%d)\n    %s\n\n%s\n",
+            $this->logger->debug(sprintf("%s::%s(): %s (%d rows affected)\n\n    at %s (%d)\n    %s\n\n%s\n",
                 $trace['class'],
                 $trace['function'],
+
                 $trace['db_method'],
                 $this->getAffectedRows($type, $result),
+
                 $trace['file'],
                 $trace['line'],
+
                 $time,
                 $this->formatSql($sql, $bind)
             ), ['file' => $file['name']]);
 
         }
         else {
-            $this->logger->debug(sprintf(
-                "%d rows affected\n    %s\n\n%s\n",
+            $this->logger->debug(sprintf("%d rows affected\n    %s\n\n%s\n",
                 $this->getAffectedRows($type, $result),
                 $time,
                 $this->formatSql($sql, $bind)
@@ -186,23 +185,11 @@ class QueryLogger {
             $result .= $ch;
         }
 
-        $result = str_replace(
-            "FROM",
-            "\nFROM",
-            str_replace(
-                " SELECT",
-                "\nSELECT",
-                str_replace(
-                "WHERE",
-                "\nWHERE",
-                str_replace(
-                "ON DUPLICATE KEY",
-                "\nON DUPLICATE KEY",
-                $result
-            )
-            )
-            )
-        );
+        $result = str_replace("FROM", "\nFROM",
+            str_replace(" SELECT", "\nSELECT",
+            str_replace("WHERE", "\nWHERE",
+            str_replace("ON DUPLICATE KEY", "\nON DUPLICATE KEY", $result
+        ))));
 
         $result = implode("\n", array_map(function ($line) {
             return '    ' . $line;

@@ -48,12 +48,8 @@ class Engine {
      */
     protected $layerProperty;
 
-    public function __construct(
-        Factory $factory,
-        Layer\Resolver $layerResolver,
-        Helper $helper,
-        FilterTypes $filterTypes
-    )
+    public function __construct(Factory $factory, Layer\Resolver $layerResolver, Helper $helper,
+        FilterTypes $filterTypes)
     {
         $this->factory = $factory;
         $this->helper = $helper;

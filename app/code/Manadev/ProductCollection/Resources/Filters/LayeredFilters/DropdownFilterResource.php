@@ -50,14 +50,11 @@ class DropdownFilterResource extends FilterResource
         $alias = $filter->getFullName();
         $connection = $this->getConnection();
 
-        $select->joinInner(
-            [$alias => $this->getMainTable()],
+        $select->joinInner([$alias => $this->getMainTable()],
             "`{$alias}`.`entity_id` = `e`.`entity_id` AND " .
             $connection->quoteInto("`{$alias}`.`attribute_id` = ?", $filter->getAttributeId()) . " AND " .
             $connection->quoteInto("`{$alias}`.`store_id` = ?", $this->getStoreId()) . " AND " .
-            "`{$alias}`.`value` IN (" . implode(',', $filter->getOptionIds()) . ")",
-            null
-        );
+            "`{$alias}`.`value` IN (" . implode(',', $filter->getOptionIds()) . ")" , null);
 
         $this->helperResource->checkStockStatus($select, $alias);
 
@@ -74,14 +71,11 @@ class DropdownFilterResource extends FilterResource
             $alias = $filter->getFullName() . '__' . $optionId;
             $connection = $this->getConnection();
 
-            $select->joinInner(
-                [$alias => $this->getMainTable()],
+            $select->joinInner([$alias => $this->getMainTable()],
                 "`{$alias}`.`entity_id` = `e`.`entity_id` AND " .
                 $connection->quoteInto("`{$alias}`.`attribute_id` = ?", $filter->getAttributeId()) . " AND " .
                 $connection->quoteInto("`{$alias}`.`store_id` = ?", $this->getStoreId()) . " AND " .
-                $connection->quoteInto("`{$alias}`.`value`  = ?", $optionId),
-                null
-            );
+                $connection->quoteInto("`{$alias}`.`value`  = ?", $optionId), null);
 
             $this->helperResource->checkStockStatus($select, $alias);
         }

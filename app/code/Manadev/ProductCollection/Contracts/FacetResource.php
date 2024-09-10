@@ -32,14 +32,9 @@ abstract class FacetResource extends Db\AbstractDb
      */
     protected $helperResource;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        HelperResource $helperResource,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, Configuration $configuration, HelperResource $helperResource,
+        $resourcePrefix = null)
     {
         parent::__construct($context, $resourcePrefix);
         $this->factory = $factory;

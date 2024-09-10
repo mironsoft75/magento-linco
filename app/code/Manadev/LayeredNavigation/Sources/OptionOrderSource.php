@@ -10,10 +10,10 @@ use Manadev\Core\Source;
 
 class OptionOrderSource extends Source
 {
-    public const POSITION = 'position';
-    public const NAME_ALPHABETIC = 'name_alphabetic';
-    public const NAME_NUMERIC = 'name_numeric';
-    public const COUNT = 'count';
+    const POSITION = 'position';
+    const NAME_ALPHABETIC = 'name_alphabetic';
+    const NAME_NUMERIC = 'name_numeric';
+    const COUNT = 'count';
 
     public function getOptions() {
         return [

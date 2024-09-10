@@ -63,7 +63,7 @@ class EditContainer extends Container {
         return $this->getUrl('*/*/save', [
             '_current' => true,
             'back' => null,
-            'store' => $this->getRequest()->getParam('store', 0),
+            'store' => $this->getRequest()->getParam('store', 0)
         ]);
     }
 }

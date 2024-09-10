@@ -31,12 +31,8 @@ class PostInstallCommand extends Command
      */
     protected $resourceConfig;
 
-    public function __construct(
-        PostInstallScripts $postInstallScriptRegistry,
-        ReinitableConfigInterface $scopeConfig,
-        Config $resourceConfig,
-        $name = null
-    )
+    public function __construct(PostInstallScripts $postInstallScriptRegistry, ReinitableConfigInterface $scopeConfig,
+        Config $resourceConfig, $name = null)
     {
         $this->postInstallScriptRegistry = $postInstallScriptRegistry;
         $this->scopeConfig = $scopeConfig;

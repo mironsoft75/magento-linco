@@ -40,17 +40,10 @@ class TemporaryResource extends Db\AbstractDb
             $db = $this->getConnection();
 
             $table
-                ->addColumn(
-                    'entity_id',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['unsigned' => true, 'nullable' => false]
-                )
-                ->addIndex(
-                    $db->getIndexName($this->getTable($table->getName()), ['entity_id'], 'unique'),
-                    ['entity_id'],
-                    ['type' => 'unique']
-                );
+                ->addColumn('entity_id', Table::TYPE_INTEGER, null,
+                    ['unsigned' => true, 'nullable' => false])
+                ->addIndex($db->getIndexName($this->getTable($table->getName()), ['entity_id'], 'unique'),
+                    ['entity_id'], ['type' => 'unique']);
         });
     }
 
@@ -64,23 +57,12 @@ class TemporaryResource extends Db\AbstractDb
             $db = $this->getConnection();
 
             $table
-                ->addColumn(
-                    'value',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['unsigned' => true, 'nullable' => false]
-                )
-                ->addIndex(
-                    $db->getIndexName($this->getTable($table->getName()), ['value'], 'unique'),
-                    ['value'],
-                    ['type' => 'unique']
-                )
-                ->addColumn(
-                    'count',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['unsigned' => true, 'nullable' => false]
-                );
+                ->addColumn('value', Table::TYPE_INTEGER, null,
+                    ['unsigned' => true, 'nullable' => false])
+                ->addIndex($db->getIndexName($this->getTable($table->getName()), ['value'], 'unique'),
+                    ['value'], ['type' => 'unique'])
+                ->addColumn('count', Table::TYPE_INTEGER, null,
+                    ['unsigned' => true, 'nullable' => false]);
 
             $callback($table);
         });
@@ -89,20 +71,10 @@ class TemporaryResource extends Db\AbstractDb
     public function createSearchResultTable() {
         return $this->createTable(function(Table $table) {
             $table
-                ->addColumn(
-                    'entity_id',
-                    Table::TYPE_INTEGER,
-                    10,
-                    ['unsigned' => true, 'nullable' => false, 'primary' => true],
-                    'Entity ID'
-                )
-                ->addColumn(
-                    'score',
-                    Table::TYPE_DECIMAL,
-                    [32, 16],
-                    ['unsigned' => true, 'nullable' => false],
-                    'Score'
-                );
+                ->addColumn('entity_id' , Table::TYPE_INTEGER, 10,
+                    ['unsigned' => true, 'nullable' => false, 'primary' => true], 'Entity ID')
+                ->addColumn('score', Table::TYPE_DECIMAL, [32, 16],
+                    ['unsigned' => true, 'nullable' => false], 'Score');
         });
     }
 }

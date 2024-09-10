@@ -35,10 +35,8 @@ class SwatchIndexer extends AttributeIndexer
                     $fields = [
                         'unique_key' => new Zend_Db_Expr("'{$attribute['unique_key']}'"),
                         'type' => new Zend_Db_Expr("'swatch'"),
-                        'template' => new Zend_Db_Expr($db->quoteInto(
-                            "COALESCE(`fge`.`template`, ?)",
-                            $this->configuration->getDefaultSwatchTemplate()
-                        )),
+                        'template' => new Zend_Db_Expr($db->quoteInto("COALESCE(`fge`.`template`, ?)",
+                            $this->configuration->getDefaultSwatchTemplate())),
                         'swatch_input_type' => new Zend_Db_Expr("'{$additionalData[Swatch::SWATCH_INPUT_TYPE_KEY]}'"),
                     ];
 

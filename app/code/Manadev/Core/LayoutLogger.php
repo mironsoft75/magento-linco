@@ -36,8 +36,7 @@ class LayoutLogger
     }
 
     protected function getFileName() {
-        return sprintf(
-            "%s/%s-%s",
+        return sprintf("%s/%s-%s",
             'layout',
             PHP_SAPI !== 'cli' ? $_SERVER['REMOTE_ADDR'] . '-' . $this->getUrl() : 'cli',
             date("Y-m-d-H-i-s")

@@ -29,11 +29,8 @@ class LogicalFilter extends Filter
 
     public function addOperand(Filter $filter) {
         if (isset($this->operands[$filter->getName()])) {
-            throw new InvalidState(sprintf(
-                'Filter %s already exists in logical operation filter %s',
-                $filter->getName(),
-                $this->getName()
-            ));
+            throw new InvalidState(sprintf('Filter %s already exists in logical operation filter %s',
+                $filter->getName(), $this->getName()));
         }
         $this->operands[$filter->getName()] = $filter;
 
@@ -64,6 +61,6 @@ class LogicalFilter extends Filter
     }
 
     public function getOperand($name) {
-        return $this->operands[$name] ?? false;
+        return isset($this->operands[$name]) ? $this->operands[$name] : false;
     }
 }

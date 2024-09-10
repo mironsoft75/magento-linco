@@ -10,47 +10,47 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
 class Configuration {
-    public const PRICE_RANGE_CALCULATION_METHOD = 'catalog/layered_navigation/price_range_calculation';
+    const PRICE_RANGE_CALCULATION_METHOD = 'catalog/layered_navigation/price_range_calculation';
 
-    public const FILTER_INDEX_QUERY_LOGGING = 'mana_core/log/filter_index_queries';
+    const FILTER_INDEX_QUERY_LOGGING = 'mana_core/log/filter_index_queries';
 
-    public const DEFAULT_DROPDOWN_TEMPLATE = 'mana_layered_navigation/default_templates/dropdown';
-    public const DEFAULT_SWATCH_TEMPLATE = 'mana_layered_navigation/default_templates/swatch';
-    public const DEFAULT_DECIMAL_TEMPLATE = 'mana_layered_navigation/default_templates/decimal';
-    public const DEFAULT_PRICE_TEMPLATE = 'mana_layered_navigation/default_templates/price';
-    public const DEFAULT_CATEGORY_TEMPLATE = 'mana_layered_navigation/default_templates/category';
+    const DEFAULT_DROPDOWN_TEMPLATE = 'mana_layered_navigation/default_templates/dropdown';
+    const DEFAULT_SWATCH_TEMPLATE = 'mana_layered_navigation/default_templates/swatch';
+    const DEFAULT_DECIMAL_TEMPLATE = 'mana_layered_navigation/default_templates/decimal';
+    const DEFAULT_PRICE_TEMPLATE = 'mana_layered_navigation/default_templates/price';
+    const DEFAULT_CATEGORY_TEMPLATE = 'mana_layered_navigation/default_templates/category';
 
-    public const DEFAULT_SHOW_IN_MAIN_SIDEBAR = 'mana_layered_navigation/default_positions/in_main_sidebar';
-    public const DEFAULT_SHOW_IN_ADDITIONAL_SIDEBAR = 'mana_layered_navigation/default_positions/in_additional_sidebar';
-    public const DEFAULT_SHOW_ABOVE_PRODUCTS = 'mana_layered_navigation/default_positions/above_products';
-    public const DEFAULT_SHOW_ON_MOBILE = 'mana_layered_navigation/default_positions/on_mobile';
+    const DEFAULT_SHOW_IN_MAIN_SIDEBAR = 'mana_layered_navigation/default_positions/in_main_sidebar';
+    const DEFAULT_SHOW_IN_ADDITIONAL_SIDEBAR = 'mana_layered_navigation/default_positions/in_additional_sidebar';
+    const DEFAULT_SHOW_ABOVE_PRODUCTS = 'mana_layered_navigation/default_positions/above_products';
+    const DEFAULT_SHOW_ON_MOBILE = 'mana_layered_navigation/default_positions/on_mobile';
 
-    public const SHOW_APPLIED_FILTER = 'mana_layered_navigation/show_applied_filter/%s';
+    const SHOW_APPLIED_FILTER = 'mana_layered_navigation/show_applied_filter/%s';
 
-    public const CALCULATE_SLIDER_MIN_MAX_BASED_ON = "mana_layered_navigation/slider/calculate_slider_min_max_based_on";
-    public const SLIDER_STYLE = 'mana_layered_navigation/slider/style';
-    public const MOBILE_SLIDER_STYLE = 'mana_layered_navigation/slider/style_mobile';
-    public const IS_SLIDER_INLINE_DROPDOWN_MENU = 'mana_layered_navigation/slider/is_slider_inline_in_dropdown_menu';
+    const CALCULATE_SLIDER_MIN_MAX_BASED_ON = "mana_layered_navigation/slider/calculate_slider_min_max_based_on";
+    const SLIDER_STYLE = 'mana_layered_navigation/slider/style';
+    const MOBILE_SLIDER_STYLE = 'mana_layered_navigation/slider/style_mobile';
+    const IS_SLIDER_INLINE_DROPDOWN_MENU = 'mana_layered_navigation/slider/is_slider_inline_in_dropdown_menu';
 
-    public const HIDE_FILTERS_WITH_SINGLE_VISIBLE_ITEM = 'mana_layered_navigation/other/hide_filters_with_single_visible_item';
+    const HIDE_FILTERS_WITH_SINGLE_VISIBLE_ITEM = 'mana_layered_navigation/other/hide_filters_with_single_visible_item';
 
-    public const DEFAULT_USE_FILTER_TITLE_IN_URL = 'mana_seo/default_filter_settings/use_filter_title_in_url';
-    public const DEFAULT_URL_PART = 'mana_seo/default_filter_settings/url_part';
-    public const DEFAULT_INCLUDE_IN_CANONICAL_URL = 'mana_seo/default_filter_settings/include_in_canonical_url';
-    public const DEFAULT_FORCE_NO_INDEX = 'mana_seo/default_filter_settings/force_no_index';
-    public const DEFAULT_FORCE_NO_FOLLOW = 'mana_seo/default_filter_settings/force_no_follow';
-    public const DEFAULT_INCLUDE_IN_META_TITLE = 'mana_seo/default_filter_settings/include_in_meta_title';
-    public const DEFAULT_INCLUDE_IN_META_DESCRIPTION = 'mana_seo/default_filter_settings/include_in_meta_description';
-    public const DEFAULT_INCLUDE_IN_META_KEYWORDS = 'mana_seo/default_filter_settings/include_in_meta_keywords';
-    public const DEFAULT_INCLUDE_IN_SITEMAP = 'mana_seo/default_filter_settings/include_in_sitemap';
+    const DEFAULT_USE_FILTER_TITLE_IN_URL = 'mana_seo/default_filter_settings/use_filter_title_in_url';
+    const DEFAULT_URL_PART = 'mana_seo/default_filter_settings/url_part';
+    const DEFAULT_INCLUDE_IN_CANONICAL_URL = 'mana_seo/default_filter_settings/include_in_canonical_url';
+    const DEFAULT_FORCE_NO_INDEX = 'mana_seo/default_filter_settings/force_no_index';
+    const DEFAULT_FORCE_NO_FOLLOW = 'mana_seo/default_filter_settings/force_no_follow';
+    const DEFAULT_INCLUDE_IN_META_TITLE = 'mana_seo/default_filter_settings/include_in_meta_title';
+    const DEFAULT_INCLUDE_IN_META_DESCRIPTION = 'mana_seo/default_filter_settings/include_in_meta_description';
+    const DEFAULT_INCLUDE_IN_META_KEYWORDS = 'mana_seo/default_filter_settings/include_in_meta_keywords';
+    const DEFAULT_INCLUDE_IN_SITEMAP = 'mana_seo/default_filter_settings/include_in_sitemap';
 
-    public const NOINDEX_MULTIPLE_FILTERS = 'mana_layered_navigation/other/dont_index_multiple_filters';
-    public const DEFAULT_SHOW_SELECTED_OPTIONS_FIRST = 'mana_layered_navigation/option_order/selected_first';
-    public const DEFAULT_SORT_OPTIONS_BY = 'mana_layered_navigation/option_order/sort_by';
+    const NOINDEX_MULTIPLE_FILTERS = 'mana_layered_navigation/other/dont_index_multiple_filters';
+    const DEFAULT_SHOW_SELECTED_OPTIONS_FIRST = 'mana_layered_navigation/option_order/selected_first';
+    const DEFAULT_SORT_OPTIONS_BY = 'mana_layered_navigation/option_order/sort_by';
 
-    public const DEFAULT_SHOW_MORE_METHOD = 'mana_layered_navigation/show_more/method';
-    public const DEFAULT_SHOW_MORE_NUMBER_OF_ITEMS_VISIBLE = 'mana_layered_navigation/show_more/item_limit';
-    public const DEFAULT_SHOW_OPTION_SEARCH = 'mana_layered_navigation/show_more/option_search';
+    const DEFAULT_SHOW_MORE_METHOD = 'mana_layered_navigation/show_more/method';
+    const DEFAULT_SHOW_MORE_NUMBER_OF_ITEMS_VISIBLE = 'mana_layered_navigation/show_more/item_limit';
+    const DEFAULT_SHOW_OPTION_SEARCH = 'mana_layered_navigation/show_more/option_search';
 
     /**
      * @var ScopeConfigInterface

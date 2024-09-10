@@ -69,18 +69,11 @@ class TextMultipleSelect extends FilterTemplate {
         // TODO
         if (($appliedRanges = $this->requestParser->readMultipleValueRange($name)) !== false) {
             $query->getFilterGroup('layered_nav')->addOperand($this->factory->createLayeredDecimalFilter(
-                $name,
-                $attributeId,
-                $appliedRanges
-            ));
+                $name, $attributeId, $appliedRanges));
         }
 
-        $query->addFacet($this->factory->createEqualizedRangeDecimalFacet(
-            $name,
-            $attributeId,
-            $appliedRanges,
-            $filter->getData('hide_filter_with_single_visible_item')
-        ));
+        $query->addFacet($this->factory->createEqualizedRangeDecimalFacet($name, $attributeId, $appliedRanges,
+            $filter->getData('hide_filter_with_single_visible_item')));
     }
 
     /**

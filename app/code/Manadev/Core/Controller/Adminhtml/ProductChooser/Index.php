@@ -47,36 +47,30 @@ class Index extends Action
 
         $uniqId = $request->getParam('uniq_id', 'm_product_chooser');
 
-        $productsGrid = $layout->createBlock(
-            'Manadev\Core\Blocks\Adminhtml\Chooser\Product',
-            '',
-            [
+        $productsGrid = $layout->createBlock('Manadev\Core\Blocks\Adminhtml\Chooser\Product', '',
+        [
             'data' => [
                 'id' => $uniqId,
                 'use_massaction' => $request->getParam('mass_action', true),
                 'product_type_id' => $request->getParam('product_type_id', null),
                 'category_id' => $request->getParam('category_id'),
-            ],
-        ]
-        );
+            ]
+        ]);
         
         if (!$request->getParam('products_grid')) {
-            $categoriesTree = $layout->createBlock(
-                'Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser',
-                '',
-                [
+            $categoriesTree = $layout->createBlock('Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser', '', [
                 'data' => [
                     'id' => $uniqId . 'Tree',
                     'node_click_listener' => $productsGrid->getCategoryClickListenerJs(),
                     'with_empty_node' => true,
-                ],
+                ]
             ]
             );
 
-            $confirmButton = $layout->createBlock('Magento\Backend\Block\Widget\Button')->setData([
+            $confirmButton = $layout->createBlock('Magento\Backend\Block\Widget\Button')->setData(array(
                 'label' => __('Confirm'),
                 'class' => 'action-primary m-confirm',
-            ]);
+            ));
 
             if (is_array($beforeHtmlCallback)) {
                 call_user_func($beforeHtmlCallback, $productsGrid, $categoriesTree);

@@ -32,12 +32,8 @@ class UpdateVersionNumbers implements ObserverInterface
      */
     protected $collectionFactory;
 
-    public function __construct(
-        Features $features,
-        ReinitableConfigInterface $scopeConfig,
-        Config $resourceConfig,
-        ExtensionCollectionFactory $collectionFactory
-    ) {
+    public function __construct(Features $features, ReinitableConfigInterface $scopeConfig, Config $resourceConfig,
+        ExtensionCollectionFactory $collectionFactory) {
         $this->features = $features;
         $this->scopeConfig = $scopeConfig;
         $this->resourceConfig = $resourceConfig;

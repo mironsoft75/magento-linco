@@ -21,7 +21,7 @@ class Collection extends \Magento\Framework\Data\Collection {
 	 * @var LetterCase
 	 */
 	private $caseHelper;
-	protected $_mFilters = [];
+	protected $_mFilters = array();
 	protected $_mOrder;
 
 
@@ -30,8 +30,8 @@ class Collection extends \Magento\Framework\Data\Collection {
 	 * @param LetterCase $caseHelper
 	 */
 	public function __construct(
-	    EntityFactoryInterface $entityFactory,
-	    LetterCase $caseHelper
+		EntityFactoryInterface $entityFactory,
+		LetterCase $caseHelper
 	) {
 		$this->caseHelper = $caseHelper;
 		parent::__construct($entityFactory);
@@ -66,7 +66,7 @@ class Collection extends \Magento\Framework\Data\Collection {
     }
 
 	protected function _renderFilters() {
-		$items = [];
+		$items = array();
 		foreach ($this->_items as $key => $item) {
 			$conforms = true;
 			foreach ($this->_mFilters as $filter) {
@@ -101,7 +101,7 @@ class Collection extends \Magento\Framework\Data\Collection {
 
 	protected function _renderLimit() {
 		if ($this->_pageSize !== false) {
-			$items = [];
+			$items = array();
 			$index = 0;
 			$from = $this->_pageSize * ($this->_curPage - 1);
 			$to = $this->_pageSize * $this->_curPage;
@@ -118,7 +118,7 @@ class Collection extends \Magento\Framework\Data\Collection {
 
 	protected function _renderOrders() {
 		if ($this->_mOrder) {
-			uasort($this->_items, [$this, '_orderCallback']);
+			uasort($this->_items, array($this, '_orderCallback'));
 		}
 		
 		return $this;
@@ -136,15 +136,15 @@ class Collection extends \Magento\Framework\Data\Collection {
 
     public function setOrder($attribute, $dir='desc') {
     	parent::setOrder($attribute, $dir);
-    	$this->_mOrder = ['attribute' => $attribute, 'dir' => $dir];
+    	$this->_mOrder = array('attribute' => $attribute, 'dir' => $dir);
     	return $this;
     }
 
     public function addAttributeToFilter($attribute, $condition=null, $joinType='inner') {
-    	$this->_mFilters[] = ['attribute' => $attribute, 'condition' => $condition];
+    	$this->_mFilters[] = array('attribute' => $attribute, 'condition' => $condition);
     }
 
     public function addFieldToFilter($attribute, $condition=null) {
-    	$this->_mFilters[] = ['attribute' => $attribute, 'condition' => $condition];
+    	$this->_mFilters[] = array('attribute' => $attribute, 'condition' => $condition);
     }
 }

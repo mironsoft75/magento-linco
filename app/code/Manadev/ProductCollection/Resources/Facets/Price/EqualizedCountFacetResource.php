@@ -33,16 +33,9 @@ class EqualizedCountFacetResource extends BaseFacetResource
      */
     protected $intervalFactory;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        HelperResource $helperResource,
-        Algorithm $algorithm,
-        IntervalFactory $intervalFactory,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, Configuration $configuration, HelperResource $helperResource,
+        Algorithm $algorithm, IntervalFactory $intervalFactory, $resourcePrefix = null)
     {
         parent::__construct($context, $factory, $storeManager, $configuration, $helperResource, $resourcePrefix);
         $this->algorithm = $algorithm;
@@ -140,7 +133,7 @@ class EqualizedCountFacetResource extends BaseFacetResource
         return array_map(function($range) { return implode('-', $range); }, $ranges);
     }
 
-    protected static $selectParts = [
+    protected static $selectParts = array(
         Select::COLUMNS,
         Select::UNION,
         Select::FROM,
@@ -151,7 +144,7 @@ class EqualizedCountFacetResource extends BaseFacetResource
         Select::LIMIT_COUNT,
         Select::LIMIT_OFFSET,
         Select::FOR_UPDATE,
-    ];
+    );
 
     protected function areSelectsEqual(Select $select1, Select $select2) {
         foreach (static::$selectParts as $part) {

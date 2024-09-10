@@ -47,7 +47,7 @@ class PriceFilterResource extends FilterResource
 
         $parentExpr = "";
         foreach ($filter->getRanges() as $range) {
-            [$from, $to] = $range;
+            list($from, $to) = $range;
             $expr = "";
 
             if ($from !== '') {

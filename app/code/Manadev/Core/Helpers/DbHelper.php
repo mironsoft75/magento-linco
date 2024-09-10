@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
@@ -8,9 +8,12 @@ namespace Manadev\Core\Helpers;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Manadev\Core\Exceptions\NotImplemented;
 use Zend_Db_Expr;
 
 class DbHelper {
+    protected $isEnterprise;
+
     /**
      * @param AdapterInterface $db
      * @param $tableName
@@ -41,7 +44,7 @@ class DbHelper {
     }
 
     public function wrapIntoZendDbExpr($fields) {
-        $result = [];
+        $result = array();
         foreach ($fields as $key => $value) {
             $result[$key] = new Zend_Db_Expr($value);
         }
@@ -63,5 +66,22 @@ class DbHelper {
                 yield $item;
             }
         } while (count($data) == $pageSize);
+    }
+
+    public function isEnterprise() {
+        if ($this->isEnterprise === null) {
+            $json = json_decode(file_get_contents(BP . '/composer.lock'));
+
+            $this->isEnterprise = false;
+
+            foreach ($json->packages as $package) {
+                if ($package->name === 'magento/module-catalog-staging') {
+                    $this->isEnterprise = true;
+                    break;
+                }
+            }
+        }
+
+        return $this->isEnterprise;
     }
 }

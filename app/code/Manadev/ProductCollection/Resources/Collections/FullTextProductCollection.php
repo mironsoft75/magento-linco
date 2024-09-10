@@ -6,6 +6,13 @@
 
 namespace Manadev\ProductCollection\Resources\Collections;
 
+use Magento\Catalog\Model\ResourceModel\Product\Collection\ProductLimitationFactory;
+use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\DefaultFilterStrategyApplyCheckerInterface;
+use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchCriteriaResolverFactory;
+use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplierFactory;
+use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\TotalRecordsResolverFactory;
+use Magento\Framework\Api\Search\SearchResultFactory;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Search\Adapter\Mysql\TemporaryStorage;
 use Manadev\Core\Features;
 use Manadev\Core\Profiler;
@@ -90,7 +97,6 @@ class FullTextProductCollection extends \Magento\CatalogSearch\Model\ResourceMod
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Framework\Stdlib\DateTime $dateTime
      * @param \Magento\Customer\Api\GroupManagementInterface $groupManagement
-     * @param \Magento\Search\Model\QueryFactory $catalogSearchData
      * @param \Magento\Framework\Search\Request\Builder $requestBuilder
      * @param \Magento\Search\Model\SearchEngine $searchEngine
      * @param \Magento\Framework\Search\Adapter\Mysql\TemporaryStorageFactory $temporaryStorageFactory
@@ -118,10 +124,6 @@ class FullTextProductCollection extends \Magento\CatalogSearch\Model\ResourceMod
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Stdlib\DateTime $dateTime,
         \Magento\Customer\Api\GroupManagementInterface $groupManagement,
-        \Magento\Search\Model\QueryFactory $catalogSearchData,
-        \Magento\Framework\Search\Request\Builder $requestBuilder,
-        \Magento\Search\Model\SearchEngine $searchEngine,
-        \Magento\Framework\Search\Adapter\Mysql\TemporaryStorageFactory $temporaryStorageFactory,
         TemporaryResource $temporaryResource,
         QueryLogger $queryLogger,
         Factory $factory,
@@ -132,7 +134,17 @@ class FullTextProductCollection extends \Magento\CatalogSearch\Model\ResourceMod
         Configuration $configuration,
         Profiler $profiler,
         \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
-        $searchRequestName = 'catalog_view_container'
+        $searchRequestName = 'catalog_view_container',
+        SearchResultFactory $searchResultFactory = null,
+        ProductLimitationFactory $productLimitationFactory = null,
+        MetadataPool $metadataPool = null,
+        \Magento\Search\Api\SearchInterface $search = null,
+        \Magento\Framework\Api\Search\SearchCriteriaBuilder $searchCriteriaBuilder = null,
+        \Magento\Framework\Api\FilterBuilder $filterBuilder = null,
+        SearchCriteriaResolverFactory $searchCriteriaResolverFactory = null,
+        SearchResultApplierFactory $searchResultApplierFactory = null,
+        TotalRecordsResolverFactory $totalRecordsResolverFactory = null,
+        DefaultFilterStrategyApplyCheckerInterface $defaultFilterStrategyApplyChecker = null
     ) {
         $this->queryLogger = $queryLogger;
 
@@ -148,32 +160,13 @@ class FullTextProductCollection extends \Magento\CatalogSearch\Model\ResourceMod
         $this->configuration = $configuration;
         $this->profiler = $profiler;
         $this->temporaryResource = $temporaryResource;
-        parent::__construct(
-            $entityFactory,
-            $logger,
-            $fetchStrategy,
-            $eventManager,
-            $eavConfig,
-            $resource,
-            $eavEntityFactory,
-            $resourceHelper,
-            $universalFactory,
-            $storeManager,
-            $moduleManager,
-            $catalogProductFlatState,
-            $scopeConfig,
-            $productOptionFactory,
-            $catalogUrl,
-            $localeDate,
-            $customerSession,
-            $dateTime,
-            $groupManagement,
-            $catalogSearchData,
-            $requestBuilder,
-            $searchEngine,
-            $temporaryStorageFactory,
-            $connection,
-            $searchRequestName
+        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $eavConfig, $resource, $eavEntityFactory,
+            $resourceHelper, $universalFactory, $storeManager, $moduleManager, $catalogProductFlatState, $scopeConfig, $productOptionFactory,
+            $catalogUrl, $localeDate, $customerSession, $dateTime, $groupManagement, null, null, null,
+            null, $connection, $searchRequestName, $searchResultFactory,
+            $productLimitationFactory, $metadataPool, $search, $searchCriteriaBuilder,
+            $filterBuilder, $searchCriteriaResolverFactory, $searchResultApplierFactory,
+            $totalRecordsResolverFactory, $defaultFilterStrategyApplyChecker
         );
     }
 
@@ -317,13 +310,10 @@ class FullTextProductCollection extends \Magento\CatalogSearch\Model\ResourceMod
         $db = $this->getConnection();
 
         $filters = $this->_productLimitationFilters;
-        $select->joinInner(
-            ['price_index' => $this->getTable('catalog_product_index_price')],
+        $select->joinInner(['price_index' => $this->getTable('catalog_product_index_price')],
             "`price_index`.`entity_id` = `e`.`entity_id` AND " .
             $db->quoteInto("`price_index`.`website_id` = ? AND ", $filters['website_id']) .
-            $db->quoteInto("`price_index`.`customer_group_id` = ?", $filters['customer_group_id']),
-            null
-        );
+            $db->quoteInto("`price_index`.`customer_group_id` = ?", $filters['customer_group_id']), null);
     }
 
     protected function _renderOrders() {

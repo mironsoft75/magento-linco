@@ -25,15 +25,10 @@ class ChildFacetResource extends FacetResource
      */
     protected $flatResource;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        \Magento\Catalog\Model\ResourceModel\Category\Flat $flatResource,
-        HelperResource $helperResource,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, Configuration $configuration,
+        \Magento\Catalog\Model\ResourceModel\Category\Flat $flatResource, HelperResource $helperResource,
+        $resourcePrefix = null)
     {
         parent::__construct($context, $factory, $storeManager, $configuration, $helperResource, $resourcePrefix);
         $this->flatResource = $flatResource;

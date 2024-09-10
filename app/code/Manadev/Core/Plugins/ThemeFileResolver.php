@@ -23,20 +23,14 @@ class ThemeFileResolver
     public function aroundResolve(
         Simple $subject,
         Closure $proceed,
-        $type,
-        $file,
-        $area = null,
-        ThemeInterface $theme = null,
-        $locale = null,
-        $module = null
+        $type, $file, $area = null, ThemeInterface $theme = null, $locale = null, $module = null
     ){
         $result = $proceed($type, $file, $area, $theme, $locale, $module);
 
         // Only works for MANAdev modules
-
-	if ($module === null || strpos($module, "Manadev") !== 0) {
-          return $result;
-	}
+        if(strpos($module ?? '', "Manadev") !== 0) {
+            return $result;
+        }
 
         $moduleDir = str_replace("_", "/", $module);
         $relativePath = $this->rootDirectory->getRelativePath($result);

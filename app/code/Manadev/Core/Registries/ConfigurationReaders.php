@@ -36,11 +36,8 @@ class ConfigurationReaders
             }
 
             if ($configName != 'config' && !($reader instanceof ReaderInterface)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($reader),
-                    ReaderInterface::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($reader), ReaderInterface::class));
             }
 
             $this->readers[$configName] = $reader;
@@ -48,7 +45,7 @@ class ConfigurationReaders
     }
 
     public function get($name) {
-        return $this->readers[$name] ?? false;
+        return isset($this->readers[$name]) ? $this->readers[$name] : false;
     }
 
     public function getList() {

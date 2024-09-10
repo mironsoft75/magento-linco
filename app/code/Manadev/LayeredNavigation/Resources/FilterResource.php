@@ -26,12 +26,8 @@ class FilterResource extends Db\AbstractDb {
      */
     protected $eventManager;
 
-    public function __construct(
-        Db\Context $context,
-        FilterTypes $filterTypes,
-        EventManagerInterface $eventManager,
-        $connectionName = null
-    )
+    public function __construct(Db\Context $context, FilterTypes $filterTypes, EventManagerInterface $eventManager,
+        $connectionName = null)
     {
         $this->filterTypes = $filterTypes;
         parent::__construct($context, $connectionName);

@@ -16,10 +16,8 @@ class DecimalIndexer extends AttributeIndexer
         if (empty($changes['load_defaults'])) {
             return array_merge(parent::getIndexedFields($changes), [
                 'type' => new Zend_Db_Expr("'decimal'"),
-                'template' => new Zend_Db_Expr($db->quoteInto(
-                    "COALESCE(`fge`.`template`, ?)",
-                    $this->configuration->getDefaultDecimalTemplate()
-                )),
+                'template' => new Zend_Db_Expr($db->quoteInto("COALESCE(`fge`.`template`, ?)",
+                    $this->configuration->getDefaultDecimalTemplate())),
             ]);
         }
         else {

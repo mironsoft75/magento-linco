@@ -10,12 +10,5 @@
     <body>
         <move element="checkout.cart.amgiftcard" destination="checkout.cart.container" after="-" />
         <move element="checkout.cart.form" destination="checkout.cart.container" before="cart.summary" />
-           <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Text" name="checkout_debug">
-                <arguments>
-                    <argument name="text" xsi:type="string">El layout de checkout se esta cargando!</argument>
-                </arguments>
-            </block>
-        </referenceContainer>
-</body>
+    </body>
 </page>

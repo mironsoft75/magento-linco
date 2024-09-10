@@ -34,6 +34,10 @@ class ViewWithTemplate
     }
 
     protected function getModuleName(OriginalClass $object) {
+        if (!$object->getTemplate()) {
+            return false;
+        }
+
         if (($pos = strpos($object->getTemplate(), '::')) !== false) {
             return substr($object->getTemplate(), 0, $pos);
         }

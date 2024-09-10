@@ -57,18 +57,10 @@ class FilterIndexer extends Db\AbstractDb {
      */
     protected $secondaryFilterIndexers;
 
-    public function __construct(
-        Db\Context $context,
-        StoreManagerInterface $storeManager,
-        PrimaryFilterIndexers $primaryFilterIndexers,
-        SecondaryFilterIndexers $secondaryFilterIndexers,
-        IndexerScope $scope,
-        Configuration $configuration,
-        QueryLogger $queryLogger,
-        Logger $logger,
-        TypeListInterface $cacheTypeList,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, StoreManagerInterface $storeManager,
+        PrimaryFilterIndexers $primaryFilterIndexers, SecondaryFilterIndexers $secondaryFilterIndexers,
+        IndexerScope $scope, Configuration $configuration, QueryLogger $queryLogger,
+        Logger $logger, TypeListInterface $cacheTypeList, $resourcePrefix = null)
     {
         parent::__construct($context, $resourcePrefix);
 
@@ -135,16 +127,11 @@ class FilterIndexer extends Db\AbstractDb {
      * @param bool $useTransaction
      * @throws Exception
      */
-    public function reindexChangedAttributes(
-        $ids = false,
-        $storeId = 0,
-        $useTransaction = true
-    )
+    public function reindexChangedAttributes($ids = false, $storeId = 0,
+        $useTransaction = true)
     {
-        $this->index(
-            ['attributes' => $ids, 'store' => $storeId],
-            $useTransaction
-        );
+        $this->index(['attributes' => $ids, 'store' => $storeId],
+            $useTransaction);
     }
 
     /**
@@ -158,11 +145,8 @@ class FilterIndexer extends Db\AbstractDb {
      * @param bool $useTransaction
      * @throws Exception
      */
-    public function reindexChangedFilters(
-        $ids,
-        $storeId = 0,
-        $useTransaction = true
-    )
+    public function reindexChangedFilters($ids, $storeId = 0,
+        $useTransaction = true)
     {
         $this->index(['filters' => $ids, 'store' => $storeId], $useTransaction);
     }
@@ -271,11 +255,8 @@ class FilterIndexer extends Db\AbstractDb {
     protected function markGlobalRowsAsDeleted($changes) {
         $db = $this->getConnection();
 
-        $db->update(
-            $this->getMainTable(),
-            ['is_deleted' => 1],
-            $this->scope->limitMarkingForDeletion($changes)
-        );
+        $db->update($this->getMainTable(), ['is_deleted' => 1],
+            $this->scope->limitMarkingForDeletion($changes));
     }
 
     protected function deleteRowsMarkedForDeletion($changes) {
@@ -287,11 +268,8 @@ class FilterIndexer extends Db\AbstractDb {
     protected function assignGlobalIds($changes) {
         $db = $this->getConnection();
 
-        $db->update(
-            $this->getMainTable(),
-            ['filter_id' => new Zend_Db_Expr("`id`")],
-            $this->scope->limitIdAssignment($changes)
-        );
+        $db->update($this->getMainTable(), ['filter_id' => new Zend_Db_Expr("`id`")],
+            $this->scope->limitIdAssignment($changes));
     }
 
     /**
@@ -428,17 +406,11 @@ class FilterIndexer extends Db\AbstractDb {
         $select = $db->select()
             ->distinct()
             ->from(['fg' => $this->getTable('mana_filter')], null)
-            ->joinLeft(
-                ['fse' => $this->getTable('mana_filter_edit')],
-                $db->quoteInto("`fse`.`filter_id` = `fg`.`id` AND `fse`.`store_id` = ?", $store->getId()),
-                null
-            )
+            ->joinLeft(['fse' => $this->getTable('mana_filter_edit')],
+                $db->quoteInto("`fse`.`filter_id` = `fg`.`id` AND `fse`.`store_id` = ?", $store->getId()), null)
             ->joinLeft(['a' => $this->getTable('eav_attribute')], "`a`.`attribute_id` = `fg`.`attribute_id`", null)
-            ->joinLeft(
-                ['al' => $this->getTable('eav_attribute_label')],
-                $db->quoteInto("`al`.`attribute_id` = `fg`.`attribute_id` AND `al`.`store_id` = ?", $store->getId()),
-                null
-            )
+            ->joinLeft(['al' => $this->getTable('eav_attribute_label')],
+                $db->quoteInto("`al`.`attribute_id` = `fg`.`attribute_id` AND `al`.`store_id` = ?", $store->getId()), null)
             ->columns($fields);
 
         if ($whereClause = $this->scope->limitStoreLevelIndexing($changes, $fields)) {

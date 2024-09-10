@@ -28,11 +28,8 @@ class PageTypes
 
         foreach ($pageTypes as $route => $pageType) {
             if (!($pageType instanceof PageType)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($pageType),
-                    PageType::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($pageType), PageType::class));
             }
 
             $this->pageTypes[$route] = $pageType;
@@ -45,7 +42,7 @@ class PageTypes
      * @return PageType
      */
     public function get($route) {
-        return $this->pageTypes[$route] ?? null;
+        return isset($this->pageTypes[$route]) ? $this->pageTypes[$route] : null;
     }
 
     /**

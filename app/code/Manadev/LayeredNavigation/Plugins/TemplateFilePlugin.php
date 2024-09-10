@@ -28,12 +28,9 @@ class TemplateFilePlugin
      */
     protected $assetConfig;
 
-    public function __construct(
-        ResolverInterface $resolver,
-        MinifierInterface $templateMinifier,
-        State $appState,
-        ConfigInterface $assetConfig
-    )
+    public function __construct(ResolverInterface $resolver,
+        MinifierInterface $templateMinifier, State $appState,
+        ConfigInterface $assetConfig)
     {
         $this->resolver = $resolver;
         $this->templateMinifier = $templateMinifier;
@@ -41,14 +38,8 @@ class TemplateFilePlugin
         $this->assetConfig = $assetConfig;
     }
 
-    public function aroundGetFile(
-        $subject,
-        callable $proceed,
-        $area,
-        ThemeInterface $themeModel,
-        $file,
-        $module = null
-    )
+    public function aroundGetFile($subject, callable $proceed,
+        $area, ThemeInterface $themeModel, $file, $module = null)
     {
         if ($module !== 'Manadev_LayeredNavigation') {
             return $proceed($area, $themeModel, $file, $module);
@@ -68,14 +59,8 @@ class TemplateFilePlugin
 
         $fallbackType = RulePool::TYPE_TEMPLATE_FILE;
 
-        $template = $this->resolver->resolve(
-            $fallbackType,
-            $file,
-            $area,
-            $themeModel,
-            null,
-            $module
-        );
+        $template = $this->resolver->resolve($fallbackType,
+            $file, $area, $themeModel, null, $module);
 
         return $this->templateMinifier->getMinified($template);
     }

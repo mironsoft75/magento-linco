@@ -19,11 +19,8 @@ class FilterTypes {
     {
         foreach ($filterTypes as $filterType) {
             if (!($filterType instanceof FilterType)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($filterType),
-                    FilterType::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($filterType), FilterType::class));
             }
         }
         $this->filterTypes = $filterTypes;
@@ -34,7 +31,7 @@ class FilterTypes {
      * @return bool|FilterType
      */
     public function get($type) {
-        return $this->filterTypes[$type] ?? false;
+        return isset($this->filterTypes[$type]) ? $this->filterTypes[$type] : false;
     }
 
     public function getList() {

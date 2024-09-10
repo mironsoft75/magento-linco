@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
@@ -49,7 +49,7 @@ class DefaultHandler extends Base {
         }
     }
 
-public function write(array $record): void {	    
+    public function write(array $record): void {
         if (isset($record['file'])) {
             $url = empty($record['file'])
                 ? BP . '/var/log/mana.log'

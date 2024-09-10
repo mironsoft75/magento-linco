@@ -32,14 +32,8 @@ abstract class BaseFacet extends Facet
      */
     protected $sortBy;
 
-    public function __construct(
-        $name,
-        $attributeId,
-        $selectedOptionIds,
-        $hideWithSingleVisibleItem,
-        $showSelectedOptionsFirst,
-        $sortBy
-    )
+    public function __construct($name, $attributeId, $selectedOptionIds, $hideWithSingleVisibleItem,
+        $showSelectedOptionsFirst, $sortBy)
     {
         parent::__construct($name);
         $this->attributeId = $attributeId;

@@ -26,30 +26,12 @@ class OptimizedFacetBatchResource extends OptimizedFacetResource {
      */
     protected $dbHelper;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        HelperResource $helperResource,
-        DbHelper $dbHelper,
-        FacetSorter $sorter,
-        StandardFacetResource $standardFacetResource,
-        TemporaryResource $temporaryResource,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory, StoreManagerInterface $storeManager,
+        Configuration $configuration, HelperResource $helperResource, DbHelper $dbHelper, FacetSorter $sorter,
+        StandardFacetResource $standardFacetResource, TemporaryResource $temporaryResource, $resourcePrefix = null)
     {
-        parent::__construct(
-            $context,
-            $factory,
-            $storeManager,
-            $configuration,
-            $helperResource,
-            $sorter,
-            $standardFacetResource,
-            $temporaryResource,
-            $resourcePrefix
-        );
+        parent::__construct($context, $factory, $storeManager, $configuration, $helperResource, $sorter,
+            $standardFacetResource, $temporaryResource, $resourcePrefix);
         $this->dbHelper = $dbHelper;
     }
 
@@ -59,12 +41,11 @@ class OptimizedFacetBatchResource extends OptimizedFacetResource {
 
 
         $select
-            ->joinInner(
-                ['eav' => $this->getTable('catalog_product_index_eav')],
+            ->joinInner(array('eav' => $this->getTable('catalog_product_index_eav')),
                 "`eav`.`entity_id` = `e`.`entity_id` AND
                 {$db->quoteInto("`eav`.`attribute_id` IN (?)", $facet->getAttributeIds())} AND
                 {$db->quoteInto("`eav`.`store_id` = ?", $this->getStoreId())}",
-                ['count' => "COUNT($distinct `eav`.`entity_id`)"]
+                array('count' => "COUNT($distinct `eav`.`entity_id`)")
             );
 
         $this->helperResource->checkStockStatus($select, 'eav');
@@ -88,16 +69,10 @@ class OptimizedFacetBatchResource extends OptimizedFacetResource {
         $db = $this->getConnection();
 
         $table
-            ->addColumn(
-                'attribute_id',
-                Table::TYPE_SMALLINT,
-                null,
-                ['unsigned' => true, 'nullable' => false]
-            )
-            ->addIndex(
-                $db->getIndexName($this->getTable($table->getName()), ['attribute_id']),
-                ['attribute_id']
-            );
+            ->addColumn('attribute_id', Table::TYPE_SMALLINT, null,
+                ['unsigned' => true, 'nullable' => false])
+            ->addIndex($db->getIndexName($this->getTable($table->getName()), ['attribute_id']),
+                ['attribute_id']);
 
     }
 

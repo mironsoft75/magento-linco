@@ -24,28 +24,13 @@ class StandardFacetResource extends DropdownStandardFacetResource
      */
     protected $swatchHelper;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        HelperResource $helperResource,
-        Config $config,
-        FacetSorter $sorter,
-        \Magento\Swatches\Helper\Data $swatchHelper,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, Configuration $configuration,
+        HelperResource $helperResource, Config $config, FacetSorter $sorter,
+        \Magento\Swatches\Helper\Data $swatchHelper, $resourcePrefix = null)
     {
-        parent::__construct(
-            $context,
-            $factory,
-            $storeManager,
-            $configuration,
-            $helperResource,
-            $config,
-            $sorter,
-            $resourcePrefix
-        );
+        parent::__construct($context, $factory, $storeManager, $configuration, $helperResource, $config,
+            $sorter, $resourcePrefix);
         $this->swatchHelper = $swatchHelper;
     }
 
@@ -73,7 +58,7 @@ class StandardFacetResource extends DropdownStandardFacetResource
                 $option = array_merge($option, $additionalData[$option['value']]);
             }
 
-            $option['count'] = $counts[$option['value']] ?? 0;
+            $option['count'] = isset($counts[$option['value']]) ? $counts[$option['value']] : 0;
             $option['is_selected'] = $selectedOptionIds !== false ? in_array($option['value'], $selectedOptionIds) : false;
             $option['sort_order'] = $sortOrder;
             if (isset($swatches[$option['value']])) {

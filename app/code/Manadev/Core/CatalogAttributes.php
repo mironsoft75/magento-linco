@@ -67,7 +67,7 @@ class CatalogAttributes
         }
 
         if ($isResultAnArray) {
-            $result = [];
+            $result = array();
             foreach ($attributeIds as $attributeId) {
                 $result[$attributeId] = $this->attributes[$attributeId];
             }

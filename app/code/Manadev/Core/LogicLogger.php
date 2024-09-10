@@ -52,10 +52,8 @@ class LogicLogger {
             return;
         }
 
-        $this->getLogger()->debug(
-            str_repeat(' ', $this->indent * 2) . sprintf(...$args),
-            ['file' => $this->getFileName()]
-        );
+        $this->getLogger()->debug(str_repeat(' ', $this->indent * 2) . sprintf(...$args),
+            ['file' => $this->getFileName()]);
     }
 
     public function leave(...$args) {
@@ -69,8 +67,7 @@ class LogicLogger {
 
     protected function getFileName() {
         if (!$this->filename) {
-            $this->filename = $base = sprintf(
-                "%s/%s-%s",
+            $this->filename = $base = sprintf("%s/%s-%s",
                 $this->file,
                 PHP_SAPI !== 'cli' ? $_SERVER['REMOTE_ADDR'] : 'cli',
                 date("Y-m-d-H-i-s")

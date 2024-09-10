@@ -17,10 +17,8 @@ class DropdownIndexer extends AttributeIndexer
         if (empty($changes['load_defaults'])) {
             return array_merge(parent::getIndexedFields($changes), [
                 'type' => new Zend_Db_Expr("'dropdown'"),
-                'template' => new Zend_Db_Expr($db->quoteInto(
-                    "COALESCE(`fge`.`template`, ?)",
-                    $this->configuration->getDefaultDropdownTemplate()
-                )),
+                'template' => new Zend_Db_Expr($db->quoteInto("COALESCE(`fge`.`template`, ?)",
+                    $this->configuration->getDefaultDropdownTemplate())),
             ]);
         }
         else {

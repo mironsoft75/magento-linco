@@ -72,10 +72,8 @@ class ExtensionCollection extends Collection
                 }
             }
 
-            $this->addItem(new DataObject(array_merge(
-                $extension,
-                ['name' => $extensionName, 'is_extension' => true, 'version' => $version]
-            )));
+            $this->addItem(new DataObject(array_merge($extension,
+                ['name' => $extensionName, 'is_extension' => true, 'version' => $version])));
 
             foreach ($features as $featureName => $feature) {
                 if (empty($feature['enabled']) || empty($feature['title'])) {

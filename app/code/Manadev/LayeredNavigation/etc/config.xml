@@ -9,7 +9,7 @@
     <default>
         <manadev_features>
             <Manadev_LayeredNavigation>
-                <version>22.09.0218</version>
+                <version>23.01.1816</version>
                 <code>layered-navigation-filters-multiple-select-magento-2</code>
                 <title>Layered Navigation (Filters) with Multiple Select</title>
                 <sort_order>200</sort_order>

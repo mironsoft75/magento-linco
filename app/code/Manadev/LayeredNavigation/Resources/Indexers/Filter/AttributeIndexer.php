@@ -22,12 +22,9 @@ abstract class AttributeIndexer extends Db\AbstractDb implements FilterIndexer {
      */
     protected $configuration;
 
-    public function __construct(
-        Db\Context $context,
-        Configuration $configuration,
-        IndexerScope $scope,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context,
+        Configuration $configuration, IndexerScope $scope,
+        $resourcePrefix = null)
     {
         parent::__construct($context, $resourcePrefix);
 
@@ -234,22 +231,13 @@ abstract class AttributeIndexer extends Db\AbstractDb implements FilterIndexer {
         return $db->select()
             ->distinct()
             ->from(['a' => $this->getTable('eav_attribute')], null)
-            ->join(
-                ['ca' => $this->getTable('catalog_eav_attribute')],
-                "`ca`.`attribute_id` = `a`.`attribute_id` AND `ca`.`is_filterable` <> 0",
-                null
-            )
-            ->join(
-                ['et' => $this->getTable('eav_entity_type')],
+            ->join(['ca' => $this->getTable('catalog_eav_attribute')],
+                "`ca`.`attribute_id` = `a`.`attribute_id` AND `ca`.`is_filterable` <> 0", null)
+            ->join(['et' => $this->getTable('eav_entity_type')],
                 $db->quoteInto("`et`.`entity_type_id` = `a`.`entity_type_id`
-                    AND `et`.`entity_type_code` = ?", Product::ENTITY),
-                null
-            )
-            ->joinLeft(
-                ['fge' => $this->getTable('mana_filter_edit')],
-                "`fge`.`attribute_id` = `a`.`attribute_id` AND `fge`.`store_id` = 0",
-                null
-            )
+                    AND `et`.`entity_type_code` = ?", Product::ENTITY), null)
+            ->joinLeft(['fge' => $this->getTable('mana_filter_edit')],
+                "`fge`.`attribute_id` = `a`.`attribute_id` AND `fge`.`store_id` = 0", null)
             ->columns($fields);
     }
 }

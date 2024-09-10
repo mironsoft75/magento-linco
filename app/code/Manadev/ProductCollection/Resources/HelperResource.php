@@ -37,14 +37,9 @@ class HelperResource extends Db\AbstractDb
      */
     protected $configuration;
 
-    public function __construct(
-        Db\Context $context,
-        PriceCurrencyInterface $priceCurrency,
-        TaxResource $taxResource,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, PriceCurrencyInterface $priceCurrency,
+        TaxResource $taxResource, StoreManagerInterface $storeManager, Configuration $configuration,
+        $resourcePrefix = null)
     {
         parent::__construct($context, $resourcePrefix);
         $this->priceCurrency = $priceCurrency;
@@ -165,7 +160,7 @@ class HelperResource extends Db\AbstractDb
 
     public function addAppliedRanges(&$counts, $range, $appliedRanges) {
         foreach ($appliedRanges as $appliedRange) {
-            [$from, $to] = $appliedRange;
+            list($from, $to) = $appliedRange;
             $index = $from === '' ? floor($to / $range) - 1 : floor($from / $range);
 
             $found = false;
@@ -238,7 +233,7 @@ class HelperResource extends Db\AbstractDb
 
     public function dontApplyLayeredNavigationFilters() {
         return function (Filter $filter) {
-            return strpos($filter->getFullName(), 'layered_nav_') !== 0;
+            return strpos($filter->getFullName() ?? '', 'layered_nav_') !== 0;
         };
     }
 
@@ -249,13 +244,10 @@ class HelperResource extends Db\AbstractDb
         $from = $select->getPart(Select::FROM);
 
         if (!isset($from['eav'])) {
-            $select->joinInner(
-                ['eav' => $tableName],
+            $select->joinInner(array('eav' => $tableName),
                 "`eav`.`entity_id` = `e`.`entity_id` AND
                 {$db->quoteInto("`eav`.`attribute_id` = ?", $attributeId)} AND
-                {$db->quoteInto("`eav`.`store_id` = ?", $storeId)}",
-                null
-            );
+                {$db->quoteInto("`eav`.`store_id` = ?", $storeId)}", null);
         }
 
         return "`eav`.`value`";
@@ -273,13 +265,10 @@ class HelperResource extends Db\AbstractDb
         $stock = "{$alias}__stock";
         $websiteId = 0;
         $stockId = Stock::DEFAULT_STOCK_ID;
-        $select->joinInner(
-            [$stock => $this->getTable('cataloginventory_stock_status')],
+        $select->joinInner([$stock => $this->getTable('cataloginventory_stock_status')],
             "`{$alias}`.`source_id` = `{$stock}`.`product_id` AND " .
             "`{$stock}`.`website_id` = $websiteId AND " .
             "`{$stock}`.`stock_id` = {$stockId} AND ".
-            "`{$stock}`.`stock_status` = 1",
-            null
-        );
+            "`{$stock}`.`stock_status` = 1", null);
     }
 }

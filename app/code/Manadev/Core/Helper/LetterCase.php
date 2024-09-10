@@ -16,7 +16,7 @@ class LetterCase {
 	public static $whitespaceCharacters = " \t\r\n";
 
 	protected function _explodeIdentifier($identifier) {
-		$result = [];
+		$result = array();
 		$segment = substr($identifier, 0, 1);
 		$mode = 0; // not recognized
 		if ($segment == '_') { $mode = 1; $result[] = ''; $segment = ''; }

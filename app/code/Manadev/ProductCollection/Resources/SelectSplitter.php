@@ -10,7 +10,7 @@ use Manadev\Core\Resources\TemporaryResource;
 
 class SelectSplitter extends Db\AbstractDb
 {
-    public const MAX_FROM = 5;
+    const MAX_FROM = 5;
 
     /**
      * @var Select
@@ -26,11 +26,8 @@ class SelectSplitter extends Db\AbstractDb
      */
     protected $temporaryResource;
 
-    public function __construct(
-        Db\Context $context,
-        TemporaryResource $temporaryResource,
-        $connectionName = null
-    )
+    public function __construct(Db\Context $context,
+        TemporaryResource $temporaryResource, $connectionName = null)
     {
         parent::__construct($context, $connectionName);
         $this->temporaryResource = $temporaryResource;
@@ -105,11 +102,8 @@ class SelectSplitter extends Db\AbstractDb
         }
 
         if ($table) {
-            $this->select->joinInner(
-                ['mana_split' => $table],
-                "`e`.`entity_id` = `mana_split`.`entity_id`",
-                null
-            );
+            $this->select->joinInner(['mana_split' => $table],
+                "`e`.`entity_id` = `mana_split`.`entity_id`", null);
         }
     }
 

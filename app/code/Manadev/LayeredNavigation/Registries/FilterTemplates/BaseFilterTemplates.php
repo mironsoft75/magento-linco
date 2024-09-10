@@ -36,20 +36,13 @@ abstract class BaseFilterTemplates implements FilterTemplates {
      */
     protected $features;
 
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        Features $features,
-        $defaultFilterTemplate,
-        array $filterTemplates
-    )
+    public function __construct(ObjectManagerInterface $objectManager, Features $features,
+        $defaultFilterTemplate, array $filterTemplates)
     {
         foreach ($filterTemplates as $filterTemplate) {
             if (!($filterTemplate instanceof FilterTemplate)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($filterTemplate),
-                    FilterTemplate::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($filterTemplate), FilterTemplate::class));
             }
         }
         $this->filterTemplates = $filterTemplates;
@@ -94,7 +87,7 @@ abstract class BaseFilterTemplates implements FilterTemplates {
     public function getSource() {
         if (!$this->source) {
             $this->source = $this->objectManager->create('Manadev\LayeredNavigation\Sources\TemplateSource', [
-                'filterTemplates' => $this,
+                'filterTemplates' => $this
             ]);
         }
 

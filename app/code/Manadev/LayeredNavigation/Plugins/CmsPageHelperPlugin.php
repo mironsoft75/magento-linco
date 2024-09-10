@@ -34,13 +34,9 @@ class CmsPageHelperPlugin
      */
     protected $categoryRepository;
 
-    public function __construct(
-        Engine $engine,
-        PageFactory $pageFactory,
-        StoreManagerInterface $storeManager,
-        Registry $coreRegistry,
-        CategoryRepositoryInterface $categoryRepository
-    )
+    public function __construct(Engine $engine,
+        PageFactory $pageFactory, StoreManagerInterface $storeManager,
+        Registry $coreRegistry, CategoryRepositoryInterface $categoryRepository)
     {
         $this->engine = $engine;
         $this->pageFactory = $pageFactory;
@@ -49,25 +45,24 @@ class CmsPageHelperPlugin
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function aroundPrepareResultPage(
-        $subject,
-        callable $proceed,
-        Action $action,
-        $pageId = null
-    )
+    public function aroundPrepareResultPage($subject, callable $proceed,
+        Action $action, $pageId = null)
     {
         /** @var \Magento\Cms\Model\Page $page */
         $page = $this->pageFactory->create();
         if ($pageId !== null) {
+            $delimiterPosition = strrpos((string)$pageId, '|');
+            if ($delimiterPosition) {
+                $pageId = substr($pageId, 0, $delimiterPosition);
+            }
+
             $page->setStoreId($this->storeManager->getStore()->getId());
             $page->load($pageId);
         }
 
         if ($categoryId = $page->getData('mana_layered_navigation_category_id')) {
-            $category = $this->categoryRepository->get(
-                $categoryId,
-                $this->storeManager->getStore()->getId()
-            );
+            $category = $this->categoryRepository->get($categoryId,
+                $this->storeManager->getStore()->getId());
             $this->coreRegistry->register('current_category', $category);
         }
 

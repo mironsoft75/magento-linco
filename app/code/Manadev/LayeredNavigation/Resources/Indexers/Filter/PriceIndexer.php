@@ -16,10 +16,8 @@ class PriceIndexer extends AttributeIndexer
         if (empty($changes['load_defaults'])) {
             return array_merge(parent::getIndexedFields($changes), [
                 'type' => new Zend_Db_Expr("'price'"),
-                'template' => new Zend_Db_Expr($db->quoteInto(
-                    "COALESCE(`fge`.`template`, ?)",
-                    $this->configuration->getDefaultPriceTemplate()
-                )),
+                'template' => new Zend_Db_Expr($db->quoteInto("COALESCE(`fge`.`template`, ?)",
+                    $this->configuration->getDefaultPriceTemplate())),
             ]);
         }
         else {

@@ -35,26 +35,14 @@ class OptimizedFacetResource extends FacetResource
      */
     protected $temporaryResource;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        HelperResource $helperResource,
-        FacetSorter $sorter,
-        StandardFacetResource $standardFacetResource,
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, Configuration $configuration,
+        HelperResource $helperResource, FacetSorter $sorter, StandardFacetResource $standardFacetResource,
         TemporaryResource $temporaryResource,
-        $resourcePrefix = null
-    )
+        $resourcePrefix = null)
     {
-        parent::__construct(
-            $context,
-            $factory,
-            $storeManager,
-            $configuration,
-            $helperResource,
-            $resourcePrefix
-        );
+        parent::__construct($context, $factory, $storeManager, $configuration,
+            $helperResource, $resourcePrefix);
         $this->sorter = $sorter;
         $this->standardFacetResource = $standardFacetResource;
         $this->temporaryResource = $temporaryResource;
@@ -97,10 +85,8 @@ class OptimizedFacetResource extends FacetResource
             $tempFields = $this->getTempFields($facet);
             $select->columns($tempFields);
             $select->group($tempFields);
-            $db->query($select->insertIgnoreFromSelect(
-                $countTable,
-                array_merge(['count'], array_keys($tempFields))
-            ));
+            $db->query($select->insertIgnoreFromSelect($countTable,
+                array_merge(['count'], array_keys($tempFields))));
 
             $select = $db->select()->from(['eav' => $countTable], ['count']);
         }
@@ -155,21 +141,12 @@ class OptimizedFacetResource extends FacetResource
     protected function joinOptions(Select $select) {
         $db = $this->getConnection();
         $select
-            ->joinInner(
-                ['o' => $this->getTable('eav_attribute_option')],
-                "`o`.`option_id` = `eav`.`value`",
-                null
-            )
-            ->joinInner(
-                ['vg' => $this->getTable('eav_attribute_option_value')],
-                $db->quoteInto("`vg`.`option_id` = `eav`.`value` AND `vg`.`store_id` = ?", 0),
-                null
-            )
-            ->joinLeft(
-                ['vs' => $this->getTable('eav_attribute_option_value')],
-                $db->quoteInto("`vs`.`option_id` = `eav`.`value` AND `vs`.`store_id` = ?", $this->getStoreId()),
-                null
-            );
+            ->joinInner(array('o' => $this->getTable('eav_attribute_option')),
+                "`o`.`option_id` = `eav`.`value`", null)
+            ->joinInner(array('vg' => $this->getTable('eav_attribute_option_value')),
+                $db->quoteInto("`vg`.`option_id` = `eav`.`value` AND `vg`.`store_id` = ?", 0), null)
+            ->joinLeft(array('vs' => $this->getTable('eav_attribute_option_value')),
+                $db->quoteInto("`vs`.`option_id` = `eav`.`value` AND `vs`.`store_id` = ?", $this->getStoreId()), null);
     }
 
     protected function joinEavIndex(Select $select, $facet, $distinct = 'DISTINCT') {
@@ -177,12 +154,11 @@ class OptimizedFacetResource extends FacetResource
         $db = $this->getConnection();
 
         $select
-            ->joinInner(
-                ['eav' => $this->getTable('catalog_product_index_eav')],
+            ->joinInner(array('eav' => $this->getTable('catalog_product_index_eav')),
                 "`eav`.`entity_id` = `e`.`entity_id` AND
                 {$db->quoteInto("`eav`.`attribute_id` = ?", $facet->getAttributeId())} AND
                 {$db->quoteInto("`eav`.`store_id` = ?", $this->getStoreId())}",
-                ['count' => "COUNT($distinct `eav`.`entity_id`)"]
+                array('count' => "COUNT($distinct `eav`.`entity_id`)")
             );
 
         $this->helperResource->checkStockStatus($select, 'eav');
@@ -220,13 +196,8 @@ class OptimizedFacetResource extends FacetResource
         }
 
         if (($data = $this->standardFacetResource->count($select, $this->factory->createStandardDropdownFacet(
-            $facet->getName(),
-            $facet->getAttributeId(),
-            $selectedOptionIds,
-            false,
-            $facet->isShowSelectedOptionsFirst(),
-            $facet->getSortBy()
-        ))) === false)
+            $facet->getName(), $facet->getAttributeId(), $selectedOptionIds, false,
+            $facet->isShowSelectedOptionsFirst(), $facet->getSortBy()))) === false)
         {
             return false;
         }
@@ -238,7 +209,7 @@ class OptimizedFacetResource extends FacetResource
 
     protected function getTempFields(Facet $facet) {
         return [
-            'value' => new Zend_Db_Expr("`eav`.`value`"),
+            'value' => new Zend_Db_Expr("`eav`.`value`")
         ];
     }
 

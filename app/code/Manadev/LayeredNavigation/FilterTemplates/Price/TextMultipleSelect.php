@@ -68,42 +68,27 @@ class TextMultipleSelect extends FilterTemplate {
 
         if (($appliedRanges = $this->requestParser->readMultipleValueRange($name)) !== false) {
             $query->getFilterGroup('layered_nav')->addOperand($this->factory->createLayeredPriceFilter(
-                $name,
-                $attributeId,
-                $appliedRanges
-            ));
+                $name, $attributeId, $appliedRanges));
         }
 
         if ($productCollection->getQuery()->getCategory()->getData('filter_price_range')) {
-            $query->addFacet($this->factory->createManualRangePriceFacet(
-                $name,
-                $appliedRanges,
-                $filter->getData('hide_filter_with_single_visible_item')
-            ));
+            $query->addFacet($this->factory->createManualRangePriceFacet($name, $appliedRanges,
+                $filter->getData('hide_filter_with_single_visible_item')));
             return;
         }
 
         switch ($this->configuration->getPriceRangeCalculationMethod()) {
             case AlgorithmFactory::RANGE_CALCULATION_IMPROVED:
-                $query->addFacet($this->factory->createEqualizedCountPriceFacet(
-                    $name,
-                    $appliedRanges,
-                    $filter->getData('hide_filter_with_single_visible_item')
-                ));
+                $query->addFacet($this->factory->createEqualizedCountPriceFacet($name, $appliedRanges,
+                    $filter->getData('hide_filter_with_single_visible_item')));
                 break;
             case AlgorithmFactory::RANGE_CALCULATION_MANUAL:
-                $query->addFacet($this->factory->createManualRangePriceFacet(
-                    $name,
-                    $appliedRanges,
-                    $filter->getData('hide_filter_with_single_visible_item')
-                ));
+                $query->addFacet($this->factory->createManualRangePriceFacet($name, $appliedRanges,
+                    $filter->getData('hide_filter_with_single_visible_item')));
                 break;
             default:
-                $query->addFacet($this->factory->createEqualizedRangePriceFacet(
-                    $name,
-                    $appliedRanges,
-                    $filter->getData('hide_filter_with_single_visible_item')
-                ));
+                $query->addFacet($this->factory->createEqualizedRangePriceFacet($name, $appliedRanges,
+                    $filter->getData('hide_filter_with_single_visible_item')));
                 break;
         }
     }

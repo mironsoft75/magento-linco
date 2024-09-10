@@ -34,14 +34,8 @@ class TaxResource extends Db\AbstractDb
      */
     protected $configuration;
 
-    public function __construct(
-        Db\Context $context,
-        StoreManagerInterface $storeManager,
-        Calculation $calculation,
-        TaxHelper $taxHelper,
-        Configuration $configuration,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, StoreManagerInterface $storeManager, Calculation $calculation,
+        TaxHelper $taxHelper, Configuration $configuration, $resourcePrefix = null)
     {
         parent::__construct($context, $resourcePrefix);
         $this->storeManager = $storeManager;

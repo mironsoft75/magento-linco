@@ -108,7 +108,7 @@ class EqualizedRangeFacetResource extends FacetResource
         }
 
         foreach ($facet->getAppliedRanges() as $range) {
-            [$from, $to] = $range;
+            list($from, $to) = $range;
             if ($from !== '' && $to !== '') {
                 $facetRange = abs((float)$to - (float)$from);
                 if ($facetRange > 0.001) {
@@ -117,7 +117,7 @@ class EqualizedRangeFacetResource extends FacetResource
             }
         }
 
-        [$from, $to] = $facet->getAppliedRanges()[0];
+        list($from, $to) = $facet->getAppliedRanges()[0];
         if ($from !== '') {
             return pow(10, strlen(floor($from)) - 1);
         }

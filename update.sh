@@ -10,7 +10,11 @@ sudo php8.1 bin/magento setup:upgrade
 sudo php8.1 bin/magento setup:di:compile
 sudo php8.1 bin/magento setup:static-content:deploy en_US -f
 sudo php8.1 bin/magento setup:static-content:deploy es_AR -f
-sudo chown www-data:www-data * -R
+#sudo chown www-data:www-data * -R
 #solo para produccion
+sudo php8.1 bin/magento deploy:mode:set developer
 #sudo php8.1 bin/magento deploy:mode:set production
 sudo php8.1 bin/magento maintenance:disable
+
+sudo chown www-data:www-data * -R
+

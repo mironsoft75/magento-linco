@@ -8,7 +8,7 @@ namespace Manadev\ProductCollection\Enums;
 
 class Operation
 {
-    public const LOGICAL_OR = 'or';
-    public const LOGICAL_AND = 'and';
-    public const LOGICAL_NOT = 'not';
+    const LOGICAL_OR = 'or';
+    const LOGICAL_AND = 'and';
+    const LOGICAL_NOT = 'not';
 }

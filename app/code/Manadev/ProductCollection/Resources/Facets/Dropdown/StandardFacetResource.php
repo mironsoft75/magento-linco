@@ -30,16 +30,10 @@ class StandardFacetResource extends FacetResource
      */
     protected $sorter;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        HelperResource $helperResource,
-        Config $config,
-        FacetSorter $sorter,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, Configuration $configuration,
+        HelperResource $helperResource, Config $config,
+        FacetSorter $sorter, $resourcePrefix = null)
     {
         parent::__construct($context, $factory, $storeManager, $configuration, $helperResource, $resourcePrefix);
         $this->config = $config;
@@ -89,7 +83,7 @@ class StandardFacetResource extends FacetResource
                 $option = array_merge($option, $additionalData[$option['value']]);
             }
 
-            $option['count'] = $counts[$option['value']] ?? 0;
+            $option['count'] = isset($counts[$option['value']]) ? $counts[$option['value']] : 0;
             $option['is_selected'] = $selectedOptionIds !== false ? in_array($option['value'], $selectedOptionIds) : false;
             $option['sort_order'] = $sortOrder;
         }
@@ -126,8 +120,7 @@ class StandardFacetResource extends FacetResource
         $db = $this->getConnection();
 
         $select
-            ->joinInner(
-                ['eav' => $this->getTable('catalog_product_index_eav')],
+            ->joinInner(array('eav' => $this->getTable('catalog_product_index_eav')),
                 "`eav`.`entity_id` = `e`.`entity_id` AND
                 {$db->quoteInto("`eav`.`attribute_id` = ?", $facet->getAttributeId())} AND
                 {$db->quoteInto("`eav`.`store_id` = ?", $this->getStoreId())}",

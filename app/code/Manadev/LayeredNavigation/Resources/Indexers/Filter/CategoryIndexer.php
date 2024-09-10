@@ -22,12 +22,8 @@ class CategoryIndexer extends Db\AbstractDb implements FilterIndexer {
      */
     protected $configuration;
 
-    public function __construct(
-        Db\Context $context,
-        Configuration $configuration,
-        IndexerScope $scope,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context,
+        Configuration $configuration, IndexerScope $scope, $resourcePrefix = null)
     {
         parent::__construct($context, $resourcePrefix);
         $this->scope = $scope;
@@ -148,11 +144,8 @@ class CategoryIndexer extends Db\AbstractDb implements FilterIndexer {
         $select = $db->select()
             ->distinct()
             ->from(['s' => $this->getTable('store')], null)
-            ->joinLeft(
-                ['fge' => $this->getTable('mana_filter_edit')],
-                "`fge`.`type` = 'category' AND `fge`.`store_id` = 0",
-                null
-            )
+            ->joinLeft(['fge' => $this->getTable('mana_filter_edit')],
+                "`fge`.`type` = 'category' AND `fge`.`store_id` = 0", null)
             ->where("`s`.`store_id` = 0")
             ->columns($fields);
 

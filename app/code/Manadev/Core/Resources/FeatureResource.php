@@ -26,11 +26,11 @@ class FeatureResource
 
     protected function getFeatureGlobs() {
         if (!$this->featureGlobs) {
-            $this->featureGlobs = [
+            $this->featureGlobs = array(
                 BP . '/app/code/Manadev/*/etc/config.xml',
                 BP . '/vendor/manadev/*/etc/config.xml',
                 BP . '/vendor/manadev/*/app/code/Manadev/*/etc/config.xml',
-            ];
+            );
         }
 
         return $this->featureGlobs;
@@ -38,11 +38,11 @@ class FeatureResource
 
     protected function getModuleGlobs() {
         if (!$this->moduleGlobs) {
-            $this->moduleGlobs = [
+            $this->moduleGlobs = array(
                 BP . '/app/code/Manadev/*/etc/module.xml',
                 BP . '/vendor/manadev/*/etc/module.xml',
                 BP . '/vendor/manadev/*/app/code/Manadev/*/etc/module.xml',
-            ];
+            );
         }
 
         return $this->moduleGlobs;
@@ -50,7 +50,7 @@ class FeatureResource
 
     public function getFeatures() {
         if (!$this->features) {
-            $this->features = [];
+            $this->features = array();
             foreach ($this->getFeatureGlobs() as $glob) {
                 foreach(glob($glob) as $path) {
                     $this->loadFeature($path);
@@ -76,7 +76,7 @@ class FeatureResource
 
         foreach ($xml->default->manadev_features->children() as $featureXml) {
             $name = $featureXml->getName();
-            $data = [];
+            $data = array();
             foreach ($featureXml->children() as $fieldXml) {
                 $data[$fieldXml->getName()] = (string)$fieldXml;
             }
@@ -88,7 +88,7 @@ class FeatureResource
 
     public function getAll() {
         if (!$this->modules) {
-            $this->modules = [];
+            $this->modules = array();
             foreach ($this->getModuleGlobs() as $glob) {
                 foreach (glob($glob) as $path) {
                     $this->loadModule($path);
@@ -117,7 +117,7 @@ class FeatureResource
         }
 
         $name = (string)$xml->module['name'];
-        $sequence = [];
+        $sequence = array();
         foreach ($xml->module->sequence->children() as $sequenceXml) {
             if (!isset($sequenceXml['name'])) {
                 continue;
@@ -130,6 +130,6 @@ class FeatureResource
 
     public function getOne($name) {
         $data = $this->getAll();
-        return $data[$name] ?? null;
+        return isset($data[$name]) ? $data[$name] : null;
     }
 }

@@ -33,10 +33,7 @@ class ListCompareBlockPlugin
 
     public function aroundGetProductAttributeValue(
         \Magento\Catalog\Block\Product\Compare\ListCompare $block,
-        callable $proceed,
-        $product,
-        $attribute
-    )
+        callable $proceed, $product, $attribute)
     {
         $value = $proceed($product, $attribute);
 

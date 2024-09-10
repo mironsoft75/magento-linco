@@ -33,13 +33,8 @@ class EngineFilter {
      */
     protected $request;
 
-    public function __construct(
-        Engine $engine,
-        Filter $filter,
-        FilterType $filterType,
-        FilterTemplate $filterTemplate,
-        RequestInterface $request
-    )
+    public function __construct(Engine $engine, Filter $filter, FilterType $filterType, FilterTemplate $filterTemplate,
+        RequestInterface $request)
     {
         $this->filter = $filter;
         $this->filterType = $filterType;
@@ -95,8 +90,7 @@ class EngineFilter {
 
     public function getAppliedOptions() {
         return $this->filterTemplate->getAppliedOptions($this->request->getParam(
-            $this->filter->getData('param_name')
-        ));
+            $this->filter->getData('param_name')));
     }
 
     public function isApplied() {

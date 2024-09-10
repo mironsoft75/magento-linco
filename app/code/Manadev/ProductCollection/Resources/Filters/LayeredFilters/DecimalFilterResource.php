@@ -48,7 +48,7 @@ class DecimalFilterResource extends FilterResource
 
         $parentExpr = "";
         foreach ($filter->getRanges() as $range) {
-            [$from, $to] = $range;
+            list($from, $to) = $range;
             $expr = "";
 
             if ($from !== '') {
@@ -73,12 +73,10 @@ class DecimalFilterResource extends FilterResource
             }
         }
 
-        $select->joinInner(
-            [$alias => $this->getMainTable()],
+        $select->joinInner([$alias => $this->getMainTable()],
             "`{$alias}`.`entity_id` = `e`.`entity_id` AND " .
             $connection->quoteInto("`{$alias}`.`attribute_id` = ?", $filter->getAttributeId()) . " AND " .
-            $connection->quoteInto("`{$alias}`.`store_id` = ?", $this->getStoreId())
-        );
+            $connection->quoteInto("`{$alias}`.`store_id` = ?", $this->getStoreId()));
 
         $select->where($parentExpr);
 

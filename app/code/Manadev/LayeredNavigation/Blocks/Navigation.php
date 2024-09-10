@@ -65,12 +65,8 @@ class Navigation extends Template {
      */
     protected $layoutHelper;
 
-    public function __construct(
-        Template\Context $context,
-        Engine $engine,
-        UrlGenerator $urlGenerator,
-        Configuration $config,
-        LayoutHelper $layoutHelper,
+    public function __construct(Template\Context $context, Engine $engine, UrlGenerator $urlGenerator,
+        Configuration $config, LayoutHelper $layoutHelper,
         array $data = []
     )
     {
@@ -96,17 +92,14 @@ class Navigation extends Template {
 
     protected function _prepareLayout() {
         $this->layoutHelper->afterLayoutIsLoaded(function() {
-            $this->engine->prepareFiltersToShowIn(
-                $this->getData('position'),
-                $this->defaultVisibility,
-                $this->visibility
-            );
+            $this->engine->prepareFiltersToShowIn($this->getData('position'), $this->defaultVisibility,
+                $this->visibility);
         });
 
         return $this;
     }
 
-    public function addScript($scriptName, $config = [], $target = '*') {
+    public function addScript($scriptName, $config = array(), $target = '*') {
         if(!isset($this->_scripts[$target])) {
             $this->_scripts[$target] = [];
         }
@@ -128,9 +121,8 @@ class Navigation extends Template {
         $this->engine->getProductCollection()->loadFacets();
         foreach ($this->engine->getFiltersToShowIn($this->getData('position')) as $engineFilter) {
             if ($engineFilter->isVisible() && (
-                $this->isFilterVisible($engineFilter) ||
-                    $this->isAppliedFilterVisibleAsSpecifiedInLayoutXml($engineFilter)
-            ))
+                    $this->isFilterVisible($engineFilter) ||
+                    $this->isAppliedFilterVisibleAsSpecifiedInLayoutXml($engineFilter)))
             {
                 return true;
             }

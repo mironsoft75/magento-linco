@@ -31,48 +31,29 @@ class InstallSchema implements InstallSchemaInterface {
             // ID, foreign keys and infrastructure
             //
 
-            ->addColumn(
-                'id',
-                Table::TYPE_BIGINT,
-                null,
-                ['identity' => true, 'nullable' => false, 'primary' => true]
-            )
+            ->addColumn('id', Table::TYPE_BIGINT, null,
+                ['identity' => true, 'nullable' => false, 'primary' => true])
 
             ->addColumn('filter_id', Table::TYPE_BIGINT)
             ->addIndex($setup->getIdxName($tableName, ['filter_id']), ['filter_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'filter_id', 'mana_filter', 'id'),
-                'filter_id',
-                $setup->getTable('mana_filter'),
-                'id',
-                Table::ACTION_CASCADE,
-                Table::ACTION_CASCADE
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'filter_id', 'mana_filter', 'id'),
+                'filter_id', $setup->getTable('mana_filter'), 'id',
+                Table::ACTION_CASCADE, Table::ACTION_CASCADE)
 
             ->addColumn('store_id', Table::TYPE_SMALLINT, null, ['unsigned' => true, 'nullable' => false])
             ->addIndex($setup->getIdxName($tableName, ['store_id']), ['store_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'store_id', 'store', 'store_id'),
-                'store_id',
-                $setup->getTable('store'),
-                'store_id',
-                Table::ACTION_CASCADE,
-                Table::ACTION_CASCADE
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'store_id', 'store', 'store_id'),
+                'store_id', $setup->getTable('store'), 'store_id',
+                Table::ACTION_CASCADE, Table::ACTION_CASCADE)
 
             ->addColumn('data_source', Table::TYPE_TEXT, 20, ['nullable' => false])
             ->addIndex($setup->getIdxName($tableName, ['data_source']), ['data_source'])
 
             ->addColumn('attribute_id', Table::TYPE_SMALLINT, null, ['unsigned' => true])
             ->addIndex($setup->getIdxName($tableName, ['attribute_id']), ['attribute_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'attribute_id', 'eav_attribute', 'attribute_id'),
-                'attribute_id',
-                $setup->getTable('eav_attribute'),
-                'attribute_id',
-                Table::ACTION_CASCADE,
-                Table::ACTION_CASCADE
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'attribute_id', 'eav_attribute', 'attribute_id'),
+                'attribute_id', $setup->getTable('eav_attribute'), 'attribute_id',
+                Table::ACTION_CASCADE, Table::ACTION_CASCADE)
 
             //
             // general settings
@@ -91,45 +72,26 @@ class InstallSchema implements InstallSchemaInterface {
             // ID, foreign keys and infrastructure
             //
 
-            ->addColumn(
-                'id',
-                Table::TYPE_BIGINT,
-                null,
-                ['identity' => true, 'nullable' => false, 'primary' => true]
-            )
+            ->addColumn('id', Table::TYPE_BIGINT, null,
+                ['identity' => true, 'nullable' => false, 'primary' => true])
 
             ->addColumn('edit_id', Table::TYPE_BIGINT)
             ->addIndex($setup->getIdxName($tableName, ['edit_id']), ['edit_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'edit_id', 'mana_filter_edit', 'id'),
-                'edit_id',
-                $setup->getTable('mana_filter_edit'),
-                'id',
-                Table::ACTION_SET_NULL,
-                Table::ACTION_SET_NULL
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'edit_id', 'mana_filter_edit', 'id'),
+                'edit_id', $setup->getTable('mana_filter_edit'), 'id',
+                Table::ACTION_SET_NULL, Table::ACTION_SET_NULL)
 
             ->addColumn('filter_id', Table::TYPE_BIGINT)
             ->addIndex($setup->getIdxName($tableName, ['filter_id']), ['filter_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'filter_id', 'mana_filter', 'id'),
-                'filter_id',
-                $setup->getTable('mana_filter'),
-                'id',
-                Table::ACTION_CASCADE,
-                Table::ACTION_CASCADE
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'filter_id', 'mana_filter', 'id'),
+                'filter_id', $setup->getTable('mana_filter'), 'id',
+                Table::ACTION_CASCADE, Table::ACTION_CASCADE)
 
             ->addColumn('store_id', Table::TYPE_SMALLINT, null, ['unsigned' => true, 'nullable' => false])
             ->addIndex($setup->getIdxName($tableName, ['store_id']), ['store_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'store_id', 'store', 'store_id'),
-                'store_id',
-                $setup->getTable('store'),
-                'store_id',
-                Table::ACTION_CASCADE,
-                Table::ACTION_CASCADE
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'store_id', 'store', 'store_id'),
+                'store_id', $setup->getTable('store'), 'store_id',
+                Table::ACTION_CASCADE, Table::ACTION_CASCADE)
 
             ->addColumn('data_source', Table::TYPE_TEXT, 20, ['nullable' => false])
             ->addIndex($setup->getIdxName($tableName, ['data_source']), ['data_source'])
@@ -139,14 +101,9 @@ class InstallSchema implements InstallSchemaInterface {
 
             ->addColumn('attribute_id', Table::TYPE_SMALLINT, null, ['unsigned' => true])
             ->addIndex($setup->getIdxName($tableName, ['attribute_id']), ['attribute_id'])
-            ->addForeignKey(
-                $setup->getFkName($tableName, 'attribute_id', 'eav_attribute', 'attribute_id'),
-                'attribute_id',
-                $setup->getTable('eav_attribute'),
-                'attribute_id',
-                Table::ACTION_CASCADE,
-                Table::ACTION_CASCADE
-            )
+            ->addForeignKey($setup->getFkName($tableName, 'attribute_id', 'eav_attribute', 'attribute_id'),
+                'attribute_id', $setup->getTable('eav_attribute'), 'attribute_id',
+                Table::ACTION_CASCADE, Table::ACTION_CASCADE)
 
             ->addColumn('unique_key', Table::TYPE_TEXT, 255, ['nullable' => false])
             ->addIndex($setup->getIdxName($tableName, ['unique_key']), ['unique_key'], ['type' => 'unique'])

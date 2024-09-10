@@ -53,7 +53,7 @@ class Helper {
     }
 
     public function decodeGridSerializedInput($encoded) {
-        $result = [];
+        $result = array();
         parse_str($encoded, $decoded);
         foreach ($decoded as $key => $value) {
             $result[$key] = null;

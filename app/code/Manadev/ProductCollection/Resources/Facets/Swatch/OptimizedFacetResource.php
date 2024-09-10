@@ -25,16 +25,10 @@ class OptimizedFacetResource extends DropdownOptimizedFacetResource
         $db = $this->getConnection();
 
         $select
-            ->joinLeft(
-                ['sg' => $this->getTable('eav_attribute_option_swatch')],
-                $db->quoteInto("`sg`.`option_id` = `eav`.`value` AND `sg`.`store_id` = ?", 0),
-                null
-            )
-            ->joinLeft(
-                ['ss' => $this->getTable('eav_attribute_option_swatch')],
-                $db->quoteInto("`ss`.`option_id` = `eav`.`value` AND `ss`.`store_id` = ?", $this->getStoreId()),
-                null
-            );
+            ->joinLeft(['sg' => $this->getTable('eav_attribute_option_swatch')],
+                $db->quoteInto("`sg`.`option_id` = `eav`.`value` AND `sg`.`store_id` = ?", 0), null)
+            ->joinLeft(['ss' => $this->getTable('eav_attribute_option_swatch')],
+                $db->quoteInto("`ss`.`option_id` = `eav`.`value` AND `ss`.`store_id` = ?", $this->getStoreId()), null);
     }
 
     public function getBatchType($facet) {

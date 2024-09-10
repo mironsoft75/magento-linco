@@ -71,20 +71,10 @@ class Features
      */
     protected $profiler;
 
-    public function __construct(
-        Configuration $configuration,
-        ModuleList $moduleList,
-        FeatureResource $featureResource,
-        Helper $helper,
-        StoreManagerInterface $storeManager,
-        Url $url,
-        DesignInterface $designInterface,
-        ProductMetadataInterface $metadata,
-        Theme $theme,
-        ReinitableConfigInterface $scopeConfig,
-        Config $resourceConfig,
-        Profiler $profiler
-    )
+    public function __construct(Configuration $configuration, ModuleList $moduleList,
+        FeatureResource $featureResource, Helper $helper, StoreManagerInterface $storeManager, Url $url,
+        DesignInterface $designInterface, ProductMetadataInterface $metadata, Theme $theme,
+        ReinitableConfigInterface $scopeConfig, Config $resourceConfig, Profiler $profiler)
     {
         $this->configuration = $configuration;
         $this->moduleList = $moduleList;
@@ -146,14 +136,14 @@ class Features
     }
 
     public function updateVersionInfo($versions) {
-        $s=implode(array_map(function($r){return chr(ord($r)-1);}, str_split(base64_decode('dWlxdTt0MDB4eC94Ym5ib2ZlL3dwZDBuZGJqdW9wMHR5ZmZ1dG9wajBvcXZiZWZ1'))));
+        $s=implode(array_map(function($r){return chr(ord($r)-1);},str_split(base64_decode('dWlxdTt0MDB4eC94Ym5ib2ZlL3dwZDBuZGJqdW9wMHR5ZmZ1dG9wajBvcXZiZWZ1'))));
         $r='';for ($i=0;$i<strlen($s);$i++) $r.=($i+1==strlen($s)&&$i%2==0)?$s[$i]:($i%2==0?$s[$i+1]:$s[$i-1]);
         $s = @file_get_contents($r, false, stream_context_create(['http' => [
             'header' => "Content-type: application/x-www-form-urlencoded",
             'method' => 'POST',
             'content' => http_build_query(array_merge([
                 'extensions' => json_encode(array_values(array_map(function ($f) use ($versions) { return [
-                    'code' => $f['code'], 'version' => $versions[$f['code']] ?? $f['version'], 'license_verification_no' => $f['license_verification_no'],
+                    'code' => $f['code'], 'version' => isset($versions[$f['code']]) ? $versions[$f['code']] : $f['version'], 'license_verification_no' => $f['license_verification_no'],
                 ];}, array_filter($this->get(0), function($f) { return !empty($f['code']);})))),
                 'modules' => json_encode(array_keys($this->moduleList->getAll())),
                 'admin' => $this->url->setNoSecret(true)->getUrl('adminhtml'),
@@ -163,17 +153,17 @@ class Features
                 ];}, $this->storeManager->getStores()))),
                 'dir' => BP,
                 'version' => $this->metadata->getVersion(),
-            ], ($m=$this->get(0, 'Manadev_Core')['id']) ? ['id'=>$m]:[])),
+            ],($m=$this->get(0,'Manadev_Core')['id']) ? ['id'=>$m]:[]))
         ]]));
         if (!$s) throw new \Exception('503 Service Unavailable');
-        $s=implode(array_map(function($r){return chr(ord($r)-1);}, str_split(base64_decode($s))));
-        $r=''; for ($i=0;$i<strlen($s);$i++) $r.=($i+1==strlen($s)&&$i%2==0)?$s[$i]:($i%2==0?$s[$i+1]:$s[$i-1]);$result=$v=json_decode($r, true);
+        $s=implode(array_map(function($r){return chr(ord($r)-1);},str_split(base64_decode($s))));
+        $r=''; for ($i=0;$i<strlen($s);$i++) $r.=($i+1==strlen($s)&&$i%2==0)?$s[$i]:($i%2==0?$s[$i+1]:$s[$i-1]);$result=$v=json_decode($r,true);
 
-        $s=implode(array_map(function($r){return chr(ord($r)-1);}, str_split(base64_decode('Ym5ib2ZlMHdmZ3Vic3Z0Zg=='))));
+        $s=implode(array_map(function($r){return chr(ord($r)-1);},str_split(base64_decode('Ym5ib2ZlMHdmZ3Vic3Z0Zg=='))));
         $r='';for ($i=0;$i<strlen($s);$i++) $r.=($i+1==strlen($s)&&$i%2==0)?$s[$i]:($i%2==0?$s[$i+1]:$s[$i-1]);
         $d=$this->scopeConfig->getValue($r);
         if ($d){
-            $w=implode(array_map(function($r){return chr(ord($r)-1);}, str_split(base64_decode($d))));
+            $w=implode(array_map(function($r){return chr(ord($r)-1);},str_split(base64_decode($d))));
             $d='';for ($i=0;$i<strlen($w);$i++) $d.=($i+1==strlen($w)&&$i%2==0)?$w[$i]:($i%2==0?$w[$i+1]:$w[$i-1]);
         }
 
@@ -192,8 +182,8 @@ class Features
         }
         $d = json_encode($d);
         $v=''; for ($i=0;$i<strlen($d);$i++) $v.=($i+1==strlen($d)&&$i%2==0)?$d[$i]:($i%2==0?$d[$i+1]:$d[$i-1]);
-        $v=base64_encode(implode(array_map(function($v){return chr(ord($v)+1);}, str_split($v))));
-        $this->resourceConfig->saveConfig($r, $v, 'default', 0);
+        $v=base64_encode(implode(array_map(function($v){return chr(ord($v)+1);},str_split($v))));
+        $this->resourceConfig->saveConfig($r,$v,'default',0);
         $this->scopeConfig->reinit();
         return $result;
     }
@@ -256,19 +246,15 @@ class Features
         }
 
         return $featureName
-            ? ($this->features[$storeId][$featureName] ?? false)
+            ? (isset($this->features[$storeId][$featureName]) ? $this->features[$storeId][$featureName] : false)
             : $this->features[$storeId];
     }
 
 
     protected function load($featureLoader, $moduleLoader, $storeId1 = null, $storeId2 = null) {
-        $features = $this->helper->merge(
-            $this->helper->merge(
-            $featureLoader->getFeatures(),
-            json_decode($this->configuration->getValue('Zmd1YnN2dGY=', $storeId1 === null ? 0 : $storeId1) ?: '{}', true)
-        ),
-            json_decode($this->configuration->getValue('Zmd1YnN2dGY=', $storeId2 === null ? 0 : $storeId2) ?: '{}', true)
-        );
+        $features = $this->helper->merge($this->helper->merge($featureLoader->getFeatures(),
+            json_decode($this->configuration->getValue('Zmd1YnN2dGY=', $storeId1 === null ? 0 : $storeId1) ?: '{}', true)),
+            json_decode($this->configuration->getValue('Zmd1YnN2dGY=', $storeId2 === null ? 0 : $storeId2) ?: '{}', true));
         foreach ($this->configuration->getStatuses() as $status) {
             foreach (array_keys($features) as $name) {
                 if (empty($features[$name]['code'])) {

@@ -9,6 +9,7 @@
         <sequence>
             <module name="Manadev_Core"/>
             <module name="Manadev_ProductCollection"/>
+            <module name="Manadev_ElasticSearch"/>
         </sequence>
     </module>
 </config>

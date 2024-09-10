@@ -14,7 +14,7 @@ use Manadev\ProductCollection\Resources\HelperResource;
 
 abstract class FilterResource extends Db\AbstractDb implements SupportedFilter
 {
-    public const SQL_TRUE = '1 = 1';
+    const SQL_TRUE = '1 = 1';
 
     /**
      * @var Factory
@@ -29,13 +29,9 @@ abstract class FilterResource extends Db\AbstractDb implements SupportedFilter
      */
     protected $helperResource;
 
-    public function __construct(
-        Db\Context $context,
-        Factory $factory,
-        StoreManagerInterface $storeManager,
-        HelperResource $helperResource,
-        $resourcePrefix = null
-    )
+    public function __construct(Db\Context $context, Factory $factory,
+        StoreManagerInterface $storeManager, HelperResource $helperResource,
+        $resourcePrefix = null)
     {
         $this->storeManager = $storeManager;
         parent::__construct($context, $resourcePrefix);

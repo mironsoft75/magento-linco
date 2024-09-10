@@ -98,8 +98,7 @@ if (!function_exists('_logTimers')) {
             $url = substr($url, 0, 128);
         }
 
-        $filename = sprintf(
-            BP . '/var/log/mana/timers/%s-%s.log',
+        $filename = sprintf(BP . '/var/log/mana/timers/%s-%s.log',
             PHP_SAPI !== 'cli' ? $_SERVER['REMOTE_ADDR'] . '-' . $url : 'cli',
             date("Y-m-d-H-i-s")
         );

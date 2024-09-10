@@ -12,19 +12,19 @@ use Manadev\Core\Resources\CompatibilityResource;
 
 class Configuration
 {
-    public const QUERY_ENGINE = 'catalog/search/engine';
-    public const EQUALIZED_COUNT_INTERVAL_DIVISION_LIMIT = 'catalog/layered_navigation/interval_division_limit';
-    public const DEFAULT_PRICE_NAVIGATION_STEP = 'catalog/layered_navigation/price_range_step';
-    public const MAX_NUMBER_OF_PRICE_INTERVALS = 'catalog/layered_navigation/price_range_max_intervals';
-    public const PRICE_RANGE_CALCULATION_METHOD = 'catalog/layered_navigation/price_range_calculation';
-    public const PRODUCT_COLLECTION_QUERY_LOGGING = 'mana_core/log/product_collection_queries';
-    public const FACET_COUNTING_QUERY_LOGGING = 'mana_core/log/facet_counting_queries';
-    public const BATCH_FILTER_COUNTING = 'mana_core/experimental/batch_filter_counting';
-    public const CHECK_STOCK_STATUS = 'mana_core/experimental/check_stock_status';
-    public const SHOW_OUT_OF_STOCK_INVENTORY = 'cataloginventory/options/show_out_of_stock';
-    public const USE_PRODUCT_TEMP_TABLE = 'mana_core/experimental/use_product_temp_table';
-    public const USE_COUNT_TEMP_TABLE = 'mana_core/experimental/use_count_temp_table';
-    public const CALCULATE_TAX_IN_PRICE_FILTER = 'mana_core/experimental/price_filter_tax_calculation';
+    const QUERY_ENGINE = 'catalog/search/engine';
+    const EQUALIZED_COUNT_INTERVAL_DIVISION_LIMIT = 'catalog/layered_navigation/interval_division_limit';
+    const DEFAULT_PRICE_NAVIGATION_STEP = 'catalog/layered_navigation/price_range_step';
+    const MAX_NUMBER_OF_PRICE_INTERVALS = 'catalog/layered_navigation/price_range_max_intervals';
+    const PRICE_RANGE_CALCULATION_METHOD = 'catalog/layered_navigation/price_range_calculation';
+    const PRODUCT_COLLECTION_QUERY_LOGGING = 'mana_core/log/product_collection_queries';
+    const FACET_COUNTING_QUERY_LOGGING = 'mana_core/log/facet_counting_queries';
+    const BATCH_FILTER_COUNTING = 'mana_core/experimental/batch_filter_counting';
+    const CHECK_STOCK_STATUS = 'mana_core/experimental/check_stock_status';
+    const SHOW_OUT_OF_STOCK_INVENTORY = 'cataloginventory/options/show_out_of_stock';
+    const USE_PRODUCT_TEMP_TABLE = 'mana_core/experimental/use_product_temp_table';
+    const USE_COUNT_TEMP_TABLE = 'mana_core/experimental/use_count_temp_table';
+    const CALCULATE_TAX_IN_PRICE_FILTER = 'mana_core/experimental/price_filter_tax_calculation';
 
     /**
      * @var ScopeConfigInterface
@@ -39,11 +39,8 @@ class Configuration
      */
     protected $compatibilityResource;
 
-    public function __construct(
-        ScopeConfigInterface $scopeConfig,
-        \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
-        CompatibilityResource $compatibilityResource
-    )
+    public function __construct(ScopeConfigInterface $scopeConfig,
+        \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState, CompatibilityResource $compatibilityResource)
     {
         $this->scopeConfig = $scopeConfig;
         $this->categoryFlatState = $categoryFlatState;

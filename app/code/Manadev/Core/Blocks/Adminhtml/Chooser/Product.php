@@ -53,7 +53,7 @@ class Product extends Chooser
                 if (empty($productIds)) {
                     $productIds = 0;
                 }
-                $collection->addFieldToFilter('entity_id', ['in' => $productIds]);
+                $collection->addFieldToFilter('entity_id', array('in' => $productIds));
             }
         }
 
@@ -62,7 +62,7 @@ class Product extends Chooser
         }
 
         if ($productIds = $this->getHiddenProducts()) {
-            $collection->addFieldToFilter('entity_id', ['nin' => explode(',', $productIds)]);
+            $collection->addFieldToFilter('entity_id', array('nin' => explode(',', $productIds)));
         }
 
         $this->setCollection($collection);
@@ -75,14 +75,14 @@ class Product extends Chooser
      * @return string
      */
     public function getGridUrl() {
-        return $this->getUrl('mana_core/productChooser', [
+        return $this->getUrl('mana_core/productChooser', array(
             'products_grid' => true,
             '_current' => true,
             'uniq_id' => $this->getId(),
             'use_massaction' => $this->getUseMassaction(),
             'product_type_id' => $this->getProductTypeId(),
             'hidden_products' => $this->getHiddenProducts(),
-        ]);
+        ));
     }
 
     /**

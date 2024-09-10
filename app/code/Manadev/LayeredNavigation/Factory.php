@@ -41,17 +41,11 @@ class Factory {
      * @param FilterTemplate $filterTemplate
      * @return EngineFilter
      */
-    public function createEngineFilter(
-        Engine $engine,
-        Filter $filter,
-        FilterType $filterType,
-        FilterTemplate $filterTemplate
-    )
+    public function createEngineFilter(Engine $engine, Filter $filter, FilterType $filterType,
+        FilterTemplate $filterTemplate)
     {
-        return $this->objectManager->create(
-            'Manadev\LayeredNavigation\EngineFilter',
-            compact('engine', 'filter', 'filterType', 'filterTemplate')
-        );
+        return $this->objectManager->create('Manadev\LayeredNavigation\EngineFilter',
+            compact('engine', 'filter', 'filterType', 'filterTemplate'));
     }
 
     public function createMagentoItem() {

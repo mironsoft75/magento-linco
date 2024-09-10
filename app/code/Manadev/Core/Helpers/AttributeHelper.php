@@ -20,7 +20,7 @@ class AttributeHelper
     protected $attributes = [];
 
     protected $entityTables = [
-        'catalog_category' => 'catalog_category_entity',
+        'catalog_category' => 'catalog_category_entity'
     ];
 
     /**
@@ -48,17 +48,15 @@ class AttributeHelper
             $attribute = new AttributeData($this->db->fetchRow(
                 $this->db->select()
                     ->from(['a' => $this->resource->getTableName('eav_attribute')], $columns)
-                    ->join(
-                        ['t' => $this->resource->getTableName('eav_entity_type')],
-                        't.entity_type_id = a.entity_type_id',
-                        null
-                    )
+                    ->join(['t' => $this->resource->getTableName('eav_entity_type')],
+                        't.entity_type_id = a.entity_type_id', null)
                     ->where('a.attribute_code = ?', $attributeCode)
                     ->where('t.entity_type_code = ?', $entityType)
             ));
 
-            $baseTable = $this->entityTables[$entityType]
-                ?? $entityType . '_entity';
+            $baseTable = isset($this->entityTables[$entityType])
+                ? $this->entityTables[$entityType]
+                : $entityType . '_entity';
 
             $attribute->table = $attribute->backend_table
                 ? $attribute->backend_table
@@ -78,18 +76,11 @@ class AttributeHelper
      * @param string|null $storeLevelAlias
      * @param string|null $storeIdExpr
      */
-    public function join(
-        $select,
-        $attribute,
-        $entityIdExpr,
-        $globalAlias = null,
-        $storeLevelAlias = null,
-        $storeIdExpr = null
-    )
+    public function join($select, $attribute, $entityIdExpr, $globalAlias = null, $storeLevelAlias = null,
+        $storeIdExpr = null)
     {
         if ($globalAlias) {
-            $select->joinLeft(
-                [$globalAlias => $attribute->table],
+            $select->joinLeft([$globalAlias => $attribute->table],
                 "`$globalAlias`.`entity_id` = $entityIdExpr" .
                 $this->db->quoteInto(" AND `$globalAlias`.`attribute_id` = ?", $attribute->attribute_id) .
                 " AND `$globalAlias`.`store_id` = 0",
@@ -98,8 +89,7 @@ class AttributeHelper
         }
 
         if ($storeLevelAlias) {
-            $select->joinLeft(
-                [$storeLevelAlias => $attribute->table],
+            $select->joinLeft([$storeLevelAlias => $attribute->table],
                 "`$storeLevelAlias`.`entity_id` = $entityIdExpr" .
                 $this->db->quoteInto(" AND `$storeLevelAlias`.`attribute_id` = ?", $attribute->attribute_id) .
                 " AND `$storeLevelAlias`.`store_id` = $storeIdExpr",
@@ -116,18 +106,11 @@ class AttributeHelper
      * @param string|null $storeLevelAlias
      * @param string|null $storeIdExpr
      */
-    public function joinStaged(
-        $select,
-        $attribute,
-        $rowIdExpr,
-        $globalAlias = null,
-        $storeLevelAlias = null,
-        $storeIdExpr = null
-    )
+    public function joinStaged($select, $attribute, $rowIdExpr, $globalAlias = null,
+        $storeLevelAlias = null, $storeIdExpr = null)
     {
         if ($globalAlias) {
-            $select->joinLeft(
-                [$globalAlias => $attribute->table],
+            $select->joinLeft([$globalAlias => $attribute->table],
                 "`$globalAlias`.`row_id` = $rowIdExpr" .
                 $this->db->quoteInto(" AND `$globalAlias`.`attribute_id` = ?", $attribute->attribute_id) .
                 " AND `$globalAlias`.`store_id` = 0",
@@ -136,8 +119,7 @@ class AttributeHelper
         }
 
         if ($storeLevelAlias) {
-            $select->joinLeft(
-                [$storeLevelAlias => $attribute->table],
+            $select->joinLeft([$storeLevelAlias => $attribute->table],
                 "`$storeLevelAlias`.`row_id` = $rowIdExpr" .
                 $this->db->quoteInto(" AND `$storeLevelAlias`.`attribute_id` = ?", $attribute->attribute_id) .
                 " AND `$storeLevelAlias`.`store_id` = $storeIdExpr",

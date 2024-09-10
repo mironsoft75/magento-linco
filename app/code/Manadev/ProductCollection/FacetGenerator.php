@@ -68,37 +68,22 @@ class FacetGenerator
                 case "boolean":
                 case "multiselect":
                 case "select":
-                    $facet = $this->factory->createOptimizedDropdownFacet(
-                        $field,
-                        $attribute->getId(),
-                        false,
-                        false,
-                        false,
-                        'position'
-                    );
+                    $facet = $this->factory->createOptimizedDropdownFacet($field, $attribute->getId(),
+                        false, false, false, 'position');
                     break;
                 case "price":
                     switch ($this->configuration->getPriceRangeCalculationMethod()) {
                         case AlgorithmFactory::RANGE_CALCULATION_IMPROVED:
-                            $facet = $this->factory->createEqualizedCountPriceFacet(
-                                $field,
-                                false,
-                                false
-                            );
+                            $facet = $this->factory->createEqualizedCountPriceFacet($field, false,
+                                false);
                             break;
                         case AlgorithmFactory::RANGE_CALCULATION_MANUAL:
-                            $facet = $this->factory->createManualRangePriceFacet(
-                                $field,
-                                false,
-                                false
-                            );
+                            $facet = $this->factory->createManualRangePriceFacet($field, false,
+                                false);
                             break;
                         default:
-                            $facet = $this->factory->createEqualizedRangePriceFacet(
-                                $field,
-                                false,
-                                false
-                            );
+                            $facet = $this->factory->createEqualizedRangePriceFacet($field, false,
+                                false);
                             break;
                     }
                     break;

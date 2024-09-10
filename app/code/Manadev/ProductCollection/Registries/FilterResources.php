@@ -20,11 +20,8 @@ class FilterResources implements SupportedFilters {
     {
         foreach ($filterResources as $filterResource) {
             if (!($filterResource instanceof FilterResource)) {
-                throw new InterfaceNotImplemented(sprintf(
-                    "'%s' does not implement '%s' interface.",
-                    get_class($filterResource),
-                    FilterResource::class
-                ));
+                throw new InterfaceNotImplemented(sprintf("'%s' does not implement '%s' interface.",
+                    get_class($filterResource), FilterResource::class));
             }
         }
         $this->filterResources = $filterResources;
@@ -35,7 +32,7 @@ class FilterResources implements SupportedFilters {
      * @return bool|FilterResource
      */
     public function get($name) {
-        return $this->filterResources[$name] ?? false;
+        return isset($this->filterResources[$name]) ? $this->filterResources[$name] : false;
     }
 
     /**

@@ -63,10 +63,8 @@ class Filter  extends AbstractModel {
     }
 
     public function afterEdit() {
-        $this->indexer->reindexChangedFilters(
-            [$this->getData('filter_id') => "'" . $this->getData('unique_key') . "'"],
-            $this->getData('store_id')
-        );
+        $this->indexer->reindexChangedFilters([$this->getData('filter_id') => "'" . $this->getData('unique_key') . "'"], 
+            $this->getData('store_id'));
     }
     
     public function getFields() {

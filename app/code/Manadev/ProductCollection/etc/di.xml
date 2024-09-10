@@ -46,11 +46,10 @@
             </argument>
         </arguments>
     </type>
-
-<type name="Manadev\ProductCollection\Resources\Filters\SearchFilterResource">
-    <arguments>
-        <argument name="openSearchMapper" xsi:type="object">Magento\OpenSearch\SearchAdapter\Mapper</argument>
-    </arguments>
-</type>
-
+    <type name="Manadev\ProductCollection\Resources\Collections\FullTextProductCollection">
+        <arguments>
+<!--            <argument name="defaultFilterStrategyApplyChecker" xsi:type="object">Magento\Elasticsearch\Model\ResourceModel\Fulltext\Collection\DefaultFilterStrategyApplyChecker</argument>-->
+            <argument name="defaultFilterStrategyApplyChecker" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\DefaultFilterStrategyApplyChecker</argument>
+        </arguments>
+    </type>
 </config>

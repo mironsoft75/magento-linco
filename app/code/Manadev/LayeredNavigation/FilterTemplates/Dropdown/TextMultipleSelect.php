@@ -32,12 +32,8 @@ class TextMultipleSelect extends FilterTemplate {
      */
     protected $catalogAttributes;
 
-    public function __construct(
-        RequestParser $requestParser,
-        Factory $factory,
-        \Magento\Swatches\Helper\Data $swatchHelper,
-        CatalogAttributes $catalogAttributes
-    ) {
+    public function __construct(RequestParser $requestParser, Factory $factory,
+        \Magento\Swatches\Helper\Data $swatchHelper, CatalogAttributes $catalogAttributes) {
         $this->requestParser = $requestParser;
         $this->factory = $factory;
         $this->swatchHelper = $swatchHelper;
@@ -76,32 +72,21 @@ class TextMultipleSelect extends FilterTemplate {
 
         if (($appliedOptions = $this->requestParser->readMultipleValueInteger($name)) !== false) {
             $query->getFilterGroup('layered_nav')->addOperand($this->factory->createLayeredDropdownFilter(
-                $name,
-                $attributeId,
-                $appliedOptions,
-                $filter->getData('use_logical_and') ? Operation::LOGICAL_AND : Operation::LOGICAL_OR
-            ));
+                $name, $attributeId, $appliedOptions,
+                $filter->getData('use_logical_and') ? Operation::LOGICAL_AND : Operation::LOGICAL_OR));
         }
 
         if ($filter->getData('minimum_product_count_per_option') > 0) {
-            $query->addFacet($this->factory->createOptimizedDropdownFacet(
-                $name,
-                $attributeId,
-                $appliedOptions,
+            $query->addFacet($this->factory->createOptimizedDropdownFacet($name, $attributeId, $appliedOptions,
                 $filter->getData('hide_filter_with_single_visible_item'),
                 $filter->getData('show_selected_options_first'),
-                $filter->getData('sort_options_by')
-            ));
+                $filter->getData('sort_options_by')));
         }
         else {
-            $query->addFacet($this->factory->createStandardDropdownFacet(
-                $name,
-                $attributeId,
-                $appliedOptions,
+            $query->addFacet($this->factory->createStandardDropdownFacet($name, $attributeId, $appliedOptions,
                 $filter->getData('hide_filter_with_single_visible_item'),
                 $filter->getData('show_selected_options_first'),
-                $filter->getData('sort_options_by')
-            ));
+                $filter->getData('sort_options_by')));
         }
     }
 

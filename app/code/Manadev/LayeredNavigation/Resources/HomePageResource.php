@@ -21,12 +21,8 @@ class HomePageResource extends Db\AbstractDb
      */
     protected $configuration;
 
-    public function __construct(
-        Db\Context $context,
-        StoreManagerInterface $storeManager,
-        Configuration $configuration,
-        $connectionName = null
-    )
+    public function __construct(Db\Context $context, StoreManagerInterface $storeManager, Configuration $configuration,
+        $connectionName = null)
     {
         parent::__construct($context, $connectionName);
         $this->storeManager = $storeManager;
@@ -37,11 +33,8 @@ class HomePageResource extends Db\AbstractDb
         $db = $this->getConnection();
 
         return $db->select()->from(['p' => $this->getMainTable()], 'mana_add_layered_navigation_and_products')
-            ->join(
-                ['s' => $this->getTable('cms_page_store')],
-                $db->quoteInto("`s`.`page_id` = `p`.`page_id` AND `s`.`store_id` IN (?)", [0, $storeId]),
-                null
-            )
+            ->join(['s' => $this->getTable('cms_page_store')],
+                $db->quoteInto("`s`.`page_id` = `p`.`page_id` AND `s`.`store_id` IN (?)", [0, $storeId]), null)
             ->where("`p`.`identifier` = ?", $identifier)
             ->where("`p`.`is_active` = 1");
     }

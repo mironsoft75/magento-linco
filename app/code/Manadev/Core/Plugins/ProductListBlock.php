@@ -25,8 +25,8 @@ class ProductListBlock {
     public function afterToHtml(ListProduct $block, $html) {
         if ($this->configuration->isProductListSelectRenderedInHiddenDiv()) {
             $additionalHtml = <<<HTML
-                <div id="product_list_select" style="display: none; ">{$block->getLoadedProductCollection()->getSelect()->__toString()}</div>
-                HTML;
+<div id="product_list_select" style="display: none; ">{$block->getLoadedProductCollection()->getSelect()->__toString()}</div>
+HTML;
             return $additionalHtml . $html;
         }
         else {

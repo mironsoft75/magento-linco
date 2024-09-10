@@ -25,13 +25,10 @@ class FilterRenderer extends Template
      */
     protected $mediaHelper;
 
-    public function __construct(
-        Template\Context $context,
-        \Magento\Catalog\Helper\Data $catalogHelper,
-        \Magento\Swatches\Helper\Media $mediaHelper,
+    public function __construct(Template\Context $context,
+        \Magento\Catalog\Helper\Data $catalogHelper, \Magento\Swatches\Helper\Media $mediaHelper,
         UrlGenerator $urlGenerator,
-        array $data = []
-    )
+        array $data = [])
     {
         parent::__construct($context, $data);
         $this->urlGenerator = $urlGenerator;

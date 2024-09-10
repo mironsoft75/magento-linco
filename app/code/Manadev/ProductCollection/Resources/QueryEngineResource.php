@@ -46,13 +46,8 @@ class QueryEngineResource implements QueryEngine
      */
     protected $selectSplitter;
 
-    public function __construct(
-        FilterResources $filterResources,
-        FacetResources $facetResources,
-        Configuration $configuration,
-        Factory $factory,
-        SelectSplitter $selectSplitter
-    )
+    public function __construct(FilterResources $filterResources, FacetResources $facetResources,
+        Configuration $configuration, Factory $factory, SelectSplitter $selectSplitter)
     {
         $this->filterResources = $filterResources;
         $this->facetResources = $facetResources;
@@ -86,24 +81,16 @@ class QueryEngineResource implements QueryEngine
             }
 
             if ($resource->isPreparationStepNeeded()) {
-                $preparationSelect = $this->getFacetSelect(
-                    $productCollection,
-                    $query,
-                    $resource->getPreparationFilterCallback($facet),
-                    $resource->useDirectSelect()
-                );
+                $preparationSelect = $this->getFacetSelect($productCollection, $query,
+                    $resource->getPreparationFilterCallback($facet), $resource->useDirectSelect());
                 $resource->prepare($preparationSelect, $facet);
             }
             else {
                 $preparationSelect = null;
             }
 
-            $facetSelect = $this->getFacetSelect(
-                $productCollection,
-                $query,
-                $resource->getFilterCallback($facet),
-                $resource->useDirectSelect()
-            );
+            $facetSelect = $this->getFacetSelect($productCollection, $query, $resource->getFilterCallback($facet),
+                $resource->useDirectSelect());
             $facet->setData($resource->count(clone $facetSelect, $facet));
             $facet->setSelectedData($resource->getSelectedData($facetSelect, $facet));
         }
@@ -152,11 +139,8 @@ class QueryEngineResource implements QueryEngine
         return $this->selectSplitter->with($select, function()
             use ($select, $query, $callback)
         {
-            if ($condition = $this->applyFilterToSelectRecursively(
-                $select,
-                $query->getFilters(),
-                $callback
-            ))
+            if ($condition = $this->applyFilterToSelectRecursively($select,
+                $query->getFilters(), $callback))
             {
                 $select->where($condition);
             }
@@ -210,11 +194,8 @@ class QueryEngineResource implements QueryEngine
     protected function applyFiltersUsingTempTable($productCollection, Query $query) {
         $select = $productCollection->getSelect();
         $tempTable = $this->getTempTable($productCollection, $query);
-        $select->joinInner(
-            ['product_id_filter' => $tempTable],
-            "`e`.`entity_id` = `product_id_filter`.`entity_id`",
-            null
-        );
+        $select->joinInner(['product_id_filter' => $tempTable],
+            "`e`.`entity_id` = `product_id_filter`.`entity_id`", null);
     }
 
     /**
@@ -234,12 +215,8 @@ class QueryEngineResource implements QueryEngine
      * @param bool $useDirectSelect
      * @return Select
      */
-    protected function getFacetSelect(
-        $productCollection,
-        Query $query,
-        callable $callback = null,
-        $useDirectSelect = false
-    )
+    protected function getFacetSelect($productCollection, Query $query,
+        callable $callback = null, $useDirectSelect = false)
     {
         if ($this->configuration->useProductTempTable() && !$useDirectSelect) {
             return $this->getTempTableFacetSelect($productCollection, $query, $callback);

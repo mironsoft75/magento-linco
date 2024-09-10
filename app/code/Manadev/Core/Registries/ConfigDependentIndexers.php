@@ -35,7 +35,7 @@ class ConfigDependentIndexers
      * @return ConfigDependentIndexer
      */
     public function get($name) {
-        return $this->indexers[$name] ?? null;
+        return isset($this->indexers[$name]) ? $this->indexers[$name] : null;
     }
 
     /**
