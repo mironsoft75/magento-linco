@@ -1,0 +1,81 @@
+<?php
+$urldata = $this->getUrldata();
+
+?>
+<table cellspacing="0" class="form-list">
+    <tbody id="rpcg_form_to">
+        <tr>
+            <td class="">From</td>
+            <td class="">To</td>
+        </tr> 
+        <?php 
+            if ($urldata) {
+                $urlarray = explode(",", $urldata);
+                $addbutton = 0;
+                foreach ($urlarray as $url) {
+                    $singleurl = explode(";", $url);
+                    if (isset($singleurl[1])) {
+                    ?>
+                        <tr>
+                            <td class="from_to">
+                                <input type="text" class="input-text validate-url" value="<?php echo $singleurl[0] ?>" name="url[0][from]">
+                            </td>
+                            <td class="from_to">
+                                <input type="text" class="input-text validate-url" value="<?php echo $singleurl[1] ?>" name="url[0][to]">
+                            </td>
+                            <?php 
+                                if ($addbutton == 0) {
+                            ?>
+                                <td style="padding-left:20px; padding-top:5px;">
+                                    <button style="" class="scalable" type="button" title="Add Option" id="add_new_option_button">
+                                        <span><span>
+                                            <span>Add</span>
+                                        </span></span>
+                                    </button>
+                                </td>
+                            <?php 
+                                $addbutton++;
+                                } else {
+                            ?>
+                                <td style='padding-left:20px; padding-top:5px;'>
+                                <button id='del_new""' class='btnDelete' type='button' title='Delete'>Delete</button></td>
+                                <?php }
+                            ?>
+                        </tr>
+                    <?php
+                    }
+                }
+            } else { ?>
+                <tr>
+                    <td class="from_to">
+                        <input type="text" class="input-text validate-url" value="" name="url[0][from]">
+                    </td>
+                    <td class="from_to">
+                        <input type="text" class="input-text validate-url" value="" name="url[0][to]">
+                    </td>
+                    <td style="padding-left:20px; padding-top:5px;">
+                        <button style="" class="scalable" type="button" title="Add Option" id="add_new_option_button">
+                            <span><span>
+                                <span>Add</span>
+                            </span></span>
+                        </button>
+                    </td>
+                </tr>
+            <?php }
+        ?>
+        
+    </tbody>   
+</table>
+<script type="text/javascript">
+    require(['jquery', 'rpcg'], function($){  
+    }); 
+</script>
+<style type="text/css">
+.from_to{
+    width: 50%
+}
+.input-text{
+    width: 95%;
+    padding: 5px !important;
+}
+</style>

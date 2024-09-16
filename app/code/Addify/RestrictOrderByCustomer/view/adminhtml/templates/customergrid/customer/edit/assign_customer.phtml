@@ -1,0 +1,25 @@
+<?php
+
+
+/** @var \Magento\Catalog\Block\Adminhtml\Category\AssignProducts $block */
+
+/** @var \Magento\Catalog\Block\Adminhtml\Category\Tab\Product $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="tab_related_customer" id="in_related_customer" data-form-part="restrictorderbycustomer_edit" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Addify_RestrictOrderByCustomer/customergrid/customer/assign-customer": {
+                "selectedProducts": <?= /* @escapeNotVerified */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?= /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

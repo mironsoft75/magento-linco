@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--/**
+    * Restrict Order Quantity
+    *
+    * @category Addify
+    * @package  Addify_RestrictOrderQuantity
+    * @author   Addify
+    * @Email    info@addify.com
+    */  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="interceptAddingProductToCartByCustomer"
+                type="Addify\RestrictOrderByCustomer\Plugin\CartPlugin"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="custom-text" type="Addify\RestrictOrderByCustomer\Plugin\Catalog\Block\Product\View"/>
+    </type>
+</config>

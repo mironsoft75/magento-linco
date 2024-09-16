@@ -1,0 +1,24 @@
+<?php 
+$helper = $this->helper('Mageants\RestrictProductsByCustomerGroup\Helper\Data');
+?>
+<div data-bind="scope: 'customCategory'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "customCategory": {
+                        "component": "Magento_Ui/js/form/element/ui-select",
+                        "template" : "Mageants_RestrictProductsByCustomerGroup/categorys",
+                        "filterOptions": true,
+                        "multiple": true,
+                        "showCheckbox": true,
+                        "options": <?php echo $helper->getCategoriesTree()?>
+                    }
+                }
+            }
+        }
+    }
+</script>

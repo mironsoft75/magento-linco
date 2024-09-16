@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">restrictorderbycustomer_edit.restrictorderbycustomer_data_source</item>
+            <item name="deps" xsi:type="string">restrictorderbycustomer_edit.restrictorderbycustomer_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Manage Restrict Order By Customer</item>
+         <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">restrictorderbycustomer_edit</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+         <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">
+                Addify\RestrictOrderByCustomer\Block\Adminhtml\RestrictOrderByCustomer\Edit\BackButton
+            </item>
+            <item name="delete" xsi:type="string">
+                Addify\RestrictOrderByCustomer\Block\Adminhtml\RestrictOrderByCustomer\Edit\DeleteButton
+            </item>
+            <item name="reset" xsi:type="string">
+                Addify\RestrictOrderByCustomer\Block\Adminhtml\RestrictOrderByCustomer\Edit\ResetButton
+            </item>
+            <item name="save" xsi:type="string">
+                Addify\RestrictOrderByCustomer\Block\Adminhtml\RestrictOrderByCustomer\Edit\SaveButton
+            </item>
+            <item name="save_and_continue" xsi:type="string">
+                Addify\RestrictOrderByCustomer\Block\Adminhtml\RestrictOrderByCustomer\Edit\SaveAndContinueButton
+            </item>
+        </item>        
+    </argument>
+    <dataSource name="restrictorderbycustomer_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Addify\RestrictOrderByCustomer\Model\RestrictOrderByCustomer\DataProvider</argument>
+            <argument name="name" xsi:type="string">restrictorderbycustomer_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">restrict_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="restrictorderbycustomer/index/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <!-- TAB INFORMATION -->
+    <fieldset name="restrictorderbycustomer_info">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Restrict Order Information</item>
+            </item>
+        </argument>
+        <!-- ID -->
+        <field name="restrict_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">restrictorderquantity</item>
+                    <item name="dataScope" xsi:type="string">restrict_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">restrictorderquantity</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" xsi:type="string" translate="true">Enable</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="sortOrder" xsi:type="number">18</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">3</item>
+                </item>
+            </argument>
+        </field>
+        <field name="store">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">restrictorderquantity</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="sortOrder" xsi:type="number">18</item>
+
+
+                </item>
+            </argument>
+        </field>
+        <field name="customer_group">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Customer\Model\Customer\Source\Group</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Group</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">restrictorderquantity</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="sortOrder" xsi:type="number">19</item>
+
+
+                </item>
+            </argument>
+        </field>
+        <field name="priority">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Priority</item>
+
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </field>
+        <field name="min_qty">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Minimum Quantity</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="sortOrder" xsi:type="number">25</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="max_qty">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Maximum Quantity</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="sortOrder" xsi:type="number">26</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="assign_customers">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Customers</item>
+                <item name="sortOrder" xsi:type="number">70</item>
+                <item name="visible" xsi:type="boolean">true</item>
+                <item name="validation" xsi:type="array">
+                    <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+            </item>
+        </argument>
+        <container name="assign_customer_container">
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Addify\RestrictOrderByCustomer\Block\Adminhtml\CustomerGrid\AssignCustomer</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+    <!-- PRODUCTS CONFIGURATION -->
+    <fieldset name="products_config">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Products Configuration</item>
+            </item>
+        </argument>
+        <!-- PRODUCT USING -->
+        <field name="product_type"  >
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Addify\RestrictOrderByCustomer\Model\Config\Source\ProductOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Using</item>
+                    <!-- js component -->
+                    <item name="component" xsi:type="string">Addify_RestrictOrderByCustomer/productgrid/products/product-using</item>
+                    <item name="formElement" xsi:type="string">radioset</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="notice" xsi:type="string" translate="true">
+                        If set to 'Individual Products', You can select related product(s) from grid below.
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+    <!-- ASSIGN PRODUCTS -->
+     <fieldset name="assign_products">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Related Products</item>
+                <item name="sortOrder" xsi:type="number">170</item>
+                <item name="visible" xsi:type="boolean">true</item>
+                <item name="validation" xsi:type="array">
+                    <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+            </item>
+        </argument>
+        <container name="assign_products_container">
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Addify\RestrictOrderByCustomer\Block\Adminhtml\ProductGrid\AssignProducts</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+
+</form>

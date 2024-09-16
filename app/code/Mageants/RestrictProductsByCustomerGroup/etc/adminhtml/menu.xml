@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Mageants_RestrictProductsByCustomerGroup::rpcg_content" title="RPCG" module="Mageants_RestrictProductsByCustomerGroup" sortOrder="11" resource="Mageants_RestrictProductsByCustomerGroup::rpcg_content" />
+		
+		<add id="Mageants_RestrictProductsByCustomerGroup::extrafee_grid" title="Manage Rules" module="Mageants_RestrictProductsByCustomerGroup" sortOrder="10" parent="Mageants_RestrictProductsByCustomerGroup::rpcg_content" action="rpcg/rpcg" resource="Mageants_RestrictProductsByCustomerGroup::rpcg_content"/> 
+		
+		<add id="Mageants_RestrictProductsByCustomerGroup::rpcg_config" title="Configuration" module="Mageants_RestrictProductsByCustomerGroup" sortOrder="10" parent="Mageants_RestrictProductsByCustomerGroup::rpcg_content" action="adminhtml/system_config/edit/section/mageants_restrictproductsbycustomergroup/" resource="Mageants_RestrictProductsByCustomerGroup::rpcg_content"/> 
+    </menu>
+</config>

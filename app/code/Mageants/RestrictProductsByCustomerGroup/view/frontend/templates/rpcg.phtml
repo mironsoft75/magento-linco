@@ -1,0 +1,8 @@
+<?php 
+$modeldata = $this->getCollection();
+$data = $modeldata->getData();
+$errormessage = str_replace("{type}", $this->getPageType(), $data['errormessage']);
+?>
+<div>
+    <span class="errormessage"><?php echo $errormessage; ?></span>
+</div>

@@ -6,8 +6,10 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <update handle="checkout_cart_item_renderers"/>
-    <update handle="checkout_shipping_price_renderer"/>
-    <body>
+	<update handle="checkout_cart_item_renderers"/>
+	<update handle="checkout_shipping_price_renderer"/>
+   <body>
+        <move element="checkout.cart.amgiftcard" destination="checkout.cart.container" after="-" />
+        <move element="checkout.cart.form" destination="checkout.cart.container" before="cart.summary" />
     </body>
 </page>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="Addify_Extensions::addifyextensions" title="Addify Extensions" module="Magento_Backend" sortOrder="77" resource="Addify_Extensions::addifyextensions"/>
+
+            <add id="Addify_RestrictOrderByCustomer::restrictorderbycustomerparent" title="Restrict Order By Customer" module="Addify_RestrictOrderByCustomer" sortOrder="1"  parent="Addify_Extensions::addifyextensions" resource="Addify_RestrictOrderByCustomer::restrictorderbycustomerparent" />
+            <!-- MANAGE EXTRA PRODUCT TABS -->
+            <add id="Addify_RestrictOrderByCustomer::managerestrictorderbycustomer" title="Manage Restrict Order By Customer" module="Addify_RestrictOrderByCustomer" sortOrder="10" parent="Addify_RestrictOrderByCustomer::restrictorderbycustomerparent" action="restrictorderbycustomer/" resource="Addify_RestrictOrderByCustomer::managerestrictorderbycustomer"/>
+            <!-- ADMIN CONFIGURATIONS -->
+            <add id="Addify_RestrictOrderByCustomer::restrictorderbycustomer_configuration" title="Configuration" module="Addify_RestrictOrderByCustomer" sortOrder="99" parent="Addify_RestrictOrderByCustomer::restrictorderbycustomerparent" action="adminhtml/system_config/edit/section/restrictorderbycustomer" resource="Addify_RestrictOrderByCustomer::restrictorderbycustomer_configuration"/>
+    </menu>
+</config>

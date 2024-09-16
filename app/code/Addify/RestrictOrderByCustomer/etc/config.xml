@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <restrictorderbycustomer>
+            <general>
+                <enabled>1</enabled>
+                <minmessage>{product_name} Minimum Order Quantity is {quantity}</minmessage>
+                <maxmessage>{product_name} Maximum Order Quantity is {quantity}</maxmessage>
+            </general>
+        </restrictorderbycustomer>
+    </default>
+</config>

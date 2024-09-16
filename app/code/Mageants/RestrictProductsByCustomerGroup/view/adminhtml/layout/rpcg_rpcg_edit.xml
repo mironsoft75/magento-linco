@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+     <update handle="editor"/>
+    <body>
+	   <referenceContainer name="content">
+            <block class="Mageants\RestrictProductsByCustomerGroup\Block\Adminhtml\RPCG\Edit" name="rpcg_rpcg_edit"/>
+        </referenceContainer>
+		<referenceContainer name="left">
+            <block class="Mageants\RestrictProductsByCustomerGroup\Block\Adminhtml\RPCG\Edit\Tabs" name="rpcg_rpcg_edit_tabs">
+				<block class="Mageants\RestrictProductsByCustomerGroup\Block\Adminhtml\RPCG\Edit\Tab\General" name="rpcg_rpcg_edit_tab_general"/>
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">general_section</argument>
+                    <argument name="block" xsi:type="string">rpcg_rpcg_edit_tab_general</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">attachment_products</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Products</item>
+                        <item name="title" xsi:type="string">Products</item>
+                        <item name="url" xsi:type="helper" helper="Mageants\RestrictProductsByCustomerGroup\Helper\Data::getProductsGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action> 
+                <block class="Mageants\RestrictProductsByCustomerGroup\Block\Adminhtml\RPCG\Edit\Tab\CmsPage" name="rpcg_rpcg_edit_tab_cmspage"/>
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">cmspage_section</argument>
+                    <argument name="block" xsi:type="string">rpcg_rpcg_edit_tab_cmspage</argument>
+                </action>
+                <block class="Mageants\RestrictProductsByCustomerGroup\Block\Adminhtml\RPCG\Edit\Tab\Categories" name="rpcg_rpcg_edit_tab_categories" />
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">categories_section</argument>
+                    <argument name="block" xsi:type="string">rpcg_rpcg_edit_tab_categories</argument>
+                </action>
+
+                <block class="Mageants\RestrictProductsByCustomerGroup\Block\Adminhtml\RPCG\Edit\Tab\UrlCondition" name="rpcg_rpcg_edit_tab_urlcondition" template="Mageants_RestrictProductsByCustomerGroup::urlcondition.phtml"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">urlcondition_section</argument>
+                    <argument name="block" xsi:type="string">rpcg_rpcg_edit_tab_urlcondition</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">cmsblock_section</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Select Blocks</item>
+                        <item name="title" xsi:type="string">Select Blocks</item>
+                        <item name="url" xsi:type="helper" helper="Mageants\RestrictProductsByCustomerGroup\Helper\Data::getBlocksGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+			</block>
+        </referenceContainer>
+    </body>
+</page>

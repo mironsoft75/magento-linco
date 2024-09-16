@@ -1,0 +1,2 @@
+bin/magento setup:config:set --remote-storage-driver="azure-blob" --remote-storage-bucket="azdiagextnresults" --remote-storage-key="metasportscspvmsdiag" --remote-storage-secret="Dh9Fof2gNrUu0zAoMiwdNUCyqeYF4tmHqRk5v8bJYLRHkiwipj37bmaamwfGJ0A3+JgV3FbrFgEtHV2H+8TrxQ==" --remote-storage-endpoint="DefaultEndpointsProtocol=https;AccountName=metasportscspvmsdiag;AccountKey=Dh9Fof2gNrUu0zAoMiwdNUCyqeYF4tmHqRk5v8bJYLRHkiwipj37bmaamwfGJ0A3+JgV3FbrFgEtHV2H+8TrxQ==;EndpointSuffix=core.windows.net" --remote-storage-region="global"
+

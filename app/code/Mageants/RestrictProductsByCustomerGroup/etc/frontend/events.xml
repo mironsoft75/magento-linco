@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- for diffrentiate layout.xml on product basis -->
+    <event name="layout_load_before">
+        <observer name="all_layout_load_before" instance="Mageants\RestrictProductsByCustomerGroup\Observer\LayoutLoadBefore" />
+    </event>
+
+    <event name="layout_generate_blocks_after">
+        <observer name="remove_block" instance="Mageants\RestrictProductsByCustomerGroup\Observer\RemoveBlock" />
+    </event>
+ 
+</config>
