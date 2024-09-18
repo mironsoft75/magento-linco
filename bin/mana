@@ -16,7 +16,7 @@ if (!function_exists('proc_open')) {
 require_once dirname($argv[0]) . '/../app/autoload.php';
 
 function run($command) {
-    $process = new Process([$command, null, null, null, null]);
+    $process = new Process($command, null, null, null, null);
     $process->run(function ($type, $buffer) {
         echo $buffer;
     });

@@ -6,6 +6,7 @@ sudo rm -rf var/cache/*
 sudo rm -rf var/page_cache/*
 sudo rm -rf pub/static/*
 sudo rm -rf generated/code/*
+sudo rm -rf var/view_preprocessed/*
 sudo php8.1 bin/magento setup:upgrade
 sudo php8.1 bin/magento setup:di:compile
 sudo php8.1 bin/magento setup:static-content:deploy en_US -f
